@@ -1,17 +1,70 @@
+<!-- This index.html loads Main page of application
+	and provides navigation between Main, Scoreboard,
+	Login and Game pages -->
+
 <!DOCTYPE html>
-<html><head>
+<html>
+<head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="/css/main.css"/>
-</head><body>
+	<title>Epic Game</title>
+</head>
+<body>
     <div id="page"></div>
+
+    <!-- Livereload -->
     <script src="//localhost:35729/livereload.js"></script>
-</body></html>
 
-<fest:template xmlns:fest="http://fest.mail.ru"
-    context_name="json">
-    <div>
-        <h1>Epic Game</h1>
-    </div>
-</fest:template>
+	<!-- Local jQuery -->
+	<!-- <script src="/js/lib/jquery-1.11.2.js"></script> -->
 
-Hello!
+    <!-- jQuery from google API libraries-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+
+	<script src="/js/tmpl/main.js"></script>
+
+	<script type="text/javascript">
+		var $page = $('#page');
+
+		// "Scoreboard" constructor
+		function showScoreboardScreen() {
+		    hideMainScreen();
+		}
+		// "Scoreboard" destructor
+		function hideScoreboardScreen() {}
+		
+		// "Game" constructor
+		function showGameScreen() {
+		    hideMainScreen();
+		}
+		// "Game" destructor
+		function hideGameScreen() {}
+
+		// "Login" constructor
+		function showLoginScreen() {
+		    hideMainScreen();
+		}
+		// "Login" destructor
+		function hideLoginScreen() {}
+
+		//	"Main" constructor
+		function showMainScreen() {
+		    $page.html(mainTmpl()); 	// Render template "main.js"
+		    // Event handlers
+		    $page.find('.js-scoreboard').on('click', showScoreboardScreen);
+		    $page.find('.js-start-game').on('click', showGameScreen);
+		    $page.find('.js-login').on('click', showLoginScreen);
+		}
+
+		// "Main" destructor
+		function hideMainScreen() {
+			// Destroy event handlers
+		    $page.find('.js-scoreboard').off('click', showScoreboardScreen);
+		    $page.find('.js-start-game').off('click', showGameScreen);
+		    $page.find('.js-login').off('click', showLoginScreen);
+		}
+		showMainScreen();
+	</script>
+</body>
+</html>

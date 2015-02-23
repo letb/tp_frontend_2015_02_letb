@@ -1,0 +1,7 @@
+	
+<fest:template xmlns:fest="http://fest.mail.ru"
+context_name="json">
+
+<h1> HELLO I AM AWSOME PAGE </h1>
+<p> great stuff here </p>
+</fest:template>
