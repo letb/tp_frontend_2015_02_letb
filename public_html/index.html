@@ -23,30 +23,53 @@
 
 
 	<script src="/js/tmpl/main.js"></script>
+	<script src="/js/tmpl/scoreboard.js"></script>
+	<script src="/js/tmpl/game.js"></script>
+	<script src="/js/tmpl/login.js"></script>
+
 
 	<script type="text/javascript">
-		var $page = $('#page');
+		var $page = $('#page'),
+			currentScreen = 'main';
 
 		// "Scoreboard" constructor
 		function showScoreboardScreen() {
 		    hideMainScreen();
+		    currentScreen = 'scoreboard';
+		    $page.html(scoreboardTmpl());
+		    $page.find('.js-back').on('click', showMainScreen);
 		}
+
 		// "Scoreboard" destructor
-		function hideScoreboardScreen() {}
+		function hideScoreboardScreen() {
+			$page.find('.js-back').off('click', showMainScreen);
+		}
 		
 		// "Game" constructor
 		function showGameScreen() {
 		    hideMainScreen();
+		    currentScreen = 'game';
+		    $page.html(gameTmpl());
+		    $page.find('.js-back').on('click', showMainScreen);
 		}
+
 		// "Game" destructor
-		function hideGameScreen() {}
+		function hideGameScreen() {
+			$page.find('.js-back').off('click', showMainScreen);
+		}
 
 		// "Login" constructor
 		function showLoginScreen() {
 		    hideMainScreen();
+		    currentScreen = 'login';
+		    $page.html(loginTmpl());
+		    $page.find('.js-back').on('click', showMainScreen);
 		}
+
 		// "Login" destructor
-		function hideLoginScreen() {}
+		function hideLoginScreen() {
+			$page.find('.js-back').off('click', showMainScreen);
+		}
 
 		//	"Main" constructor
 		function showMainScreen() {
