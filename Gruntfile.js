@@ -29,7 +29,7 @@ module.exports = function (grunt) {
 		            template: function (data) { 
                         // Make AMD module
 		                return grunt.template.process(
-		                    'var <%= name %>Tmpl = <%= contents %> ;', 
+		                    'define(function () { return <%= contents %> ; });', 
 		                    {data: data}
 		                );
 		            }
