@@ -1,0 +1,18 @@
+<fest:template xmlns:fest="http://fest.mail.ru"
+context_name="json">
+
+<h1> LOGIN SCREEN </h1>
+<form>
+	Login: 
+	<br></br>
+	<input type="text" name="login"></input>
+	<br></br>
+	Password:
+	<br></br>
+	<input type="text" name="password"></input>
+</form>
+
+<button type="button" class="js-back">Back button</button>
+<button type="button">Submit button</button>
+
+</fest:template>

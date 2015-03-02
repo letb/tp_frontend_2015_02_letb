@@ -32,4 +32,8 @@ node_modules
 ### Vagrant ###
 .vagrant/
 
+# Autosave from Gedit
+*~
+
 .DS_Store
+
