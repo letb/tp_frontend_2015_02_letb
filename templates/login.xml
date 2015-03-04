@@ -12,7 +12,7 @@ context_name="json">
 	<input type="text" name="password"></input>
 </form>
 
-<button type="button" class="js-back">Back button</button>
+<a href="#"><button>Back button</button></a>
 <button type="button">Submit button</button>
 
 </fest:template>

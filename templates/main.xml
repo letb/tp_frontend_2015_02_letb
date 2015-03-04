@@ -4,15 +4,9 @@ context_name="json">
 
 <h1> HELLO I AM AWESOME PAGE </h1>
 <ul>
-  <li class="js-scoreboard">Scoreboard</li>
-  <li class="js-start-game">PLAY</li>
-  <li class="js-login">Login</li>
+  <li><a href='#scoreboard'>Scoreboard</a></li>
+  <li><a href='#game'>PLAY</a></li>
+  <li><a href='#login'>Login</a></li>
 </ul>
 
 </fest:template>
-
-
-<!-- js-scoreboard
-js-start-game
-js-login
-js-back -->

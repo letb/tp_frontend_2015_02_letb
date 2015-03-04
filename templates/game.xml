@@ -2,7 +2,6 @@
 context_name="json">
 
 <h1> GAME SCREEN </h1>
-
-<button type="button" class="js-back">Back button</button>
+<a href="#"><button>Back button</button></a>
 
 </fest:template>

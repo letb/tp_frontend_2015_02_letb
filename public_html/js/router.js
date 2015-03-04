@@ -1,19 +1,20 @@
+
+// Router works only with views
+
 define([
 	'backbone',
-	'views/main',
 	'views/scoreboard',
+	'views/main',
 	'views/game',
 	'views/login'
 ], function(
 	Backbone,
-	mainView,
 	scoreboardView,
+	mainView,
 	gameView,
 	loginView
-){
-	$('#page').append(mainView.el);
-	// mainView.hide();
-
+) {
+	var $page = $('#page');
 	var Router = Backbone.Router.extend({
 		routes: {
 			'scoreboard': 'scoreboardAction',
@@ -21,24 +22,21 @@ define([
 			'login': 'loginAction',
 			'*default': 'defaultActions'
 		},
+
 		defaultActions: function() {
-			// TODO
-			mainView.show();
+			$page.html(mainView.el);
 		},
+
 		scoreboardAction: function() {
-			// TODO
-			mainView.hide();
-			scoreboardView.show();
+			$page.html(scoreboardView.el);
 		},
+
 		gameAction: function() {
-			// TODO
-			mainViw.hide();
-			gameView.show();
+			$page.html(gameView.el);
 		},
+
 		loginAction: function() {
-			// TODO
-			mainView.hide();
-			loginView.show();
+			$page.html(loginView.el);
 		}
 	});
 

@@ -3,6 +3,14 @@ define([
 ], function (
 	Backbone
 ) {
-	var Model = Backbone.Model.extend({});
-	return Model;	
-})
+	var ScoreModel = Backbone.Model.extend({
+		default: {
+			name: '',
+			score: 0
+		}
+	});
+
+	return ScoreModel;	
+});
+
+
