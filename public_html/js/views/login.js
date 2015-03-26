@@ -2,7 +2,7 @@ define([
 	'backbone',
 	'tmpl/login'
 ], function(
-	Backbone, 
+	Backbone,
 	LoginTmpl
 ) {
 	var View = Backbone.View.extend({
@@ -10,21 +10,21 @@ define([
 		template: LoginTmpl,
 
 		initialize: function() {
-			this.$el.html(this.template());
+			$('#page').append(this.$el);
+			this.render();
 		},
 
 		render: function() {
-			// TODO
+			this.$el.html(this.template());
+			return this;
 		},
 
 		show: function() {
-			$(this.el).show();
+			this.$el.show();
 		},
-		
-		hide: function() {
-			// TODO
-			$(this.el).hide();
 
+		hide: function() {
+			this.$el.hide();
 		}
 	});
 

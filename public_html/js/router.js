@@ -14,7 +14,6 @@ define([
 	gameView,
 	loginView
 ) {
-	var $page = $('#page');
 	var Router = Backbone.Router.extend({
 		routes: {
 			'scoreboard': 'scoreboardAction',
@@ -23,21 +22,27 @@ define([
 			'*default': 'defaultActions'
 		},
 
-		defaultActions: function() {
-			$page.html(mainView.el);
-		},
-
 		scoreboardAction: function() {
-			$page.html(scoreboardView.el);
+			mainView.hide();
+			scoreboardView.show();
 		},
 
 		gameAction: function() {
-			$page.html(gameView.el);
+			mainView.hide();
+			gameView.show();
 		},
 
 		loginAction: function() {
-			$page.html(loginView.el);
-		}
+			mainView.hide();
+			loginView.show();
+		},
+
+		defaultActions: function() {
+			scoreboardView.hide();
+			gameView.hide();
+			loginView.hide();
+			mainView.show();
+		},
 	});
 
 	return new Router();
