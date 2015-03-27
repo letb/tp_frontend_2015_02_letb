@@ -3,17 +3,11 @@
 
 define([
 	'backbone',
-	'views/scoreboard',
 	'views/main',
+	'views/scoreboard',
 	'views/game',
 	'views/login'
-], function(
-	Backbone,
-	scoreboardView,
-	mainView,
-	gameView,
-	loginView
-) {
+], function (Backbone, mainView, scoreboardView, gameView, loginView) {
 	var Router = Backbone.Router.extend({
 		routes: {
 			'scoreboard': 'scoreboardAction',

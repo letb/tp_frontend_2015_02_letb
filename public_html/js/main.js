@@ -10,7 +10,7 @@ require.config({
 		'backbone': {
 	        // These script dependencies should be loaded before loading
         	// backbone.js
-			deps: ['jquery', 'underscore'],            
+			deps: ['jquery', 'underscore'],
 			// Once loaded, use the global 'Backbone' as the
             // module value.
 			exports: 'Backbone'
@@ -18,13 +18,15 @@ require.config({
 		'underscore': {
 			exports: '_'
 		},
-        'jquery': {
-            exports: '$'
-        }
+    'jquery': {
+      exports: '$'
+    }
 	}
 });
 
-define(['backbone', 'router'],
-		function(Backbone, router) {
-			Backbone.history.start();
-		});
+define([
+	'backbone',
+	'router'
+], function(Backbone, router) {
+		Backbone.history.start();
+});

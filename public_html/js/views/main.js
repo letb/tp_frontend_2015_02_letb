@@ -1,13 +1,10 @@
 define([
 	'backbone',
 	'tmpl/main'
-], function(
-	Backbone,
-	MainTmpl
-){
-	var View = Backbone.View.extend({
-		template: MainTmpl,
+], function (Backbone, tmpl){
+	var MainView = Backbone.View.extend({
 		id: "main-view",
+		template: tmpl,
 
 		initialize: function() {
 			$('#page').append(this.$el);
@@ -28,5 +25,5 @@ define([
 		}
 	});
 
-	return new View();
+	return new MainView();
 });

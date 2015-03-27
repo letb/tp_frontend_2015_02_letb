@@ -1,19 +1,16 @@
 define([
 	'backbone',
 	'models/score'
-], function(
-	Backbone,
-	ScoreModel
-) {
-	var ScoreCollection = Backbone.Collection.extend({
-		model: ScoreModel,
+], function(Backbone, scoreModel) {
+	var ScoreboardCollection = Backbone.Collection.extend({
+		model: scoreModel,
 
-    comparator: function(score) {
+    comparator: function (score) {
       return -score.get('score')
     }
 	});
 
-	return new ScoreCollection
+	return new ScoreboardCollection
     ([
       { name: "Flying Dutchman", score: 123  },
       { name: "Black Pearl", score: 27381    },

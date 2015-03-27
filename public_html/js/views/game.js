@@ -1,13 +1,10 @@
 define([
 	'backbone',
 	'tmpl/game'
-], function(
-	Backbone,
-	GameTmpl
-) {
-	var View = Backbone.View.extend({
+], function (Backbone, tmpl) {
+	var GameView = Backbone.View.extend({
 		id: 'game-view',
-		template: GameTmpl,
+		template: tmpl,
 
 		initialize: function() {
 			$('#page').append(this.$el);
@@ -25,9 +22,8 @@ define([
 
 		hide: function() {
 			this.$el.hide();
-
 		}
 	});
 
-	return new View();
+	return new GameView();
 });

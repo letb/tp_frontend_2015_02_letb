@@ -1,20 +1,14 @@
 define([
 	'backbone',
 	'tmpl/scoreboard',
-	'models/score',
-	'collections/score'
-], function(
-	Backbone,
-	scoreboardTmpl,
-	ScoreModel,
-	ScoreCollection
-) {
+	'collections/scoreboard'
+], function (Backbone, tmpl, scoreboard) {
 	var ScoreboardView = Backbone.View.extend({
-		collection: ScoreCollection,
+		collection: scoreboard,
 		id: "scoreboard-view",
 
 		template: function() {
-			return scoreboardTmpl(this.collection.toJSON());
+			return tmpl(this.collection.toJSON());
 		},
 
 		initialize: function() {
@@ -36,7 +30,6 @@ define([
 		}
 	});
 
-	var scoreboardView = new ScoreboardView();
-	return scoreboardView;
+	return new ScoreboardView();
 });
 
