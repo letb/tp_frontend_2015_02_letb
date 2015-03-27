@@ -17,26 +17,28 @@ define([
 		},
 
 		scoreboardAction: function() {
-			mainView.hide();
-			scoreboardView.show();
+			this.changeView(scoreboardView);
 		},
 
 		gameAction: function() {
-			mainView.hide();
-			gameView.show();
+			this.changeView(gameView);
 		},
 
 		loginAction: function() {
-			mainView.hide();
-			loginView.show();
+			this.changeView(loginView);
 		},
 
 		defaultActions: function() {
-			scoreboardView.hide();
-			gameView.hide();
-			loginView.hide();
-			mainView.show();
+			this.changeView(mainView);
 		},
+
+		changeView: function(view) {
+			if (this.currentView) {
+				this.currentView.remove();
+			}
+			$('#page').append(view.render().el);
+			this.currentView = view
+		}
 	});
 
 	return new Router();
