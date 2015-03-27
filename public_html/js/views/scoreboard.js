@@ -2,65 +2,41 @@ define([
 	'backbone',
 	'tmpl/scoreboard',
 	'models/score',
-	'collections/score',
-	'views/score'
+	'collections/score'
 ], function(
 	Backbone,
 	scoreboardTmpl,
 	ScoreModel,
-	ScoreCollection,
-	ScoreView
+	ScoreCollection
 ) {
 	var ScoreboardView = Backbone.View.extend({
 		collection: ScoreCollection,
-		id: "scoreboard-view", 
-		template: scoreboardTmpl,
+		id: "scoreboard-view",
+
+		template: function() {
+			return scoreboardTmpl(this.collection.toJSON());
+		},
 
 		initialize: function() {
-			this.$el.html(this.template());
-			this.$('.logo').after('<ul class="score__list"></ul>');
+			$('#page').append(this.$el);
 			this.render();
 		},
 
 		render: function() {
-			this.collection.forEach(this.addOne, this);
+			this.$el.html(this.template());
 			return this;
 		},
 
-		addOne: function(scoreItem) {
-			var scoreView = new ScoreView({model: scoreItem});
-			this.$('.score__list')
-				.append(scoreView.render().el);
-		},
-
 		show: function() {
-			this.$(el).show();
+			this.$el.show();
 		},
 
 		hide: function() {
-			this.$(el).hide();
+			this.$el.hide();
 		}
 	});
 
-	var scoreList = new ScoreCollection();
-	scoreList.comparator = function(scoreItem) {
-				return -scoreItem.get("score");
-			};
-
-	scoreList.add([
-		{name: "Flying Dutchman", score: 123},
-		{name: "Black Pearl", score: 27381},
-		{name: "lladrona", score: 9287},
-		{name: "Simply doodler", score: 28},
-		{name: "eliot White", score: 11},
-		{name: "shallowday", score: 892},
-		{name: "helloworld", score: 198},
-		{name: "LkJASdjkhASh", score: 0},
-		{name: "llll", score: 999999999},
-		{name: "Londoners Prisoner", score: 0}
-	]);
-
-	var scoreboardView = new ScoreboardView({collection: scoreList});
-	return scoreboardView;	
+	var scoreboardView = new ScoreboardView();
+	return scoreboardView;
 });
 

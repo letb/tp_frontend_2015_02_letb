@@ -7,6 +7,7 @@ define([
 ){
 	var View = Backbone.View.extend({
 		template: MainTmpl,
+		id: "main-view",
 
 		initialize: function() {
 			$('#page').append(this.$el);
