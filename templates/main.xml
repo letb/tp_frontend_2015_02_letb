@@ -1,12 +1,8 @@
-
-<fest:template xmlns:fest="http://fest.mail.ru"
-context_name="json">
-
-<h1> HELLO I AM AWESOME PAGE </h1>
-<ul>
-  <li><a href='#scoreboard'>Scoreboard</a></li>
-  <li><a href='#game'>PLAY</a></li>
-  <li><a href='#login'>Login</a></li>
-</ul>
-
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
+  <h1> HELLO I AM AWESOME PAGE </h1>
+  <ul>
+    <li> <a href='#scoreboard'>Scoreboard</a> </li>
+    <li> <a href='#game'>PLAY</a> </li>
+    <li> <a href='#login'>Login</a> </li>
+  </ul>
 </fest:template>

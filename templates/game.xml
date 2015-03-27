@@ -1,7 +1,6 @@
-<fest:template xmlns:fest="http://fest.mail.ru"
-context_name="json">
-
-<h1> GAME SCREEN </h1>
-<a href="#"><button>Back button</button></a>
-
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
+  <h1> GAME SCREEN — I really miss my Mechanics :( </h1>
+  <a href="#">
+    <button> Back </button>
+  </a>
 </fest:template>
