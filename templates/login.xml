@@ -1,26 +1,23 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
 	<h1> LOGIN SCREEN </h1>
-	<form id="login" method="post" action="/api/v1/signup" class="login-form">
+	<form id="login" method="post" action="/api/v1/signup">
+
 		<div class="email">
 			<label for="email">Email:</label>
-			<input type="email" value="" placeholder="name@email.com" required="required"
-						 class="form__field"/>
+			<input type="email" name="email" required="true" />
 		</div>
 
 		<div class="login">
 			<label for="login">Login: </label>
-			<input type="text" value="" required="required" pattern="[a-zA-Z0-9_]+"
-						 class="form__field" placeholder="username"
-	 					 oninvalid="setCustomValidity('Please enter proper symbols')"
-						 title="Use letters, numbers and underscore."/>
+			<input type="text" name="login" required="true" pattern="[a-zA-Z0-9_]+" title="Use letters, numbers or underscore."/>
 		</div>
 
 		<div class="password">
 			<label for="password">Password:</label>
-			<input type="password" value="" required="required" pattern=".{{6, 30}}"
-						 class="form__field" oninvalid="setCustomValidity('Password too short!')"
-						 title="6 or more characters"/>
+			<input type="password" name="password" required="true" pattern=".{{6,30}}" title="6 or more characters" />
 		</div>
+
+		<button type="submit"> Sign Up </button>
 	</form>
 	<a href="#">
 		<button> Back </button>
