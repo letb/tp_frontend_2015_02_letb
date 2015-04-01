@@ -1,0 +1,14 @@
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="scoreboard">
+  <h1 class="logo"> SCOREBOARD SCREEN </h1>
+  <ol>
+    <fest:each iterate="scoreboard" index="i" value="score">
+      <li class="score">
+        <fest:value> score.name </fest:value>
+        <fest:value> score.score </fest:value>
+      </li>
+    </fest:each>
+  </ol>
+  <a href="#">
+    <button> Back </button>
+  </a>
+</fest:template>

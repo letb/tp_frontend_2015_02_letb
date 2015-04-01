@@ -1,0 +1,25 @@
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
+	<h1> Sign Up </h1>
+	<form id="login" method="post" action="/api/v1/auth/signup">
+
+		<div class="email">
+			<label for="email">Email:</label>
+			<input type="email" name="email" required="true" />
+		</div>
+
+		<div class="name">
+			<label for="name">Login: </label>
+			<input type="text" name="name" required="true" pattern="[a-zA-Z0-9_]+" title="Use letters, numbers or underscore."/>
+		</div>
+
+		<div class="password">
+			<label for="password">Password:</label>
+			<input type="password" name="password" required="true" pattern=".{{6,30}}" title="6 or more characters" />
+		</div>
+
+		<button type="submit"> Sign Up </button>
+	</form>
+	<a href="#">
+		<button> Back </button>
+	</a>
+</fest:template>
