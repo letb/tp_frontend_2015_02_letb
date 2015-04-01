@@ -6,13 +6,13 @@ define([
 	'views/main',
 	'views/scoreboard',
 	'views/game',
-	'views/login'
-], function (Backbone, mainView, scoreboardView, gameView, loginView) {
+	'views/signup',
+], function (Backbone, mainView, scoreboardView, gameView, signupView) {
 	var Router = Backbone.Router.extend({
 		routes: {
 			'scoreboard': 'scoreboardAction',
 			'game': 'gameAction',
-			'login': 'loginAction',
+			'signup': 'signupAction',
 			'*default': 'defaultActions'
 		},
 
@@ -24,8 +24,8 @@ define([
 			this.changeView(gameView);
 		},
 
-		loginAction: function() {
-			this.changeView(loginView);
+		signupAction: function() {
+			this.changeView(signupView);
 		},
 
 		defaultActions: function() {

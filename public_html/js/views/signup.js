@@ -1,9 +1,9 @@
 define([
 	'backbone',
-	'tmpl/login'
+	'tmpl/signup'
 ], function (Backbone, tmpl) {
-	var LoginView = Backbone.View.extend({
-		id: "login-view",
+	var SignupView = Backbone.View.extend({
+		id: "signup-view",
 		template: tmpl,
 
 		render: function() {
@@ -20,5 +20,5 @@ define([
 		}
 	});
 
-	return new LoginView();
+	return new SignupView();
 });

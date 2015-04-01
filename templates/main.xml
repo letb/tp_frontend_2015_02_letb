@@ -3,6 +3,6 @@
   <ul>
     <li> <a href='#scoreboard'>Scoreboard</a> </li>
     <li> <a href='#game'>PLAY</a> </li>
-    <li> <a href='#login'>Login</a> </li>
+    <li> <a href='#signup'>Sign Up</a> </li>
   </ul>
 </fest:template>

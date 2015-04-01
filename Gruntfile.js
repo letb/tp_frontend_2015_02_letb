@@ -11,7 +11,7 @@ module.exports = function (grunt) {
             },
             // Start server at 8000
             server: {
-                command: 'java -cp L1.2-1.0-jar-with-dependencies.jar main.Main 8000'
+                command: 'java -cp java_tp_2015_02-0.1-jar-with-dependencies.jar main.Main 8000'
             }
         },
 
@@ -26,10 +26,10 @@ module.exports = function (grunt) {
                 }],
 		        options: {
                     // This function is called when template will be compiled
-		            template: function (data) { 
+		            template: function (data) {
                         // Make AMD module
 		                return grunt.template.process(
-		                    'define(function () { return <%= contents %> ; });', 
+		                    'define(function () { return <%= contents %> ; });',
 		                    {data: data}
 		                );
 		            }
@@ -37,7 +37,7 @@ module.exports = function (grunt) {
             }
         },
 
-        // Run predefined tasks whenever watched file patterns are added, 
+        // Run predefined tasks whenever watched file patterns are added,
         // changed or deleted.
     	watch: {
     		// Compile modified templates
@@ -69,14 +69,14 @@ module.exports = function (grunt) {
                 logConcurrentOutput: true // Process log output
             }
         }
-        
+
     });
 
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-concurrent');
     grunt.loadNpmTasks('grunt-shell');
     grunt.loadNpmTasks('grunt-fest');
-    
+
     grunt.registerTask('default', ['concurrent']);
 
 };
