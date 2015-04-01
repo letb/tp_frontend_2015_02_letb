@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+<title>Simple Canvas Example</title>
+	<style>
+		canvas {
+		    border: 3px #CCC solid;
+		}
+	</style>
+</head>
+ 
+<body>
+<div id="page">
+    <canvas id="canvas" height="500" width="500"></canvas>
+</div>
+
+<script>	
+	var canvas = document.getElementById("canvas");
+	var context = canvas.getContext("2d");
+	var startTime = new Date().getTime();
+	var init;
+
+	window.requestAnimFrame = (function(){
+		return window.requestAnimationFrame		||
+			window.webkitRequestAnimationFrame	||
+			window.mozRequestAnimationFrame		||
+			window.oRequestAnimationFrame		||
+			window.msRequestAnimationFrame		||
+			function(callback){
+				return window.setTimeout(callback, 1000 / 60);
+			};
+	})();
+	window.cancelRequestAnimFrame = (function() {
+		return window.cancelAnimationFrame				||
+			window.webkitCancelRequestAnimationFrame	||
+			window.mozCancelRequestAnimationFrame		||
+			window.oCancelRequestAnimationFrame			||
+			window.msCancelRequestAnimationFrame		||
+			clearTimeout
+	})();
+
+	var mtopix = 500;
+	var gravity = 9.8 * mtopix;
+
+	function Ball(options) {
+		this.radius = options.radius || 50;
+		this.x = options.x || canvas.width / 2;
+		this.y = options.y || canvas.height / 2;
+		this.velocity = options.velocity || 0;
+		this.impulse = options.impulse || 1500;
+		this.reduce = options.reduce || 0.8;
+
+		this.draw = function() {
+			context.clearRect(0, 0, canvas.width, canvas.height);
+			context.fillStyle = "#eeeeee";
+			context.fillRect(0, 0, canvas.width, canvas.height);
+
+			context.beginPath();
+			context.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+			context.closePath();
+
+			context.fillStyle = "#006699";
+			context.font = '40pt Calibri';
+  			context.fillText('Touch me!', 130, 100);
+			context.fill();
+		};
+
+		this.update = function(time) {
+			this.velocity += gravity * time;
+			this.y += this.velocity * time;
+
+			if (this.y >= canvas.height - this.radius) {
+				this.y = canvas.height - this.radius;
+				this.velocity = -this.velocity * this.reduce;
+			}
+		};
+	}
+
+	function loop(ball) {
+		var currentTime = new Date().getTime();
+		ball.update((currentTime - startTime)/1000);
+		ball.draw();
+		init = window.requestAnimFrame(function () {loop(ball)});
+		startTime = currentTime;
+	}
+
+
+	var ball = new Ball({});
+	ball.draw();
+	loop(ball);
+
+	document.getElementById('canvas').addEventListener('click', function() {
+		if (Math.pow(ball.x - event.clientX, 2) + Math.pow(ball.y - event.clientY, 2) <= Math.pow(ball.radius, 2)) {
+				ball.velocity -= ball.impulse;
+			}
+	    });
+
+</script>
+</body>
+</html>
