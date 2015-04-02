@@ -1,6 +1,12 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
-  <h1> GAME SCREEN — I really miss my Mechanics :( </h1>
-  <a href="#">
-    <button> Back </button>
-  </a>
+  <div class="text-center">
+    <h2> Game Screen — I really miss my Mechanics :( </h2>
+  </div>
+  <div>
+    <canvas id="canvas"></canvas>
+  </div>
+  <div class="clearfix"></div>
+  <div class="text-center">
+    <a href="#" class="btn btn-default"> Back </a>
+  </div>
 </fest:template>
