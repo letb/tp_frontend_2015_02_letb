@@ -1,3 +1,7 @@
+html {
+  height: 100%;
+}
+
 header {
   margin: 20px;
 }
@@ -6,3 +10,55 @@ footer {
   margin: 20px;
 }
 
+.total-area {
+  height: 700px;
+  background-color: #F0F5F5;
+}
+
+.total-area ul{
+    padding-left: 0px;
+}
+
+.total-area li{
+  list-style-type: none;
+  height: 100%;
+}
+
+#working-area {
+  height: 85%; 
+}
+
+#word-panel {
+  height: 15%;
+  background-color: #E0EBEB;
+}
+
+#players-info {
+  background-color: #75A3A3;
+}
+
+#canvas-area {
+  background-color: #A3C2C2;
+}
+
+#canvas {
+  background-color: white;
+  margin-top: 20px; 
+  width: 100%;
+  height: 78%;
+}
+
+#drawing-panel {
+  margin: 0px;
+  background-color: #C2D6D6;
+  height: 16%;
+}
+
+#drawing-panel li{
+  background-color: #E0EBEB;
+  height: 100%;
+}
+
+#chat-area {
+  background-color: #75A3A3;
+}
