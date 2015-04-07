@@ -9,8 +9,10 @@
 
     <ul class="row" id="working-area">
       <li class="col-md-2" id="players-info"> </li>
-      <li class="col-md-7" id="canvas-area"> 
-        <canvas id="canvas"></canvas> 
+      <li class="col-md-7" id="canvas-area">
+        <div class="canvas-container">
+          <canvas id="canvas" width="300" height="200"></canvas> 
+        </div> 
         <ul class="row" id="drawing-panel">
             <li class="col-md-5" id="colors-panel"></li>
             <li class="col-md-2" id="brushes-panel"></li>
@@ -27,4 +29,6 @@
   <div class="text-center">
     <a href="#" class="btn btn-default"> Back </a>
   </div>
+
+  <script src="js/canvas.js"></script>
 </fest:template>
