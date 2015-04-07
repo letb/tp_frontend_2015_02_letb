@@ -10,9 +10,6 @@
     <ul class="row" id="working-area">
       <li class="col-md-2" id="players-info"> </li>
       <li class="col-md-7" id="canvas-area">
-        <div class="canvas-container">
-          <canvas id="canvas" width="300" height="200"></canvas> 
-        </div> 
         <ul class="row" id="drawing-panel">
             <li class="col-md-5" id="colors-panel"></li>
             <li class="col-md-2" id="brushes-panel"></li>
@@ -30,5 +27,9 @@
     <a href="#" class="btn btn-default"> Back </a>
   </div>
 
-  <script src="js/canvas.js"></script>
+  <script>
+      canvas.width = canvas.parentElement.offsetWidth;
+      canvas.height = canvas.parentElement.offsetHeight;
+      console.log('resize');
+  </script>
 </fest:template>

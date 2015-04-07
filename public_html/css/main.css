@@ -41,7 +41,7 @@ footer {
   background-color: #A3C2C2;
 }
 
-.canvas-container {
+#canvas-view {
   background-color: white;
   border: 1px solid black;
   margin-top: 20px; 

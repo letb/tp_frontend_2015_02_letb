@@ -1,10 +1,10 @@
 
 console.log("i'm canvas");
 
+var canvas = document.getElementById('canvas');
 canvas.width = canvas.parentElement.offsetWidth;
 canvas.height = canvas.parentElement.offsetHeight;
 
-canvas = document.getElementById('canvas');
 context = canvas.getContext("2d");
 
 function relMouseCoords(event) {
@@ -72,6 +72,8 @@ function addClick(x, y, dragging) {
   clickY.push(y);
   clickDrag.push(dragging);
 };
+
+
 
 function redraw() {
   // Reset canvas
