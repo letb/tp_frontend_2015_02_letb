@@ -10,6 +10,7 @@ define([
       this.$el.append('<canvas id="canvas"></canvas>');
       this.canvas = this.$('#canvas')[0];
       this.context = this.canvas.getContext('2d');
+      this.paint = false;
 
       HTMLCanvasElement.prototype.relMouseCoords = this.relMouseCoords;
 
@@ -38,28 +39,28 @@ define([
 
     mouseDown: function(e) {
       var coord = this.relMouseCoords(e);
-      canvasModel.set('paint', true);
+      this.paint = true;
       canvasModel.addPoint(coord.x, coord.y, false);
       this.redraw(this.canvas, this.context);
     },
 
     mouseMove: function(e) {
       var coord = this.relMouseCoords(e);
-      if (canvasModel.get('paint')) {
+      if (this.paint) {
         canvasModel.addPoint(coord.x, coord.y, true);
         this.redraw(this.canvas, this.context);
       }
     },
 
     mouseUp: function(e) {
-      if (canvasModel.get('paint')) {
-        canvasModel.set('paint', false);
+      if (this.paint) {
+        this.paint = false;
       }
     },
 
     mouseLeave: function(e) {
-      if (canvasModel.get('paint')) {
-        canvasModel.set('paint', false);
+      if (this.paint) {
+        this.paint = false;
       }
     },
 
