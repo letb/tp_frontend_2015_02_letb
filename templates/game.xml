@@ -28,8 +28,10 @@
   </div>
 
   <script>
-      canvas.width = canvas.parentElement.offsetWidth;
-      canvas.height = canvas.parentElement.offsetHeight;
-      console.log('resize');
+    $('canvas').each(function(index) {
+      this.width = this.parentElement.offsetWidth;
+      this.height = this.parentElement.offsetHeight;
+    });
+    console.log('resize dom');
   </script>
 </fest:template>

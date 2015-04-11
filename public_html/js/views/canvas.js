@@ -7,11 +7,21 @@ define([
     model: canvasModel = new CanvasModel(),
 
     initialize: function() {
-      canvasModel = new CanvasModel();
       this.$el.append('<canvas id="canvas"></canvas>');
       this.canvas = this.$('#canvas')[0];
       this.context = this.canvas.getContext('2d');
+
       HTMLCanvasElement.prototype.relMouseCoords = this.relMouseCoords;
+
+      // bind to the namespaced (for easier unbinding) event
+      $(window).on("resize", _.bind(this.resize, this));
+    },
+
+    events: {
+      'mousedown #canvas': 'mouseDown',
+      'mousemove #canvas': 'mouseMove',
+      'mouseup #canvas': 'mouseUp',
+      'mouseleave #canvas': 'mouseLeave'
     },
 
     render: function() {
@@ -20,11 +30,10 @@ define([
       return this;
     },
 
-    events: {
-      'mousedown #canvas': 'mouseDown',
-      'mousemove #canvas': 'mouseMove',
-      'mouseup #canvas': 'mouseUp',
-      'mouseleave #canvas': 'mouseLeave'
+    resize: function() {
+      this.canvas.width = this.canvas.parentElement.offsetWidth;
+      this.canvas.height = this.canvas.parentElement.offsetHeight;
+      this.render();
     },
 
     mouseDown: function(e) {
@@ -81,21 +90,30 @@ define([
       this.$el.hide();
     },
 
+    remove: function() {
+      // unbind the namespaced event (to prevent accidentally unbinding some
+      // other resize events from other code in your app
+      $(window).off("resize");
+
+      // don't forget to call the original remove() function
+      Backbone.View.prototype.remove.call(this);
+    },
+
     relMouseCoords: function(event) {
       var totalOffsetX = 0;
       var totalOffsetY = 0;
-      var canvasX = 0;
-      var canvasY = 0;
       var currentElement = event.target;
+      var canvasX =  currentElement.scrollLeft;
+      var canvasY =  currentElement.scrollTop;
 
       do {
-        totalOffsetX += currentElement.offsetLeft - currentElement.scrollLeft;
-        totalOffsetY += currentElement.offsetTop - currentElement.scrollTop;
+        totalOffsetX += currentElement.offsetLeft ;
+        totalOffsetY += currentElement.offsetTop ;
       }
       while (currentElement = currentElement.offsetParent);
 
-      canvasX = event.pageX - totalOffsetX;
-      canvasY = event.pageY - totalOffsetY;
+      canvasX = event.pageX - totalOffsetX ;
+      canvasY = event.pageY - totalOffsetY ;
       return {x: canvasX, y: canvasY};
     }
   });
