@@ -6,7 +6,6 @@ define([
       clickX: [],
       clickY: [],
       clickDrag: [],
-      paint: false
     },
 
     addPoint: function(x, y, dragging) {
@@ -18,7 +17,6 @@ define([
     getX: function(i) {
       return this.get('clickX')[i];
     },
-
 
     getY: function(i) {
       return this.get('clickY')[i];

@@ -1,21 +1,25 @@
 define([
 	'backbone',
 	'tmpl/game',
-	'views/canvas'
-], function (Backbone, tmpl, CanvasView) {
+	'views/canvas',
+	'views/colorpalette'
+], function (Backbone, tmpl, CanvasView, ColorPaletteView) {
 	var GameView = Backbone.View.extend({
 		id: 'game-view',
 		template: tmpl,
 
 		initialize: function(){
 			this.canvasView = new CanvasView({id: 'canvas-view'});
-			console.log(this.canvasView.el);
+			this.colorpaletteView = new ColorPaletteView({id: 'color-palette-view'});
 		},
 
 		render: function() {
 			this.$el.html(this.template());
 			this.$('#canvas-area').prepend(this.canvasView.$el);
+			this.$('#colors-panel').prepend(this.colorpaletteView.$el);
+
 			this.canvasView.render();
+			this.colorpaletteView.render();
 			return this;
 		},
 

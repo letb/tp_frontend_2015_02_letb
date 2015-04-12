@@ -22,7 +22,8 @@ define([
       'mousedown #canvas': 'mouseDown',
       'mousemove #canvas': 'mouseMove',
       'mouseup #canvas': 'mouseUp',
-      'mouseleave #canvas': 'mouseLeave'
+      'mouseleave #canvas': 'mouseLeave',
+      'resized #canvas': 'resize'
     },
 
     render: function() {
