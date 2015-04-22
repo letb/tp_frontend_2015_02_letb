@@ -4,10 +4,9 @@ define([
   'models/colorpalette'
 ], function (Backbone, tmpl, ColorPaletteModel) {
   var ColorPaletteView = Backbone.View.extend({
-    model: ColorPaletteModel,
+    model: colorPalette = new ColorPaletteModel(),
 
     initialize: function() {
-      colorPalette = new ColorPaletteModel();
       this.$el.append('<canvas id="color-palette"></canvas>');
       this.canvas = this.$('#color-palette')[0];
       this.context = this.canvas.getContext('2d');
@@ -15,7 +14,7 @@ define([
       HTMLCanvasElement.prototype.relMouseCoords = this.relMouseCoords;
 
       $(window).on("resize", _.bind(this.resize, this));
-      colorPalette.on('change:current', this.render, this);
+      this.model.on('change:current', this.render, this);
     },
 
     events: {

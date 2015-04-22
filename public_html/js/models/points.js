@@ -3,31 +3,37 @@ define([
 ], function (Backbone) {
   var CanvasModel = Backbone.Model.extend({
     defaults: {
-      clickX: [],
-      clickY: [],
-      clickDrag: [],
+      x: [],
+      y: [],
+      drag: [],
+      color: [],
+      size: []
     },
 
-    addPoint: function(x, y, dragging) {
-      this.get('clickX').push(x);
-      this.get('clickY').push(y);
-      this.get('clickDrag').push(dragging);
+    addPoint: function(x, y, dragging, color) {
+      this.get('x').push(x);
+      this.get('y').push(y);
+      this.get('drag').push(dragging);
+      this.get('color').push(color);
     },
 
     getX: function(i) {
-      return this.get('clickX')[i];
+      return this.get('x')[i];
     },
 
     getY: function(i) {
-      return this.get('clickY')[i];
+      return this.get('y')[i];
     },
 
     isDragged: function(i) {
-      return this.get('clickDrag')[i];
+      return this.get('drag')[i];
     },
-
+    getColor: function(i) {
+      return this.get('color')[i];
+    },
+    
     pointsCount: function() {
-      return this.get('clickX').length;
+      return this.get('x').length;
     },
   });
 

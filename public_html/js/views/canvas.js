@@ -1,21 +1,25 @@
 define([
   'backbone',
   'tmpl/game',
-  'models/points'
-], function (Backbone, tmpl, CanvasModel) {
+  'models/points',
+  'models/colorpalette'
+], function (Backbone, tmpl, CanvasModel, ColorPalette) {
   var CanvasView = Backbone.View.extend({
     model: canvasModel = new CanvasModel(),
+    colorPalette: colorPalette, // global variable??
 
     initialize: function() {
       this.$el.append('<canvas id="canvas"></canvas>');
       this.canvas = this.$('#canvas')[0];
       this.context = this.canvas.getContext('2d');
       this.paint = false;
+      this.color = this.colorPalette.getCurrent();
 
       HTMLCanvasElement.prototype.relMouseCoords = this.relMouseCoords;
 
       // bind to the namespaced (for easier unbinding) event
       $(window).on("resize", _.bind(this.resize, this));
+      this.colorPalette.on('change:current', this.changeColor, this);
     },
 
     events: {
@@ -41,14 +45,14 @@ define([
     mouseDown: function(e) {
       var coord = this.relMouseCoords(e);
       this.paint = true;
-      canvasModel.addPoint(coord.x, coord.y, false);
+      canvasModel.addPoint(coord.x, coord.y, false, this.color);
       this.redraw(this.canvas, this.context);
     },
 
     mouseMove: function(e) {
       var coord = this.relMouseCoords(e);
       if (this.paint) {
-        canvasModel.addPoint(coord.x, coord.y, true);
+        canvasModel.addPoint(coord.x, coord.y, true, this.color);
         this.redraw(this.canvas, this.context);
       }
     },
@@ -65,13 +69,18 @@ define([
       }
     },
 
+    changeColor: function(e) {
+      this.color = e.changed['current'];
+    },
+
     redraw: function(canvas, context) {
       context.clearRect(0, 0, context.canvas.width, context.canvas.height);
-      context.strokeStyle = "#df4b26";
+      context.strokeStyle = this.color;
       context.lineJoin = "round";
       context.lineWidth = 5;
 
       for (var i = 0; i <= canvasModel.pointsCount(); i++) {
+        context.strokeStyle = canvasModel.getColor(i);
         context.beginPath();
         if (canvasModel.isDragged(i) && i) {
           context.moveTo(canvasModel.getX(i - 1), canvasModel.getY(i - 1));

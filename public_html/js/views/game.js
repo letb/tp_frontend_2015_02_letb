@@ -2,8 +2,9 @@ define([
 	'backbone',
 	'tmpl/game',
 	'views/canvas',
-	'views/colorpalette'
-], function (Backbone, tmpl, CanvasView, ColorPaletteView) {
+	'views/colorpalette',
+	'models/colorpalette'
+], function (Backbone, tmpl, CanvasView, ColorPaletteView, ColorPalette) {
 	var GameView = Backbone.View.extend({
 		id: 'game-view',
 		template: tmpl,
