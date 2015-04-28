@@ -2,7 +2,9 @@ html, body {
   height: 98%;
   top: 3%;
   position: relative;
-  background-image: url(../images/high-splat.jpg); }
+  background-image: url(../images/high-splat.jpg);
+
+}
 
 .logo, .game, .footer {
   text-align: center;
@@ -11,24 +13,29 @@ html, body {
   box-sizing: border-box;
   left: 0;
   right: 0;
+
   width: 80%;
   max-width: 950px;
-  min-width: 700px; }
+  min-width: 700px;
+}
 
 .logo {
   font-size: 300%;
-  top: 10%; }
+  top: 10%;
+}
 
 .game {
-  position: relative;
+  position: relative; 
   height: 80%;
   min-height: 500px;
   max-height: 550px;
   /*background-color: black;*/
-  /*background-image: url(pencil-brush-64.png);*/ }
+  /*background-image: url(pencil-brush-64.png);*/
+}
 
 .footer {
   font-size: 200%;
   bottom: 10%;
   left: 0;
-  right: 0; }
+  right: 0;
+}

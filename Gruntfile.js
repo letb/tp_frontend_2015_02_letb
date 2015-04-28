@@ -65,7 +65,9 @@ module.exports = function (grunt) {
             server: {
         		files: [		                // Whatch statics
                     'public_html/js/**/*.js',
-                    'public_html/css/**/*.css'
+                    'public_html/css/**/*.css',
+                    'public_html/css/**/*.png',
+                    'public_html/css/**/*.jpg'
                 ],
                 options: {
                     interrupt: true,	// Terminate the previous process and spawn a new one upon later changes.
