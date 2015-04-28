@@ -35,5 +35,9 @@ public_html/js/lib
 # Autosave from Gedit
 *~
 
+### Sass ###
+.sass-cache
+*.css.map
+
 .DS_Store
 
