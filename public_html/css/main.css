@@ -1,75 +1,31 @@
-html {
-  height: 100%;
-}
+.menu-list {
+  margin: 0;
+  padding: 2%;
+  padding-bottom: 3%;
+  border: 1px solid black;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  text-align: center;
+  font-size: 200%;
+  transform: translate(-50%, -50%);
 
-header {
-  margin: 20px;
-}
-
-footer {
-  margin: 20px;
-}
-
-.total-area {
-  height: 700px;
-  background-color: #F0F5F5;
-}
-
-.total-area ul{
-    padding-left: 0px;
-}
-
-.total-area li{
+  width: 40%;
+  max-width: 500px;
   list-style-type: none;
-  height: 100%;
 }
 
-#working-area {
-  height: 85%; 
+.menu-list li {
+  border-bottom: 1px solid black;
 }
 
-#word-panel {
-  height: 15%;
-  background-color: #E0EBEB;
+.menu-list li a {
+  text-decoration: none;
+  color: black;
+  text-transform: uppercase;
 }
 
-#players-info {
-  background-color: #75A3A3;
+.menu-list li a:hover {
+  font-size: 130%;
 }
 
-#canvas-area {
-  background-color: #A3C2C2;
-}
-
-#canvas-view {
-  background-color: white;
-  border: 1px solid black;
-  margin-top: 20px; 
-  width: 100%;
-  height: 78%;
-}
-
-#drawing-panel {
-  margin: 0px;
-  background-color: #C2D6D6;
-  height: 16%;
-}
-
-#drawing-panel li{
-  background-color: #E0EBEB;
-  height: 100%;
-}
-
-#colors-panel {
-  padding: 0;
-}
-
-#color-palette-view {
-  background-color: white;
-  border: 1px solid black;
-  width: 100%;
-  height: 100%;
-}
-#chat-area {
-  background-color: #75A3A3;
-}

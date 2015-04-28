@@ -1,10 +1,8 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
-  <row>
-    <ul class="col-md-2 col-md-offset-5 nav nav-pills nav-stacked text-center">
+ <ul class="menu-list">
       <li> <a href='#signup'>Sign Up</a> </li>
       <li> <a href='#signin'>Sign In</a> </li>
       <li> <a href='#game'>PLAY</a> </li>
       <li> <a href='#scoreboard'>Scoreboard</a> </li>
-    </ul>
-  </row>
+  </ul>
 </fest:template>

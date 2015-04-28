@@ -99,21 +99,10 @@ define([
     },
 
     relMouseCoords: function(event) {
-      var totalOffsetX = 0;
-      var totalOffsetY = 0;
-      var currentElement = event.target;
-      var canvasX =  currentElement.scrollLeft;
-      var canvasY =  currentElement.scrollTop;
-
-      do {
-        totalOffsetX += currentElement.offsetLeft ;
-        totalOffsetY += currentElement.offsetTop ;
-      }
-      while (currentElement = currentElement.offsetParent);
-
-      canvasX = event.pageX - totalOffsetX ;
-      canvasY = event.pageY - totalOffsetY ;
-      return {x: canvasX, y: canvasY};
+      var canoffset = $('#color-palette').offset();
+      canvasx = event.clientX + document.body.scrollLeft + document.documentElement.scrollLeft - Math.floor(canoffset.left);
+      canvasy = event.clientY + document.body.scrollTop + document.documentElement.scrollTop - Math.floor(canoffset.top) + 1;
+      return {x: canvasx, y: canvasy};
     }
   });
 

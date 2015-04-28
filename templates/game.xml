@@ -1,31 +1,21 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
 
-  <div class="col-md-14 total-area">
-    <div class="row" id="word-panel">
-      <div class="text-center">
-        <h2> Game Screen — I really miss my Mechanics :( </h2>
+<div class="total-area">
+  <div class="word-panel">
+      <h2> Guess this word </h2>
+  </div>
+  <div class="working-area">
+    <div class="players-info"></div>
+    <div class="canvas-area">
+      <div class="canvas-panel"></div>
+      <div class="colors-panel"></div>
+      <div class="size-panel">
+        <button class="clear-button"></button>
       </div>
     </div>
-
-    <ul class="row" id="working-area">
-      <li class="col-md-2" id="players-info"> </li>
-      <li class="col-md-7" id="canvas-area">
-        <ul class="row" id="drawing-panel">
-            <li class="col-md-5" id="colors-panel"></li>
-            <li class="col-md-2" id="brushes-panel"></li>
-        </ul>
-      </li>
-      <li class="col-md-3" id="chat-area"> 
-        <div id="chat"> 
-        </div>
-      </li>  
-    </ul>
+    <div class="chat-area"></div>  
   </div>
-  
-  <div class="clearfix"></div>
-  <div class="text-center">
-    <a href="#" class="btn btn-default"> Back </a>
-  </div>
+</div>
 
   <script>
     $("canvas").trigger("resized");

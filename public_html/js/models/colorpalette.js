@@ -18,13 +18,15 @@ define([
       }
     },
     
+
     initialize: function () {
       this.get('colors').push(
         { name: "black",   color: "#000000"  },
         { name: "orange",  color: "#F7977A"  },
         { name: "green",   color: "#A2D39C"  },
         { name: "blue",    color: "#6ECFF6"  },
-        { name: "violet",  color: "#A187BE"  });
+        { name: "violet",  color: "#A187BE"  }, 
+        { name: "white",   color: "#FFFFFF"  });
     },
 
 
@@ -58,6 +60,10 @@ define([
 
     getLength: function() {
       return this.get('colors').length;
+    },
+
+    clean: function() {
+      
     }
   });
 

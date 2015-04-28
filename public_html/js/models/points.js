@@ -35,6 +35,14 @@ define([
     pointsCount: function() {
       return this.get('x').length;
     },
+
+    clear: function() {
+      this.get('x').length = 0;
+      this.get('y').length = 0;
+      this.get('drag').length = 0;
+      this.get('color').length = 0;
+      this.get('size').length = 0;
+    }
   });
 
   return CanvasModel;
