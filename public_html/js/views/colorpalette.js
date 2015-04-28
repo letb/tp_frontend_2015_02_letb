@@ -28,7 +28,7 @@ define([
       canvas.height = canvas.parentElement.offsetHeight;
 
       var gap = 10;
-      var r = Math.min(canvas.height/4, 
+      var r = Math.min(canvas.height/4,
         (canvas.width - (colorPalette.getLength() + 1) * gap) / (2 * colorPalette.getLength()));
       var x = gap + r;
       var y = canvas.height / 2;
@@ -47,10 +47,10 @@ define([
       var coord = this.relMouseCoords(e);
       var p = colorPalette.getParams();
 
-      if (coord.y < (p.y + p.r) && 
+      if (coord.y < (p.y + p.r) &&
           coord.y > (p.y - p.r) ) {
         for (var i = 0; i < colorPalette.getLength(); i++) {
-          if (coord.x < (p.x + p.r) && 
+          if (coord.x < (p.x + p.r) &&
               coord.x > (p.x - p.r)) {
             colorPalette.setCurrent(i);
             break;
@@ -81,7 +81,7 @@ define([
         context.arc(p.x, p.y, p.r, 0, 2 * Math.PI, false);
         context.fillStyle = color.color;
         context.fill();
-        context.stroke(); 
+        context.stroke();
         p.x += p.gap + 2 * p.r;
       });
     },

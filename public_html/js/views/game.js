@@ -4,8 +4,7 @@ define([
 	'models/colorpalette',
 	'views/canvas',
 	'views/colorpalette',
-	'views/sizepalette',
-], function (Backbone, tmpl, ColorPaletteModel, CanvasView, ColorPaletteView, SizePaletteView) {
+], function (Backbone, tmpl, ColorPaletteModel, CanvasView, ColorPaletteView) {
 	var GameView = Backbone.View.extend({
 		id: 'game-view',
 		template: tmpl,
@@ -23,7 +22,7 @@ define([
 			this.$el.html(this.template());
 			this.$('.canvas-panel').prepend(this.canvasView.$el);
 			this.$('.colors-panel').prepend(this.colorpaletteView.$el);
-			
+
 			this.canvasView.render();
 			this.colorpaletteView.render();
 

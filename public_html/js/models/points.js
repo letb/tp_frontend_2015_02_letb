@@ -21,6 +21,10 @@ define([
       return this.get('x')[i];
     },
 
+    getPoints: function() {
+      return this;
+    },
+
     getY: function(i) {
       return this.get('y')[i];
     },
@@ -28,10 +32,11 @@ define([
     isDragged: function(i) {
       return this.get('drag')[i];
     },
+
     getColor: function(i) {
       return this.get('color')[i];
     },
-    
+
     pointsCount: function() {
       return this.get('x').length;
     },

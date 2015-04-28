@@ -19,6 +19,7 @@ define([
 
       // bind to the namespaced (for easier unbinding) event
       $(window).on("resize", _.bind(this.resize, this));
+      $(document).ready(this.loadCanvas);
       this.colorPalette.on('change:current', this.changeColor, this);
     },
 
@@ -58,6 +59,8 @@ define([
     },
 
     mouseUp: function(e) {
+      localStorage.setItem("canvas", JSON.stringify(canvasModel));
+
       if (this.paint) {
         this.paint = false;
       }
@@ -74,8 +77,14 @@ define([
     },
 
     clear: function(e) {
-      this.model.clear();
+      localStorage.removeItem("canvas");
+      canvasModel.clear();
       this.redraw(this.canvas, this.context);
+    },
+
+    loadCanvas: function() {
+      var data = JSON.parse(localStorage.getItem("canvas"));
+      canvasModel = new CanvasModel(data);
     },
 
     redraw: function(canvas, context) {
@@ -94,7 +103,7 @@ define([
         }
         context.lineTo(canvasModel.getX(i), canvasModel.getY(i));
         context.closePath();
-        context.stroke();  
+        context.stroke();
       };
     },
 
