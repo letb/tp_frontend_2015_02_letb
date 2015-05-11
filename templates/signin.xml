@@ -18,7 +18,7 @@
             <button type="submit" class="btn btn-success pull-right"> Sign In </button>
           </div>
           <div class="col-md-2">
-            <a href="#" class="btn btn-default pull-left"> Back </a>
+            <a href="/" class="btn btn-default pull-left navigate"> Back </a>
           </div>
         </row>
       </form>

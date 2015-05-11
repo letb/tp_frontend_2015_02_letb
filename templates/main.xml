@@ -1,8 +1,8 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
  <ul class="menu-list">
-      <li> <a href='#signup'>Sign Up</a> </li>
-      <li> <a href='#signin'>Sign In</a> </li>
-      <li> <a href='#game'>PLAY</a> </li>
-      <li> <a href='#scoreboard'>Scoreboard</a> </li>
+      <li> <a href='signup' class='navigate'>Sign Up</a> </li>
+      <li> <a href='signin' class='navigate'>Sign In</a> </li>
+      <li> <a href='game' class='navigate'>PLAY</a> </li>
+      <li> <a href='scoreboard' class='navigate'>Scoreboard</a> </li>
   </ul>
 </fest:template>
