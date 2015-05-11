@@ -2,16 +2,20 @@ define([
   'backbone'
 ], function (Backbone) {
   var Controller = Backbone.View.extend({
-    initialize: function() {
-      this.views = [];
+    load: function() {
+      _.each(arguments, function(view){
+        $('#page').append(view.render().el);
+        view.hide();
+      }, this);
     },
 
     changeView: function(view) {
       if (this.currentView) {
-        this.currentView.remove();
+        if (this.currentView == view) { return; }
+        this.currentView.hide();
       }
-      $('#page').append(view.render().el);
-      this.currentView = view
+      view.show();
+      this.currentView = view;
     }
   });
 

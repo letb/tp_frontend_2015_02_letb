@@ -10,6 +10,9 @@ define([
 	'views/signup',
 	'views/signin'
 ], function (Backbone, controller, mainView, scoreboardView, gameView, signupView, signinView) {
+
+	controller.load(mainView, scoreboardView, gameView, signupView, signinView);
+
 	var Router = Backbone.Router.extend({
 		routes: {
 			'scoreboard': 'scoreboardAction',
