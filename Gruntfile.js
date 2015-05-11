@@ -9,9 +9,9 @@ module.exports = function (grunt) {
                 stdout: true,
                 stderr: true
             },
-            // Start server at 8000
+            // Start server
             server: {
-                command: 'java -cp java_tp_2015_02-0.1-jar-with-dependencies.jar main.Main 8000'
+                command: 'java -cp server.v0.2.jar main.Main'
             }
         },
 

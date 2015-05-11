@@ -39,5 +39,9 @@ public_html/js/lib
 .sass-cache
 *.css.map
 
+# config files for server
+data/dbSettings.xml
+data/serverSettings.xml
+
 .DS_Store
 
