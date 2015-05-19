@@ -8,10 +8,11 @@ define([
 		id: "scoreboard-view",
 
 		template: function() {
-			return tmpl(this.collection.toJSON());
+			return tmpl(_.first(this.collection.toJSON(), 10));
 		},
 
 		render: function() {
+    	this.collection.fetch();
 			this.$el.html(this.template());
 			return this;
 		},

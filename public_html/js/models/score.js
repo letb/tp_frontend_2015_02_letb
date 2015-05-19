@@ -3,7 +3,8 @@ define([
 ], function (Backbone) {
 	var ScoreModel = Backbone.Model.extend({
 		defaults: {
-			name: '',
+      id: '',
+      login: '',
 			score: 0
 		}
 	});
