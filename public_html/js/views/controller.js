@@ -13,7 +13,7 @@ define([
 
     load: function() {
       _.each(arguments, function(view){
-        $('#page').append(view.render().el);
+        $('#page').append(view.el);
         view.hide();
       }, this);
     },
@@ -23,7 +23,7 @@ define([
         if (this.currentView == view) { return; }
         this.currentView.hide();
       }
-      view.show();
+      view.render().show();
       this.currentView = view;
     }
   });

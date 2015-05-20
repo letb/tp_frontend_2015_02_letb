@@ -15,13 +15,13 @@ define(function(){
         data: data,
         dataType: 'json'
       }).done(function(resp) {
-        if (resp.status === 200) {
+        if (String(resp.status).match(/^(200|201)$/)) {
           def.resolve(resp);
         } else {
           def.reject(resp);
         }
       }).fail(function() {
-        def.reject(resp);
+        def.reject("error");
       });
 
       return def.promise();
