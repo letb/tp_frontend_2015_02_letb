@@ -1,7 +1,5 @@
-
-// Router works only with views
-
 define([
+	'app',
 	'backbone',
 	'views/controller',
 	'views/main',
@@ -9,7 +7,7 @@ define([
 	'views/game',
 	'views/signup',
 	'views/signin'
-], function (Backbone, controller, mainView, scoreboardView, gameView, signupView, signinView) {
+], function (app, Backbone, controller, mainView, scoreboardView, gameView, signupView, signinView) {
 
 	controller.load(mainView, scoreboardView, gameView, signupView, signinView);
 
@@ -20,6 +18,10 @@ define([
 			'signup': 'signupAction',
 			'signin': 'signinAction',
 			'*default': 'defaultActions'
+		},
+
+		initialize: function() {
+			this.listenTo(app.session, 'signin:ok', this.redirectRoot);
 		},
 
 		scoreboardAction: function() {
@@ -40,6 +42,10 @@ define([
 
 		defaultActions: function() {
 			controller.changeView(mainView);
+		},
+
+		redirectRoot: function() {
+			this.navigate('/', {trigger: true});
 		}
 	});
 

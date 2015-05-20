@@ -17,6 +17,7 @@ define([
     autoLogin: function(user) {
       this.user = user;
       this.set({ signedIn: true });
+      this.trigger('signin:ok');
     },
 
     signedIn: function() {

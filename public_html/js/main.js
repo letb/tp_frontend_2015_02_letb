@@ -1,8 +1,10 @@
 require([
   'backbone',
   'app',
-  'router'
-], function(Backbone, app, Router) {
+  'router',
+  'models/session'
+], function(Backbone, app, Router, Session) {
+    app.session = new Session({signedIn: false});
     app.router = new Router();
     Backbone.history.start({ pushState: true });
 });
