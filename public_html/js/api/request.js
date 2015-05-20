@@ -1,6 +1,7 @@
 define(function(){
   var Request = function(baseUrl) {
     this.baseUrl = baseUrl || '';
+    this.okStatus = /^(200|201)$/;
 
     this.send = function(method, url, data) {
       var def = $.Deferred();
@@ -15,7 +16,7 @@ define(function(){
         data: data,
         dataType: 'json'
       }).done(function(resp) {
-        if (String(resp.status).match(/^(200|201)$/)) {
+        if (resp.status.match(this.okStatus)) {
           def.resolve(resp);
         } else {
           def.reject(resp);

@@ -12,7 +12,7 @@ define([
             .fail(this.error);
         },
         success: function(resp) {
-          if (resp.status === 200) {
+          if (resp.status.match(request.okStatus)) {
             collection.reset(resp.body.users);
           }
         },

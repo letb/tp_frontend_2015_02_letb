@@ -4,7 +4,7 @@
   </div>
   <row>
     <div class="col-md-4 col-md-offset-4">
-      <form id="login" method="post" action="/api/v1/auth/signin">
+      <form id="login" class="signin-form" method="post" action="/api/v1/auth/signin">
         <div class="form-group">
           <input type="text" name="name" class="form-control" placeholder="Login" required="true" pattern="[a-zA-Z0-9_]+" title="Use letters, numbers or underscore."/>
         </div>
