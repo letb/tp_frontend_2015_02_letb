@@ -1,13 +1,19 @@
 define([
+	'app',
 	'backbone',
 	'tmpl/main'
-], function (Backbone, tmpl){
+], function (app, Backbone, tmpl){
 	var MainView = Backbone.View.extend({
 		id: "main-view",
 		template: tmpl,
 
 		render: function() {
-			this.$el.html(this.template());
+			this.$el.html(
+				this.template({
+					signedIn: app.session.signedIn(),
+					user: app.session.user
+				})
+			);
 			return this;
 		},
 
