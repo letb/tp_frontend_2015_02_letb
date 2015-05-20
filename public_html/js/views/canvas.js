@@ -19,7 +19,7 @@ define([
 
       // bind to the namespaced (for easier unbinding) event
       $(window).on("resize", _.bind(this.resize, this));
-      $(document).ready(this.loadCanvas);
+      $(document).ready(this.loadCanvas());
       this.colorPalette.on('change:current', this.changeColor, this);
     },
 
@@ -59,9 +59,8 @@ define([
     },
 
     mouseUp: function(e) {
-      localStorage.setItem("canvas", JSON.stringify(canvasModel));
-
       if (this.paint) {
+        localStorage.setItem("canvas", JSON.stringify(canvasModel));
         this.paint = false;
       }
     },
