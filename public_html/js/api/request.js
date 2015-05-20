@@ -13,8 +13,7 @@ define(function(){
         type: method,
         url: this.baseUrl + sanitized(url),
         data: data,
-        dataType: 'json',
-        async: false
+        dataType: 'json'
       }).done(function(resp) {
         if (resp.status === 200) {
           def.resolve(resp);

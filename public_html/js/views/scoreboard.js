@@ -7,13 +7,16 @@ define([
 		collection: scoreboard,
 		id: "scoreboard-view",
 
+		initialize: function() {
+			this.listenTo(this.collection, 'reset', this.update);
+		},
+
 		template: function() {
 			return tmpl(_.first(this.collection.toJSON(), 10));
 		},
 
 		render: function() {
-    	this.collection.fetch();
-			this.$el.html(this.template());
+			this.collection.fetch({reset: true});
 			return this;
 		},
 
@@ -23,6 +26,10 @@ define([
 
 		hide: function() {
 			this.$el.hide();
+		},
+
+		update: function () {
+			this.$el.html(this.template());
 		}
 	});
 
