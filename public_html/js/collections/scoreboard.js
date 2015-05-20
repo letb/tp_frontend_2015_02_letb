@@ -1,10 +1,10 @@
 define([
 	'backbone',
-	'models/score',
+	'models/user',
   'api/scoreboardSync'
-], function(Backbone, scoreModel, scoreboardSync) {
+], function(Backbone, userModel, scoreboardSync) {
 	var ScoreboardCollection = Backbone.Collection.extend({
-		model: scoreModel,
+		model: userModel,
     sync: scoreboardSync,
 
     comparator: function (score) {

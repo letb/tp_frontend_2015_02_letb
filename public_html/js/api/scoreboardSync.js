@@ -7,7 +7,9 @@ define([
     var methodMap = {
       'read': {
         send: function() {
-          request.send('GET').done(this.success).fail(this.error);
+          request.send('GET')
+            .done(this.success)
+            .fail(this.error);
         },
         success: function(resp) {
           if (resp.status === 200) {
