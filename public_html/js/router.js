@@ -20,10 +20,6 @@ define([
 			'*default': 'defaultActions'
 		},
 
-		initialize: function() {
-			this.listenTo(app.session, 'signin:ok', this.redirectRoot);
-		},
-
 		scoreboardAction: function() {
 			controller.changeView(scoreboardView);
 		},

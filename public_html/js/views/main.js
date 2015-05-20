@@ -7,6 +7,10 @@ define([
 		id: "main-view",
 		template: tmpl,
 
+		events: {
+			'click  a.signout':     'signout'
+		},
+
 		render: function() {
 			this.$el.html(
 				this.template({
@@ -23,7 +27,11 @@ define([
 
 		hide: function() {
 			this.$el.hide();
-		}
+		},
+
+    signout: function(e) {
+      app.session.destroy();
+    }
 	});
 
 	return new MainView();

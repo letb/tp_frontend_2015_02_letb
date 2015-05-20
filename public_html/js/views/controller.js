@@ -20,7 +20,6 @@ define([
 
     changeView: function(view) {
       if (this.currentView) {
-        if (this.currentView == view) { return; }
         this.currentView.hide();
       }
       view.render().show();

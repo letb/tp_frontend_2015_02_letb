@@ -6,12 +6,14 @@
       <fest:choose>
         <fest:when test="params.signedIn">
           <li> <a href='game' class='navigate'>PLAY</a> </li>
+          <li> <a href='scoreboard' class='navigate'>Scoreboard</a> </li>
+          <li> <a href='signout' class='navigate signout'>Sign Out</a> </li>
         </fest:when>
         <fest:otherwise>
           <li> <a href='signup' class='navigate'>Sign Up</a> </li>
           <li> <a href='signin' class='navigate'>Sign In</a> </li>
+          <li> <a href='scoreboard' class='navigate'>Scoreboard</a> </li>
         </fest:otherwise>
       </fest:choose>
-      <li> <a href='scoreboard' class='navigate'>Scoreboard</a> </li>
   </ul>
 </fest:template>

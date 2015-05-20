@@ -12,7 +12,7 @@ define([
             .fail(this.error);
         },
         success: function(resp) {
-          if (resp.status === 201) {
+          if (resp.status.match(request.okStatus)) {
             model.clear();
             model.set(resp.body);
           }
