@@ -1,14 +1,16 @@
-
-// Router works only with views
-
 define([
+	'app',
 	'backbone',
+	'views/controller',
 	'views/main',
 	'views/scoreboard',
 	'views/game',
 	'views/signup',
 	'views/signin'
-], function (Backbone, mainView, scoreboardView, gameView, signupView, signinView) {
+], function (app, Backbone, controller, mainView, scoreboardView, gameView, signupView, signinView) {
+
+	controller.load(mainView, scoreboardView, gameView, signupView, signinView);
+
 	var Router = Backbone.Router.extend({
 		routes: {
 			'scoreboard': 'scoreboardAction',
@@ -19,33 +21,29 @@ define([
 		},
 
 		scoreboardAction: function() {
-			this.changeView(scoreboardView);
+			controller.changeView(scoreboardView);
 		},
 
 		gameAction: function() {
-			this.changeView(gameView);
+			controller.changeView(gameView);
 		},
 
 		signupAction: function() {
-			this.changeView(signupView);
+			controller.changeView(signupView);
 		},
 
 		signinAction: function() {
-			this.changeView(signinView);
+			controller.changeView(signinView);
 		},
 
 		defaultActions: function() {
-			this.changeView(mainView);
+			controller.changeView(mainView);
 		},
 
-		changeView: function(view) {
-			if (this.currentView) {
-				this.currentView.remove();
-			}
-			$('#page').append(view.render().el);
-			this.currentView = view
+		redirectRoot: function() {
+			this.navigate('/', {trigger: true});
 		}
 	});
 
-	return new Router();
+	return Router;
 });

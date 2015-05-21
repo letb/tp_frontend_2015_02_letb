@@ -1,13 +1,23 @@
 define([
+	'app',
 	'backbone',
 	'tmpl/main'
-], function (Backbone, tmpl){
+], function (app, Backbone, tmpl){
 	var MainView = Backbone.View.extend({
 		id: "main-view",
 		template: tmpl,
 
+		events: {
+			'click  a.signout':     'signout'
+		},
+
 		render: function() {
-			this.$el.html(this.template());
+			this.$el.html(
+				this.template({
+					signedIn: app.session.signedIn(),
+					user: app.session.user
+				})
+			);
 			return this;
 		},
 
@@ -17,7 +27,11 @@ define([
 
 		hide: function() {
 			this.$el.hide();
-		}
+		},
+
+    signout: function(e) {
+      app.session.destroy();
+    }
 	});
 
 	return new MainView();

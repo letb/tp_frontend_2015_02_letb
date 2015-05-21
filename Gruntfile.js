@@ -9,9 +9,9 @@ module.exports = function (grunt) {
                 stdout: true,
                 stderr: true
             },
-            // Start server at 8000
+            // Start server
             server: {
-                command: 'java -cp java_tp_2015_02-0.1-jar-with-dependencies.jar main.Main 8000'
+                command: 'java -cp server.v0.2.jar main.Main'
             }
         },
 
@@ -37,6 +37,19 @@ module.exports = function (grunt) {
             }
         },
 
+        sass: {
+            dist: {         // Target
+                files: [{
+                    expand: true,
+                    cwd: 'public_html/css/sass',
+                    src: '*.scss',
+                    dest: 'public_html/css',
+                    ext: '.css'
+                  }]
+            },
+            options: { sourcemap: 'none'}
+        },
+
         // Run predefined tasks whenever watched file patterns are added,
         // changed or deleted.
     	watch: {
@@ -52,13 +65,21 @@ module.exports = function (grunt) {
             server: {
         		files: [		                // Whatch statics
                     'public_html/js/**/*.js',
-                    'public_html/css/**/*.css'
+                    'public_html/css/**/*.css',
+                    'public_html/css/**/*.png',
+                    'public_html/css/**/*.jpg'
                 ],
                 options: {
                     interrupt: true,	// Terminate the previous process and spawn a new one upon later changes.
                     livereload: true	// Works on port 35729 by default
                     // to enable in HTML: <script src="//localhost:35729/livereload.js"></script>
                 }
+            },
+
+            sass: {
+                files: ['public_html/css/sass/*.scss'],
+                tasks: ['sass'],
+                options: {atBegin: true}
             }
         },
 
@@ -69,13 +90,13 @@ module.exports = function (grunt) {
                 logConcurrentOutput: true // Process log output
             }
         }
-
     });
 
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-concurrent');
     grunt.loadNpmTasks('grunt-shell');
     grunt.loadNpmTasks('grunt-fest');
+    grunt.loadNpmTasks('grunt-contrib-sass');
 
     grunt.registerTask('default', ['concurrent']);
 

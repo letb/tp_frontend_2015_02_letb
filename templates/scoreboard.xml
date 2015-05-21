@@ -1,14 +1,23 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="scoreboard">
-  <h1 class="logo"> SCOREBOARD SCREEN </h1>
-  <ol>
-    <fest:each iterate="scoreboard" index="i" value="score">
-      <li class="score">
-        <fest:value> score.name </fest:value>
-        <fest:value> score.score </fest:value>
-      </li>
-    </fest:each>
-  </ol>
-  <a href="#">
-    <button> Back </button>
-  </a>
+  <div class="text-center">
+    <h2> Scoreboard </h2>
+  </div>
+  <row>
+    <div class="col-md-4 col-md-offset-4">
+      <ol class="list-group">
+        <fest:each iterate="scoreboard" index="i" value="user">
+          <li class="list-group-item">
+            <fest:value> user.login </fest:value>
+            <span class="badge">
+              <fest:value> user.score </fest:value>
+            </span>
+          </li>
+        </fest:each>
+      </ol>
+    </div>
+  </row>
+  <div class="clearfix"></div>
+  <div class="text-center">
+    <a href="/" class="btn btn-default navigate"> Back </a>
+  </div>
 </fest:template>

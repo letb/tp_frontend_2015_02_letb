@@ -1,6 +1,23 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
-  <h1> GAME SCREEN — I really miss my Mechanics :( </h1>
-  <a href="#">
-    <button> Back </button>
-  </a>
+
+<div class="total-area">
+  <div class="word-panel">
+      <h2> Guess this word </h2>
+  </div>
+  <div class="working-area">
+    <div class="players-info"></div>
+    <div class="canvas-area">
+      <div class="canvas-panel"></div>
+      <div class="colors-panel"></div>
+      <div class="size-panel">
+        <button class="clear-button"></button>
+      </div>
+    </div>
+    <div class="chat-area"></div>  
+  </div>
+</div>
+
+  <script>
+    $("canvas").trigger("resized");
+  </script>
 </fest:template>

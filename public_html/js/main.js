@@ -1,32 +1,17 @@
-require.config({
-	urlArgs: "_=" + (new Date()).getTime(),
-	baseUrl: "js",
-	paths: {
-		jquery: "lib/jquery/dist/jquery",
-		underscore: "lib/underscore/underscore",
-		backbone: "lib/backbone/backbone"
-	},
-	shim: {
-		'backbone': {
-	        // These script dependencies should be loaded before loading
-        	// backbone.js
-			deps: ['jquery', 'underscore'],
-			// Once loaded, use the global 'Backbone' as the
-            // module value.
-			exports: 'Backbone'
-		},
-		'underscore': {
-			exports: '_'
-		},
-    'jquery': {
-      exports: '$'
-    }
-	}
-});
+require([
+  'backbone',
+  'app',
+  'router',
+  'models/session'
+], function(Backbone, app, Router, Session) {
+    app.router = new Router();
 
-define([
-	'backbone',
-	'router'
-], function(Backbone, router) {
-		Backbone.history.start();
+    app.resetSession = function() {
+      app.session = new Session({signedIn: false});
+      app.router.listenTo(app.session, 'signin:ok', app.router.redirectRoot);
+      app.router.listenTo(app.session, 'signout:ok', app.router.redirectRoot);
+    };
+
+    app.resetSession();
+    Backbone.history.start({ pushState: true });
 });
