@@ -2,13 +2,14 @@ define(function(){
   var Request = function(baseUrl) {
     this.baseUrl = baseUrl || '';
 
-    this.OK = function(resp) {
-      return resp.status.match(/^(200|201)$/);
-    }
-
     this.send = function(method, url, data) {
       var def = $.Deferred();
       var self = this;
+      var okable = {
+        isOK: function() {
+          return this.status.match(/^(200|201)$/);
+        }
+      };
 
       function sanitized(url) {
         return url ? url : ''
@@ -20,7 +21,9 @@ define(function(){
         data: data,
         dataType: 'json'
       }).done(function(resp) {
-        if (self.OK(resp)) {
+        resp.__proto__ = okable;
+
+        if (resp.isOK()) {
           def.resolve(resp);
         } else {
           def.reject(resp);

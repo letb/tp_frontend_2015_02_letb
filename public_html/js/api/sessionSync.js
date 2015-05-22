@@ -13,7 +13,7 @@ define([
             .fail(this.error);
         },
         success: function(resp) {
-          if (request.OK(resp)) {
+          if (resp.isOK()) {
             model.clear();
             model.user.set(resp.body);
           }
@@ -28,7 +28,7 @@ define([
             .fail(this.error);
         },
         success: function(resp) {
-          if (request.OK(resp)) {
+          if (resp.isOK()) {
             app.resetSession();
             model.trigger('signout:ok', '/');
           }
