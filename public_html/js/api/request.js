@@ -1,15 +1,12 @@
-define(function(){
+define([
+  'api/response'
+], function(Response){
   var Request = function(baseUrl) {
     this.baseUrl = baseUrl || '';
 
     this.send = function(method, url, data) {
       var def = $.Deferred();
       var self = this;
-      var okable = {
-        isOK: function() {
-          return this.status.match(/^(200|201)$/);
-        }
-      };
 
       function sanitized(url) {
         return url ? url : ''
@@ -20,8 +17,8 @@ define(function(){
         url: self.baseUrl + sanitized(url),
         data: data,
         dataType: 'json'
-      }).done(function(resp) {
-        resp.__proto__ = okable;
+      }).done(function(data) {
+        var resp = new Response(data);
 
         if (resp.isOK()) {
           def.resolve(resp);
