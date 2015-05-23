@@ -2,12 +2,12 @@
 
 <div class="chat">
   <div class="chat-history">
-      <fest:include context="message" src="./chat-message.xml"/>
+      <!-- <fest:include context="message" src="./chat-message.xml"/> -->
   </div>
   <p class="chat-feedback">Your partner is typing…</p>
-  <form action="#" method="post">
+  <form action="#" class="send-message" method="post">
     <fieldset>
-      <input type="text" placeholder="Type your message…" autofocus="true"></input>
+      <input type="text" class="input-message" placeholder="Type your message…" autofocus="true"></input>
       <input type="hidden"></input>
     </fieldset>
   </form>

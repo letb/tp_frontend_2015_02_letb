@@ -1,0 +1,15 @@
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="params">
+
+<div class="total-area">
+  <div class="word-panel">
+    <fest:if test="params.win">
+      <h2> Thats right! </h2>
+    </fest:if>
+    <fest:if test="!params.win">
+      <h2> Sorry, today is not your day. </h2>
+    </fest:if>
+  </div>
+  <div class="working-area">
+  </div>
+</div>
+</fest:template>

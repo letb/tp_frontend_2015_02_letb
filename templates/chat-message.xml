@@ -2,9 +2,9 @@
 
 <div class="chat-message">
   <span class="chat-time"> <fest:value> message.time </fest:value> </span>
-  <span class="chat-name"><fest:value> message.name </fest:value></span>
-  <span class="chat-word"><fest:value> message.word </fest:value></span>
-</div> 
+  <span class="chat-name"><fest:value> message.user </fest:value></span>
+  <span class="chat-word"><fest:value> message.message </fest:value></span>
+</div>
 <hr/>
 
 </fest:template>

@@ -1,19 +1,33 @@
-<fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="params">
 
 <div class="total-area">
   <div class="word-panel">
-      <h2> Guess this word </h2>
+      <fest:if test="params.leader">
+        <h2>
+          Draw<fest:space/><fest:value> params.user.get('keyword') </fest:value>.
+          Guesser:<fest:space/><fest:value> params.user.get('enemy') </fest:value>.
+        </h2>
+      </fest:if>
+      <fest:if test="!params.leader">
+        <h2>
+          <fest:value> params.user.get('enemy') </fest:value><fest:space/>draws.
+        </h2>
+      </fest:if>
   </div>
   <div class="working-area">
     <div class="players-info"></div>
     <div class="canvas-area">
       <div class="canvas-panel"></div>
-      <div class="colors-panel"></div>
-      <div class="size-panel">
-        <button class="clear-button"></button>
-      </div>
+      <fest:if test="params.leader">
+        <div class="colors-panel"></div>
+        <div class="size-panel">
+          <button class="clear-button"></button>
+        </div>
+      </fest:if>
     </div>
-    <div class="chat-area"></div>  
+    <div class="chat-area">
+      <!-- <fest:include src="./chat.xml"/> -->
+    </div>
   </div>
 </div>
 
