@@ -1,9 +1,11 @@
 define([
+  'app',
   'backbone',
   'tmpl/game',
   'models/points',
-  'models/colorpalette'
-], function (Backbone, tmpl, CanvasModel, ColorPalette) {
+  'models/colorpalette',
+  'api/socket'
+], function (app, Backbone, tmpl, CanvasModel, ColorPalette, socket) {
   var CanvasView = Backbone.View.extend({
     model: canvasModel = new CanvasModel(),
     colorPalette: colorPalette, // global variable??
@@ -19,7 +21,7 @@ define([
 
       // bind to the namespaced (for easier unbinding) event
       $(window).on("resize", _.bind(this.resize, this));
-      $(document).ready(this.loadCanvas());
+      // $(document).ready(this.loadCanvas());
       this.colorPalette.on('change:current', this.changeColor, this);
     },
 
@@ -33,7 +35,13 @@ define([
 
     render: function() {
       this.redraw(this.canvas, this.context);
-      this.delegateEvents();
+      if (app.session.user.isLeader()) {
+        this.delegateEvents();
+      } else {
+        this.undelegateEvents();
+        this.listenTo(app.wsEventBus, 'ws:canvas', this.wsRedraw);
+        this.listenTo(app.wsEventBus, 'ws:canvas:clear', this.wsClear);
+      }
       return this;
     },
 
@@ -46,14 +54,16 @@ define([
     mouseDown: function(e) {
       var coord = this.relMouseCoords(e);
       this.paint = true;
-      canvasModel.addPoint(coord.x, coord.y, false, this.color);
+      var point = { x: coord.x, y: coord.y, drag: false, color: this.color }
+      canvasModel.addPoint(point);
       this.redraw(this.canvas, this.context);
     },
 
     mouseMove: function(e) {
       var coord = this.relMouseCoords(e);
       if (this.paint) {
-        canvasModel.addPoint(coord.x, coord.y, true, this.color);
+        var point = { x: coord.x, y: coord.y, drag: true, color: this.color }
+        canvasModel.addPoint(point);
         this.redraw(this.canvas, this.context);
       }
     },
@@ -84,6 +94,17 @@ define([
     loadCanvas: function() {
       var data = JSON.parse(localStorage.getItem("canvas"));
       canvasModel = new CanvasModel(data);
+    },
+
+    wsClear: function() {
+      localStorage.removeItem("canvas");
+      canvasModel.clear(true);
+      this.redraw(this.canvas, this.context);
+    },
+
+    wsRedraw: function(point) {
+      canvasModel.addPoint(point, true);
+      this.redraw(this.canvas, this.context);
     },
 
     redraw: function(canvas, context) {
