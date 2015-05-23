@@ -14,6 +14,7 @@ define([
       HTMLCanvasElement.prototype.relMouseCoords = this.relMouseCoords;
 
       $(window).on("resize", _.bind(this.resize, this));
+      this.once('render', this.resize, this);
       this.model.on('change:current', this.render, this);
     },
 
@@ -22,10 +23,10 @@ define([
       'click #color-palette': 'mouseClick',
     },
 
-    resize: function() {
+    changeSize: function() {
+      this.canvas.width = this.canvas.parentElement.offsetWidth;
+      this.canvas.height = this.canvas.parentElement.offsetHeight;
       var canvas = this.canvas;
-      canvas.width = canvas.parentElement.offsetWidth;
-      canvas.height = canvas.parentElement.offsetHeight;
 
       var gap = 10;
       var r = Math.min(canvas.height/4,
@@ -34,12 +35,17 @@ define([
       var y = canvas.height / 2;
 
       colorPalette.setParams(x, y, r, gap);
+    },
+
+    resize: function() {
+      this.changeSize();
       this.render();
     },
 
     render: function() {
       this.draw(this.canvas, this.context);
       this.delegateEvents();
+      this.trigger('render');
       return this;
     },
 

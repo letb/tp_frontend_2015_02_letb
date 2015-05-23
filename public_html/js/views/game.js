@@ -19,6 +19,7 @@ define([
 			this.canvasView = new CanvasView({id: 'canvas-view'});
 			this.colorpaletteView = new ColorPaletteView({id: 'color-palette-view'});
 			this.chatView = new ChatView({ id: 'chat-view' });
+
 		},
 
 		events: {
@@ -57,11 +58,11 @@ define([
 			);
 			$('.canvas-panel').prepend(this.canvasView.$el);
 			$('.colors-panel').prepend(this.colorpaletteView.$el);
-			$('.chat-area').prepend(this.chatView.$el);
+			$('.chat-area').prepend(this.chatView.render().$el);
 
 			this.canvasView.render();
 			this.colorpaletteView.render();
-			this.chatView.render();
+			// this.chatView.render();
 		},
 
 		clear: function(e) {

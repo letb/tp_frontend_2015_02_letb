@@ -8,7 +8,7 @@ define([
 ], function (app, Backbone, tmpl, CanvasModel, ColorPalette, socket) {
   var CanvasView = Backbone.View.extend({
     model: canvasModel = new CanvasModel(),
-    colorPalette: colorPalette, // global variable??
+    colorPalette: colorPalette,
 
     initialize: function() {
       this.$el.append('<canvas id="canvas"></canvas>');
@@ -19,9 +19,8 @@ define([
 
       HTMLCanvasElement.prototype.relMouseCoords = this.relMouseCoords;
 
-      // bind to the namespaced (for easier unbinding) event
       $(window).on("resize", _.bind(this.resize, this));
-      // $(document).ready(this.loadCanvas());
+      this.once('render', this.resize, this);
       this.colorPalette.on('change:current', this.changeColor, this);
     },
 
@@ -42,12 +41,17 @@ define([
         this.listenTo(app.wsEventBus, 'ws:canvas', this.wsRedraw);
         this.listenTo(app.wsEventBus, 'ws:canvas:clear', this.wsClear);
       }
+      this.trigger('render');
       return this;
     },
 
-    resize: function() {
+    changeSize: function() {
       this.canvas.width = this.canvas.parentElement.offsetWidth;
       this.canvas.height = this.canvas.parentElement.offsetHeight;
+    },
+
+    resize: function() {
+      this.changeSize();
       this.render();
     },
 
