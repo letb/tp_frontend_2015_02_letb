@@ -30,7 +30,7 @@ define([
         success: function(resp) {
           if (request.OK(resp)) {
             app.resetSession();
-            model.trigger('signout:ok');
+            model.trigger('signout:ok', '/');
           }
         },
         error: function() {}
