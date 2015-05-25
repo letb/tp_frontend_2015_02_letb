@@ -34,9 +34,10 @@ module.exports = function (grunt) {
       }
     },
     sass: {
-      dev: {         
+      options: { sourcemap: 'none'},
+      dev: {     
+        options: {style: 'nested'},    
         files: [{
-          style: 'nested',
           expand: true,
           cwd: 'public_html/css/sass',
           src: '*.scss',
@@ -45,16 +46,15 @@ module.exports = function (grunt) {
         }]
       },
       dist: {
-        style: 'compressed',
+        options: {style: 'compressed'},  
         files: [{
           expand: true,
           cwd: 'public_html/css/sass',
           src: '*.scss',
           dest: 'public_html/css',
           ext: '.css'
-        }]
-      },
-       options: { sourcemap: 'none'}
+        }],          
+      }
     },
     // Run predefined tasks whenever watched file patterns are added,
     // changed or deleted.
@@ -71,9 +71,9 @@ module.exports = function (grunt) {
       server: {
         files: [                    // Watch statics
                 'public_html/js/**/*.js',
-                'public_html/css/**/*.css',
-                'public_html/css/**/*.png',
-                'public_html/css/**/*.jpg'
+                'public_html/css/*.css',
+                'public_html/images/*.png',
+                'public_html/images/*.jpg'
         ],
         options: {
           interrupt: true,  // Terminate the previous process and spawn a new one upon later changes.
@@ -85,7 +85,6 @@ module.exports = function (grunt) {
         files: ['public_html/css/sass/*.scss'],
         tasks: ['sass:dev'],
         options: {atBegin: true},
-        style: "compressed"
       }
     },
     // Run grunt tasks concurrently
