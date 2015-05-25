@@ -8,20 +8,19 @@ define([
 ], function (app, Backbone, tmpl, CanvasModel, ColorPalette, socket) {
   var CanvasView = Backbone.View.extend({
     model: canvasModel = new CanvasModel(),
-    colorPalette: colorPalette,
-
+    
     initialize: function() {
       this.$el.append('<canvas id="canvas"></canvas>');
       this.canvas = this.$('#canvas')[0];
       this.context = this.canvas.getContext('2d');
       this.paint = false;
-      this.color = this.colorPalette.getCurrent();
+      this.color = colorPalette.getCurrent();
 
       HTMLCanvasElement.prototype.relMouseCoords = this.relMouseCoords;
 
       $(window).on("resize", _.bind(this.resize, this));
       this.once('render', this.resize, this);
-      this.colorPalette.on('change:current', this.changeColor, this);
+      colorPalette.on('change:current', this.changeColor, this);
     },
 
     events: {

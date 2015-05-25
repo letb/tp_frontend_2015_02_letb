@@ -11,11 +11,18 @@
 	<title>Draw Something</title>
 </head>
 <body>
-    <div class="logo"><a href='#' class="button-element">draw something</a></div>
+  <div class="logo"><a href='#' class="button-element">draw something</a></div>
   <div class="game" id="page"></div>
   <div class="footer button-element">thanks and love</div>
 
+  <!-- build:template
+  <% if (environment === 'dev') { %>
   <script src="//localhost:35729/livereload.js"></script>
-	<script data-main="js/config" src="js/lib/requirejs/require.js"></script>
+  <script data-main="js/config" src="js/lib/requirejs/require.js"></script>
+  <% } else { %>
+  <script src="js/build.min.js"></script>
+  <% } %>
+  /build -->
+
 </body>
 </html>
