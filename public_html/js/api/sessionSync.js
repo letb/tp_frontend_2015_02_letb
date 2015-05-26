@@ -34,6 +34,21 @@ define([
           }
         },
         error: function() {}
+      },
+
+      'read': {
+        send: function() {
+          request.send('GET', 'current')
+            .done(this.success)
+            .fail(this.error);
+        },
+        success: function(resp) {
+          if (resp.isOK()) {
+            model.clear();
+            model.user.set(resp.body);
+          }
+        },
+        error: function() {}
       }
     }
     return methodMap[method].send();

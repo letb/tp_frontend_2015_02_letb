@@ -42,6 +42,9 @@ define([
 
 		redirect: function(url) {
 			this.navigate(url, {trigger: true});
+			if (!Backbone.history.fragment) {
+				Backbone.history.loadUrl(url);
+			}
 		}
 	});
 

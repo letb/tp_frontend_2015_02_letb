@@ -15,5 +15,7 @@ require([
     };
 
     app.resetSession();
+    app.session.fetch();
+
     Backbone.history.start({ pushState: true });
 });

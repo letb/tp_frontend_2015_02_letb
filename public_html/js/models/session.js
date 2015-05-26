@@ -15,9 +15,15 @@ define([
     },
 
     autoLogin: function(user) {
+      function urlBackOrTo(url) {
+        var fragment = Backbone.history.getFragment();
+        return fragment.match(/(signin|signup)/) ? url : fragment;
+      };
+
       this.user = user;
       this.set({ id: user.id, signedIn: true });
-      this.trigger('signin:ok', '/');
+
+      this.trigger('signin:ok', urlBackOrTo('/'));
     },
 
     signedIn: function() {
