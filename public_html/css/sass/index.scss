@@ -5,7 +5,7 @@ $menuLight: lighten($menuColor, 10%);
 
 @font-face {
     font-family: 'sketch_block';
-    src: url('../sketch_block.ttf') format('truetype');
+    src: url('/fonts/sketch_block.ttf') format('truetype');
 }
 
 html, body {
@@ -41,7 +41,7 @@ html, body {
 }
 
 .game {
-  position: relative; 
+  position: relative;
   height: 80%;
   min-height: 500px;
   max-height: 550px;
