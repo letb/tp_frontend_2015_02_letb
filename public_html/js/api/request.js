@@ -1,10 +1,8 @@
-define(function(){
+define([
+  'api/response'
+], function(Response){
   var Request = function(baseUrl) {
     this.baseUrl = baseUrl || '';
-
-    this.OK = function(resp) {
-      return resp.status.match(/^(200|201)$/);
-    }
 
     this.send = function(method, url, data) {
       var def = $.Deferred();
@@ -19,8 +17,10 @@ define(function(){
         url: self.baseUrl + sanitized(url),
         data: data,
         dataType: 'json'
-      }).done(function(resp) {
-        if (self.OK(resp)) {
+      }).done(function(data) {
+        var resp = new Response(data);
+
+        if (resp.isOK()) {
           def.resolve(resp);
         } else {
           def.reject(resp);
