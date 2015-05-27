@@ -19,7 +19,6 @@ define([
 			this.canvasView = new CanvasView({id: 'canvas-view'});
 			this.colorpaletteView = new ColorPaletteView({id: 'color-palette-view'});
 			this.chatView = new ChatView({ id: 'chat-view' });
-
 		},
 
 		events: {
@@ -33,9 +32,11 @@ define([
 
 			switch (this.state) {
 				case 'wait':
+					this.trigger('preloader:on');
 					this.$el.html(tmplWait());
 					break;
 				case 'play':
+					this.trigger('preloader:off');
 					this.insert();
 					break;
 				case 'finish':
@@ -77,6 +78,7 @@ define([
 		},
 
 		hide: function() {
+			this.waitGame();
 			this.$el.hide();
 		},
 

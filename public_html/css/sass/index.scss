@@ -3,6 +3,8 @@ $menuDark: darken($menuColor, 10%);
 $menuDarker: darken($menuDark, 10%);
 $menuLight: lighten($menuColor, 10%);
 
+@import "preloader";
+
 @font-face {
     font-family: 'sketch_block';
     src: url('/fonts/sketch_block.ttf') format('truetype');
@@ -74,4 +76,11 @@ html, body {
   bottom: 10%;
   left: 0;
   right: 0;
+}
+
+.preloader {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  z-index: 100;
 }
