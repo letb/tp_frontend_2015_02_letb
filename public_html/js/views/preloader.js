@@ -1,6 +1,6 @@
 define([
   'backbone',
-  'tmpl/preloader'
+  'tmpl/components/preloader'
 ], function (Backbone, tmpl){
   var Preloader = Backbone.View.extend({
 

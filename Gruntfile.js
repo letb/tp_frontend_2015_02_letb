@@ -18,7 +18,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,               // Enable dynamic expantion.
           cwd: 'templates',           // Src matches are relative to this path.
-          src: '*.xml',             // Actual pattern(s) to match.
+          src: '**/*.xml',             // Actual pattern(s) to match.
           dest: 'public_html/js/tmpl' // Destination path prefix.
         }],
         options: {
@@ -61,7 +61,7 @@ module.exports = function (grunt) {
     watch: {
       // Compile modified templates
       fest: {
-        files: ['templates/*.xml'],     // Watch templates
+        files: ['templates/**/*.xml'],     // Watch templates
         tasks: ['fest'],              // If new then recompile
         options: {
             atBegin: true // Trigger the run of each task at startup of the watcher.
