@@ -1,0 +1,19 @@
+.chat__message {
+  margin: 2px 0;
+  display: inline-block;
+  text-align: left;
+  width: 100%;
+}
+
+.message__time {
+
+}
+
+.message__sender {
+  margin-left: 4px;
+  font-weight: bold;
+}
+
+.message__text {
+  margin-left: 8px;
+}

@@ -1,6 +1,6 @@
 .scoreboard--center {
-  @extend col-md-4;
-  @extend col-md-offset-4;
+  @extend .col-md-4;
+  @extend .col-md-offset-4;
 }
 
 .scoreboard__list {
