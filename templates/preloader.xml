@@ -1,4 +1,4 @@
-<fest:template xmlns:fest="http://fest.mail.ru" context_name="params">
+<fest:template xmlns:fest="http://fest.mail.ru">
   <div class="preloader preloader-wrapper big active">
     <div class="spinner-layer spinner-blue-only">
       <div class="circle-clipper left">

@@ -1,0 +1,18 @@
+<fest:template xmlns:fest="http://fest.mail.ru">
+  <fest:set name="button">
+    <div class="btn-wrapper btn-wrapper--{params.position}">
+      <fest:choose>
+        <fest:when test="params.href">
+          <a href="{params.href}" class="{params.classes}">
+            <fest:value>params.text</fest:value>
+          </a>
+        </fest:when>
+        <fest:otherwise>
+          <button type="{params.type}" class="{params.classes}">
+            <fest:value>params.text</fest:value>
+          </button>
+        </fest:otherwise>
+      </fest:choose>
+    </div>
+  </fest:set>
+</fest:template>

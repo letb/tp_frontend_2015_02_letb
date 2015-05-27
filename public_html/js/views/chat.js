@@ -2,7 +2,7 @@ define([
   'app',
   'backbone',
   'tmpl/chat',
-  'tmpl/chat-message',
+  'tmpl/components/chat_message',
   'api/socket'
 ], function (app, Backbone, tmplChat, tmplMessage, socket) {
   var ChatView = Backbone.View.extend({

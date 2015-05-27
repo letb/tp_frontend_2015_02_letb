@@ -1,33 +1,35 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="params">
-<div class="game">
-  <div class="game__header-wrapper">
-      <fest:if test="params.leader">
-        <h2 class="game__header-content">
-          Draw<fest:space/><fest:value> params.user.get('keyword') </fest:value>.
-          Guesser:<fest:space/><fest:value> params.user.get('enemy') </fest:value>.
-        </h2>
-      </fest:if>
-      <fest:if test="!params.leader">
-        <h2 class="game__header-content">
-          <fest:value> params.user.get('enemy') </fest:value><fest:space/>draws.
-        </h2>
-      </fest:if>
-  </div>
-  <div class="game__working-area">
-    <div class="game__players-info"></div>
-    <div class="game__drawing-area">
-      <div class="drawing-area__canvas"></div>
-      <fest:if test="params.leader">
-        <div class="drawing-area__pen-color"></div>
-        <div class="drawing-area__pen-size">
-          <button class="drawing-area__clear"></button>
-        </div>
-      </fest:if>
+  <fest:include src="components/game_header.xml"/>
+  <div class="game">
+
+    <fest:get name="game__header">
+      <fest:params>
+        { condition: params.leader }
+      </fest:params>
+      <fest:param name="content_true">
+        Draw<fest:space/><fest:value> params.user.get('keyword') </fest:value>.
+        Guesser:<fest:space/><fest:value> params.user.get('enemy') </fest:value>.
+      </fest:param>
+      <fest:param name="content_false">
+        <fest:value> params.user.get('enemy') </fest:value><fest:space/>draws.
+      </fest:param>
+    </fest:get>
+
+    <div class="game__working-area">
+      <div class="game__players-info"></div>
+      <div class="game__drawing-area">
+        <div class="drawing-area__canvas"></div>
+        <fest:if test="params.leader">
+          <div class="drawing-area__pen-color"></div>
+          <div class="drawing-area__pen-size">
+            <button class="drawing-area__clear"></button>
+          </div>
+        </fest:if>
+      </div>
+      <div class="game__chat-wrapper">
+      </div>
     </div>
-    <div class="game__chat-wrapper">
-    </div>
   </div>
-</div>
 
   <script>
     $("canvas").trigger("resized");

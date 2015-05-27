@@ -1,7 +1,8 @@
-<fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
-  <div class="page-title page-title--center">
-    <h2> Sign up </h2>
-  </div>
+<fest:template xmlns:fest="http://fest.mail.ru">
+  <fest:include src="components/button.xml"/>
+  <fest:include src="components/page_title.xml"/>
+
+  <fest:get name="title"> { text: 'Sign Up' } </fest:get>
   <div class="sign-form">
     <div class="sign-form__wrapper">
 			<form class="sign-form__signup" method="post">
@@ -19,14 +20,16 @@
 
         <div class="sign-form__btns">
           <div class="btn-wrapper btn-wrapper--left">
-            <button type="submit" class="btn btn--green pull-right">
-              Sign Up
-            </button>
+            <fest:get name="button">
+              { type: 'submit', position: 'left', text: 'Sign Up',
+                classes: 'btn btn--green pull-right' }
+            </fest:get>
           </div>
           <div class="btn-wrapper btn-wrapper--right">
-            <a href="/" class="btn btn--gray pull-left js-nav">
-              Back
-            </a>
+            <fest:get name="button">
+              { href: '/', position: 'right', text: 'Back',
+                classes: 'btn btn--gray pull-left js-nav' }
+            </fest:get>
           </div>
         </div>
 			</form>
