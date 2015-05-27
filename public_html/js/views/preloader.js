@@ -5,7 +5,7 @@ define([
   var Preloader = Backbone.View.extend({
 
     initialize: function() {
-      $('#page').append(this.$el);
+      $('.page').append(this.$el);
     },
 
     render: function() {

@@ -1,0 +1,12 @@
+.sign-form__row {
+  @extend .form-group;
+}
+
+.sign-form__wrapper {
+  @extend .col-md-4;
+  @extend .col-md-offset-4;
+}
+
+.sign-form__input {
+  @extend .form-control;
+}

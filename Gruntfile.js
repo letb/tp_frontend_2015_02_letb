@@ -35,25 +35,25 @@ module.exports = function (grunt) {
     },
     sass: {
       options: { sourcemap: 'none'},
-      dev: {     
-        options: {style: 'nested'},    
+      dev: {
+        options: {style: 'nested'},
         files: [{
           expand: true,
           cwd: 'public_html/css/sass',
-          src: '*.scss',
+          src: 'base.scss',
           dest: 'public_html/css',
           ext: '.css'
         }]
       },
       dist: {
-        options: {style: 'compressed'},  
+        options: {style: 'compressed'},
         files: [{
           expand: true,
           cwd: 'public_html/css/sass',
-          src: '*.scss',
+          src: 'base.scss',
           dest: 'public_html/css',
           ext: '.css'
-        }],          
+        }],
       }
     },
     // Run predefined tasks whenever watched file patterns are added,
@@ -94,7 +94,7 @@ module.exports = function (grunt) {
           logConcurrentOutput: true // Process log output
       }
     },
-    requirejs: { 
+    requirejs: {
       build: {
         options: {
           almond: true,
@@ -103,7 +103,7 @@ module.exports = function (grunt) {
           name: "config",
           optimize: "none",
           out: "public_html/js/build/config.js"
-        } 
+        }
       }
     },
     concat: {
@@ -123,7 +123,7 @@ module.exports = function (grunt) {
         }
       }
     },
-    // Include proper scripts in index.html 
+    // Include proper scripts in index.html
     processhtml: {
       dev: {
         files: {
@@ -137,7 +137,7 @@ module.exports = function (grunt) {
       }
     },
     // Clean all the mess
-    clean: 
+    clean:
       ['public_html/js/build', '.sass-cache', 'out']
   });
 
@@ -153,12 +153,12 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
 
   grunt.registerTask(
-    'build:dist', [      
-      'fest', 
+    'build:dist', [
+      'fest',
       'sass:dist',
       'requirejs:build',
-      'concat:build', 
-      'uglify:build', 
+      'concat:build',
+      'uglify:build',
       'processhtml:dist'
     ]
   );

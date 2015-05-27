@@ -8,7 +8,7 @@ $menuLight: lighten($menuColor, 10%);
     src: url('/fonts/sketch_block.ttf') format('truetype');
 }
 
-.menu-list {
+.menu {
   margin: 0;
   padding: 2%;
   padding-bottom: 2.5%;
@@ -26,23 +26,11 @@ $menuLight: lighten($menuColor, 10%);
   list-style-type: none;
 }
 
-.menu-list li {
+.menu__item {
   border-radius: 3px;
   background-color: $menuColor;
   border-bottom: 1px solid $menuDark;
   box-shadow: 0px 5px 0px $menuDark;
-
-  a {
-    font-family: 'sketch_block';
-    text-decoration: none;
-    text-transform: uppercase;
-    color: black;
-    display: inline-block;
-    width: 100%;
-    padding: 0 15% 0;
-
-
-  }
 
   &:hover {
     background-color: $menuLight;
@@ -54,5 +42,15 @@ $menuLight: lighten($menuColor, 10%);
     box-shadow: none;
     margin-top: 5px;
   }
+}
+
+.menu__link {
+  font-family: 'sketch_block';
+  text-decoration: none;
+  text-transform: uppercase;
+  color: black;
+  display: inline-block;
+  width: 100%;
+  padding: 0 15% 0;
 }
 

@@ -5,7 +5,7 @@ define([
   var Controller = Backbone.View.extend({
 
     initialize: function() {
-      $(document).on("click", ".navigate", function(evt) {
+      $(document).on("click", ".js-nav", function(evt) {
         var href = $(this).attr("href");
         evt.preventDefault();
         Backbone.history.navigate(href, true);
@@ -14,7 +14,7 @@ define([
 
     load: function() {
       _.each(arguments, function(view){
-        $('#page').append(view.el);
+        $('.page').append(view.el);
         this.listenTo(view, 'preloader:on', this.preloaderOn);
         this.listenTo(view, 'preloader:off', this.preloaderOff);
         view.hide();

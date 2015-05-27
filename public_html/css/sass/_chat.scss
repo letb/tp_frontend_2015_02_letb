@@ -23,17 +23,14 @@ hr {
     margin-bottom: 2px;
 }
 
-input {
+.message-form__input {
   border: 0;
   color: inherit;
-    font-family: inherit;
-    font-size: 100%;
-    line-height: normal;
-    margin: 0;
+  font-family: inherit;
+  font-size: 100%;
+  line-height: normal;
+  margin: 0;
 }
-
-.clearfix { *zoom: 1; } /* For IE 6/7 */
-.clearfix:after { clear: right; }
 
 /* ---------- chat-view ---------- */
 
@@ -64,12 +61,12 @@ input {
   font-size: 10px;
 }
 
-#chat-view form {
+.chat__message-form {
   /*width: 70%;*/
   padding: 2%;
 }
 
-#chat-view input[type="text"] {
+.message-form__input {
   border: 1px solid #ccc;
   border-radius: 3px;
   padding: 8px;
@@ -83,34 +80,29 @@ input {
   height: 100%;
 }
 
-.chat-history {
+.chat__history {
   height: 83%;
   padding: 2% 2%;
   overflow-y: scroll;
   overflow-wrap: break-word;
 }
 
-.chat-time {
+.message__time {
 }
 
-.chat-name  {
+.message__sender {
   margin-left: 4px;
   font-weight: bold;
 }
 
-.chat-word {
+.message__text {
   margin-left: 8px;
 }
 
-.chat-message {
+.chat__message {
   margin: 2px 0;
   display: inline-block;
   text-align: left;
   width: 100%;
 }
 
-.chat-feedback {
-  font-style: italic;
-  padding-top: 2px; 
-  margin: 0 0 0 80px;
-}

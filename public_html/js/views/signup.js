@@ -9,7 +9,7 @@ define([
 		template: tmpl,
 
 		events: {
-			'submit .signup-form': 'signup'
+			'submit .sign-form__signup': 'signup'
 		},
 
 		render: function() {

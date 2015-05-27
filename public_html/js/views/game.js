@@ -22,7 +22,7 @@ define([
 		},
 
 		events: {
-			'click .clear-button' : 'clear'
+			'click .drawing-area__clear' : 'clear'
 		},
 
 		render: function() {
@@ -57,9 +57,9 @@ define([
 					user: app.session.user
 				})
 			);
-			$('.canvas-panel').prepend(this.canvasView.$el);
-			$('.colors-panel').prepend(this.colorpaletteView.$el);
-			$('.chat-area').prepend(this.chatView.render().$el);
+			$('.drawing-area__canvas').prepend(this.canvasView.$el);
+			$('.drawing-area__pen-color').prepend(this.colorpaletteView.$el);
+			$('.game__chat-wrapper').prepend(this.chatView.render().$el);
 
 			this.canvasView.render();
 			this.colorpaletteView.render();

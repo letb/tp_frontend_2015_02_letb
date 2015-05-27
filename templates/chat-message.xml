@@ -1,9 +1,9 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="message">
 
-<div class="chat-message">
-  <span class="chat-time"> <fest:value> message.time </fest:value> </span>
-  <span class="chat-name"><fest:value> message.user </fest:value></span>
-  <span class="chat-word"><fest:value> message.message </fest:value></span>
+<div class="chat__message">
+  <span class="message__time"> <fest:value> message.time </fest:value> </span>
+  <span class="message__sender"><fest:value> message.user </fest:value></span>
+  <span class="message__text"><fest:value> message.message </fest:value></span>
 </div>
 <hr/>
 

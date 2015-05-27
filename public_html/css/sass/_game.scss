@@ -1,7 +1,7 @@
 $total-height: 100%;
 
-#game-view, #canvas-view, #color-palette-view, 
-.total-area {
+#game-view, #canvas-view, #color-palette-view,
+.game {
   height: $total-height;
 }
 
@@ -10,54 +10,57 @@ $total-height: 100%;
   border: 1px solid black;
 }
 
-.word-panel {
+.game__header-wrapper {
   height: 10%;
   position: relative;
   text-align: center;
   background-color: #E0EBEB;
-
-  h2 {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);  
-  }
 }
 
-.working-area {
+.game__header-content {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.game__working-area {
   height: 90%;
 }
 
-.players-info {
+.game__players-info {
   width: 15%;
   background-color: #75A3A3;
 }
 
-.canvas-area {
+.game__drawing-area {
   width: 60%;
   background-color: #A3C2C2;
 }
 
-.chat-area {
+.game__chat-wrapper {
   width: 25%;
   background-color: #75A3A3;
 }
 
-.players-info, .canvas-area, .chat-area {
+.game__players-info,
+.game__drawing-area,
+.game__chat-wrapper {
   box-sizing: border-box;
   float: left;
   height: $total-height;
   padding: 1%;
 }
 
-.canvas-panel {
+.drawing-area__canvas {
   box-sizing: border-box;
   height: 80%;
   padding: 3px;
 }
 
-.colors-panel, .size-panel {
+.drawing-area__pen-color,
+.drawing-area__pen-size {
   background-color: #E0EBEB;
   float: left;
   width: 50%;
@@ -65,7 +68,7 @@ $total-height: 100%;
   padding: 3px;
 }
 
-.clear-button {
+.drawing-area__clear {
   background-image: url("../images/eraser-icon.png");
   background-color: #E0EBEB;
   height: 32px;

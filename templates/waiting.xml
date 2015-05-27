@@ -1,10 +1,12 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
 
-<div class="total-area">
-  <div class="word-panel">
-      <h2> Waiting for another player... </h2>
+<div class="game">
+  <div class="game__header-wrapper">
+      <h2 class="game__header-content">
+        Waiting for another player...
+      </h2>
   </div>
-  <div class="working-area">
+  <div class="game__working-area">
   </div>
 </div>
 </fest:template>

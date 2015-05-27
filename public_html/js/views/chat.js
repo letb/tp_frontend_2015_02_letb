@@ -8,7 +8,7 @@ define([
   var ChatView = Backbone.View.extend({
 
     events: {
-      'submit .send-message' : 'sendMessage'
+      'submit .chat__message-form' : 'sendMessage'
     },
 
     render: function() {
@@ -18,7 +18,7 @@ define([
     },
 
     getMessage: function(message) {
-      $('.chat-history').append(tmplMessage(message));
+      $('.chat__history').append(tmplMessage(message));
     },
 
     formattedTime: function(date) {
@@ -29,12 +29,12 @@ define([
       e.preventDefault();
       var msg = { type : 'chat',
                   body: {
-                    message: $('.input-message').val(),
+                    message: $('.message-form__input').val(),
                     time: this.formattedTime(new Date()),
                     user: app.session.user.name()
                   }
                 };
-      $('.input-message').val("");
+      $('.message-form__input').val("");
       socket.send(msg);
     }
   });

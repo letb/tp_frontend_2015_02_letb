@@ -1,15 +1,19 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="params">
 
-<div class="total-area">
-  <div class="word-panel">
+<div class="game">
+  <div class="game__header-wrapper">
     <fest:if test="params.win">
-      <h2> Thats right! </h2>
+      <h2 class="game__header-content">
+        Thats right!
+      </h2>
     </fest:if>
     <fest:if test="!params.win">
-      <h2> Sorry, today is not your day. </h2>
+      <h2 class="game__header-content">
+        Sorry, today is not your day.
+      </h2>
     </fest:if>
   </div>
-  <div class="working-area">
+  <div class="game__working-area">
   </div>
 </div>
 </fest:template>

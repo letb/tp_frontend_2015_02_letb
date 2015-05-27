@@ -1,0 +1,28 @@
+.page-title--center {
+  text-align: center;
+}
+
+.btn-wrapper--left {
+  @extend .col-md-2;
+  @extend .col-md-offset-4;
+}
+
+.btn-wrapper--right {
+  @extend .col-md-2;
+}
+
+.btn-wrapper--center {
+  text-align: center;
+}
+
+.btn {
+  @extend .btn;
+}
+
+.btn--gray {
+  @extend .btn-default;
+}
+
+.btn--green {
+  @extend .btn-success;
+}
