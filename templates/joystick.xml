@@ -1,0 +1,11 @@
+<fest:template xmlns:fest="http://fest.mail.ru">
+
+  <div class="chat">
+    <div class="chat__history"></div>
+    <form action="#" class="chat__message-form" method="post">
+      <input type="text" class="message-form__input" placeholder="Type your message…" autofocus="true"></input>
+      <input type="hidden"></input>
+    </form>
+  </div>
+
+</fest:template>

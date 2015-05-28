@@ -3,7 +3,7 @@
 
   <div class="game">
     <fest:get name="game__header">
-      { condition: 'params.win',
+      { condition: params.win,
         content_true: 'Thats right!',
         content_false: 'Sorry, today is not your day.'
       }

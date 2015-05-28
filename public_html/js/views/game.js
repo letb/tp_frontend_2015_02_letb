@@ -19,8 +19,8 @@ define([
 			this.colorpaletteView = new ColorPaletteView({className: 'color-palette-view'});
 			this.chatView = new ChatView({ className: 'chat-view' });
 
-			this.canvasView.listenTo(this.colorpaletteView, 
-															'color:change', 
+			this.canvasView.listenTo(this.colorpaletteView,
+															'color:change',
 															this.canvasView.changeColor, this);
 		},
 
@@ -29,7 +29,7 @@ define([
 		},
 
 		render: function() {
-			this.listenTo(app.wsEventBus, 'ws:open', this.waitGame);
+			this.listenTo(app.wsEventBus, 'ws:open:game', this.initGame);
 			this.listenTo(app.wsEventBus, 'ws:start', this.startGame);
 			this.listenTo(app.wsEventBus, 'ws:finish', this.finishGame);
 
@@ -75,7 +75,7 @@ define([
 
 		show: function() {
 			if (socket.closed) {
-				this.createGame();
+				this.connectToGame();
 			};
 			this.$el.show();
 		},
@@ -85,7 +85,13 @@ define([
 			this.$el.hide();
 		},
 
-		createGame: function() {
+		initGame: function() {
+			this.waitGame();
+      var msg = { type : 'init:desktop' };
+      socket.send(msg);
+		},
+
+		connectToGame: function() {
 			socket.connect();
 		},
 
