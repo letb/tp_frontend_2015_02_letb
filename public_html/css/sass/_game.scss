@@ -6,7 +6,7 @@ $menuDark: darken($menuColor, 10%);
 $menuLight: lighten($menuColor, 30%);
 
 .game-view, .canvas-view, .color-palette-view,
-.game {
+.game, .joystick {
   height: $total-height;
 }
 
@@ -41,6 +41,12 @@ $menuLight: lighten($menuColor, 30%);
 
 .game__drawing-area {
   width: 700px;
+  /*background-color: #A3C2C2;*/
+}
+
+.joystick__drawing-area {
+  width: 300px;
+  height: 500px;
   /*background-color: #A3C2C2;*/
 }
 

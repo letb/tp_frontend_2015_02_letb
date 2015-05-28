@@ -6,17 +6,19 @@ define([
 	'views/scoreboard',
 	'views/game',
 	'views/joystick',
+	'views/joystick_canvas',
 	'views/signup',
 	'views/signin'
-], function (app, Backbone, controller, mainView, scoreboardView, gameView, joystickView, signupView, signinView) {
+], function (app, Backbone, controller, mainView, scoreboardView, gameView, joystickView, joystickCanvasView, signupView, signinView) {
 
-	controller.load(mainView, scoreboardView, gameView, joystickView, signupView, signinView);
+	controller.load(mainView, scoreboardView, gameView, joystickView, joystickCanvasView, signupView, signinView);
 
 	var Router = Backbone.Router.extend({
 		routes: {
 			'scoreboard': 'scoreboardAction',
 			'game': 'gameAction',
 			'joystick': 'joystickAction',
+			'joystick_canvas': 'joystickCanvasAction',
 			'signup': 'signupAction',
 			'signin': 'signinAction',
 			'*default': 'defaultActions'
@@ -28,6 +30,10 @@ define([
 
 		joystickAction: function() {
 			controller.changeView(joystickView);
+		},
+
+		joystickCanvasAction: function() {
+			controller.changeView(joystickCanvasView);
 		},
 
 		gameAction: function() {

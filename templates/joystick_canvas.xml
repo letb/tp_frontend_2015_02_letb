@@ -1,0 +1,7 @@
+<fest:template xmlns:fest="http://fest.mail.ru">
+
+  <div class="joystick">
+    <div class="joystick__drawing-area"></div>
+  </div>
+
+</fest:template>

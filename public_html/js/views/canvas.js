@@ -36,13 +36,13 @@ define([
 
     render: function() {
       this.redraw(this.canvas, this.context);
-      if (app.session.user.isLeader()) {
+      // if (app.session.user.isLeader()) {
         this.delegateEvents();
-      } else {
-        this.undelegateEvents();
+      // } else {
+      //   this.undelegateEvents();
         this.listenTo(app.wsEventBus, 'ws:canvas', this.wsRedraw);
         this.listenTo(app.wsEventBus, 'ws:canvas:clear', this.wsClear);
-      }
+      // }
       this.trigger('render');
       return this;
     },
