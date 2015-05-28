@@ -3,9 +3,8 @@ define([
   'backbone',
   'tmpl/game',
   'models/points',
-  'models/colorpalette',
   'api/socket'
-], function (app, Backbone, tmpl, CanvasModel, ColorPalette, socket) {
+], function (app, Backbone, tmpl, CanvasModel, socket) {
   var CanvasView = Backbone.View.extend({
     model: canvasModel = new CanvasModel(),
     
@@ -14,13 +13,12 @@ define([
       this.canvas = this.$('#canvas')[0];
       this.context = this.canvas.getContext('2d');
       this.paint = false;
-      this.color = colorPalette.getCurrent();
+      this.color = "#f11b1b";
 
       HTMLCanvasElement.prototype.relMouseCoords = this.relMouseCoords;
 
       $(window).on("resize", _.bind(this.resize, this));
       this.once('render', this.resize, this);
-      colorPalette.on('change:current', this.changeColor, this);
     },
 
     events: {
@@ -85,7 +83,8 @@ define([
     },
 
     changeColor: function(e) {
-      this.color = e.changed['current'];
+      var color = $(e.target).css("background-color");
+      this.color = this.rgb2hex(color);
     },
 
     clear: function(e) {
@@ -152,6 +151,15 @@ define([
       canvasx = event.clientX + document.body.scrollLeft + document.documentElement.scrollLeft - Math.floor(canoffset.left);
       canvasy = event.clientY + document.body.scrollTop + document.documentElement.scrollTop - Math.floor(canoffset.top) + 1;
       return {x: canvasx, y: canvasy};
+    },
+
+    rgb2hex: function(rgb) {
+      var hexDigits = ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"];
+      rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+      function hex(x) {
+        return isNaN(x) ? "00" : hexDigits[(x - x % 16) / 16] + hexDigits[x % 16];
+      }
+      return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
     }
   });
 

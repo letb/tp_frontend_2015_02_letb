@@ -4,12 +4,11 @@ define([
 	'tmpl/game',
 	'tmpl/waiting',
 	'tmpl/finish',
-	'models/colorpalette',
 	'views/canvas',
 	'views/colorpalette',
 	'views/chat',
 	'api/socket'
-], function (app, Backbone, tmpl, tmplWait, tmplFinish, colorPalette, CanvasView, ColorPaletteView, ChatView, socket) {
+], function (app, Backbone, tmpl, tmplWait, tmplFinish, CanvasView, ColorPaletteView, ChatView, socket) {
 	var GameView = Backbone.View.extend({
 		id: 'game-view',
 		template: tmpl,
@@ -19,6 +18,10 @@ define([
 			this.canvasView = new CanvasView({id: 'canvas-view'});
 			this.colorpaletteView = new ColorPaletteView({id: 'color-palette-view'});
 			this.chatView = new ChatView({ id: 'chat-view' });
+			
+			this.canvasView.listenTo(this.colorpaletteView, 
+															'color:change', 
+															this.canvasView.changeColor, this);
 		},
 
 		events: {
