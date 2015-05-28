@@ -16,7 +16,6 @@ define([
 		},
 
 		render: function() {
-			this.trigger('preloader:on');
 			this.collection.fetch({reset: true});
 			return this;
 		},
@@ -30,7 +29,6 @@ define([
 		},
 
 		update: function () {
-			this.trigger('preloader:off');
 			this.$el.html(this.template());
 		}
 	});

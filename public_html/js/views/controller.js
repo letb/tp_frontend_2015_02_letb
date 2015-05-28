@@ -5,10 +5,19 @@ define([
   var Controller = Backbone.View.extend({
 
     initialize: function() {
+      var self = this;
+
       $(document).on("click", ".js-nav", function(evt) {
         var href = $(this).attr("href");
         evt.preventDefault();
         Backbone.history.navigate(href, true);
+      });
+
+      $(document).ajaxStart(function() {
+        self.preloaderOn();
+      });
+      $(document).ajaxStop(function() {
+        self.preloaderOff();
       });
     },
 
