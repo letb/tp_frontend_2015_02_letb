@@ -49,3 +49,4 @@ data/serverSettings.xml
 public_html/css/*.css
 public_html/js/tmpl/
 public_html/js/*.min.js
+public_html/index.html
