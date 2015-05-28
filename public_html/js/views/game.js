@@ -62,11 +62,11 @@ define([
 			);
 			$('.drawing-area__canvas').prepend(this.canvasView.$el);
 			$('.drawing-area__pen-color').prepend(this.colorpaletteView.$el);
-			$('.game__chat-wrapper').prepend(this.chatView.render().$el);
+			$('.game__chat-wrapper').prepend(this.chatView.$el);
 
 			this.canvasView.render();
 			this.colorpaletteView.render();
-			// this.chatView.render();
+			this.chatView.render();
 		},
 
 		clear: function(e) {

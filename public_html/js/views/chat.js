@@ -36,6 +36,14 @@ define([
                 };
       $('.message-form__input').val("");
       socket.send(msg);
+    },
+
+    show: function() {
+      this.$el.show();
+    },
+
+    hide: function() {
+      this.$el.hide();
     }
   });
 

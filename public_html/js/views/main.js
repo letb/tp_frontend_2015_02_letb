@@ -1,12 +1,13 @@
 define([
 	'app',
 	'backbone',
-	'tmpl/main'
-], function (app, Backbone, tmpl){
+	'tmpl/main',
+	'api/storage'
+], function (app, Backbone, tmpl, storage){
 	var MainView = Backbone.View.extend({
 		className: "main-view",
 		template: tmpl,
-
+		
 		events: {
 			'click  a.signout':     'signout'
 		},
@@ -23,6 +24,8 @@ define([
 
 		show: function() {
 			this.$el.show();
+			storage.remove('signup-name');
+			storage.remove('signup-email');
 		},
 
 		hide: function() {
