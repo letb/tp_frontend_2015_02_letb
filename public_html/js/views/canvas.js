@@ -7,7 +7,7 @@ define([
 ], function (app, Backbone, tmpl, CanvasModel, socket) {
   var CanvasView = Backbone.View.extend({
     model: canvasModel = new CanvasModel(),
-    
+
     initialize: function() {
       this.$el.append('<canvas class="canvas"></canvas>');
       this.canvas = this.$('.canvas')[0];
@@ -26,6 +26,11 @@ define([
       'mousemove .canvas': 'mouseMove',
       'mouseup .canvas': 'mouseUp',
       'mouseleave .canvas': 'mouseLeave',
+
+      'touchstart .canvas': 'mouseDown',
+      'touchmove .canvas': 'mouseMove',
+      'touchend .canvas': 'mouseUp',
+
       'resized .canvas': 'resize'
     },
 
@@ -53,6 +58,7 @@ define([
     },
 
     mouseDown: function(e) {
+      e.preventDefault();
       var coord = this.relMouseCoords(e);
       this.paint = true;
       var point = { x: coord.x, y: coord.y, drag: false, color: this.color }
@@ -61,6 +67,7 @@ define([
     },
 
     mouseMove: function(e) {
+      e.preventDefault();
       var coord = this.relMouseCoords(e);
       if (this.paint) {
         var point = { x: coord.x, y: coord.y, drag: true, color: this.color }
@@ -70,6 +77,7 @@ define([
     },
 
     mouseUp: function(e) {
+      e.preventDefault();
       if (this.paint) {
         localStorage.setItem("canvas", JSON.stringify(canvasModel));
         this.paint = false;
@@ -77,6 +85,7 @@ define([
     },
 
     mouseLeave: function(e) {
+      e.preventDefault();
       if (this.paint) {
         this.paint = false;
       }
@@ -146,7 +155,15 @@ define([
       Backbone.View.prototype.remove.call(this);
     },
 
+    isTouchEvent: function(event) {
+      return event instanceof TouchEvent;
+    },
+
     relMouseCoords: function(event) {
+      event = event.originalEvent;
+      if (this.isTouchEvent(event))
+        event = event.touches[0];
+
       var canoffset = $('.canvas').offset();
       canvasx = event.clientX + document.body.scrollLeft + document.documentElement.scrollLeft - Math.floor(canoffset.left);
       canvasy = event.clientY + document.body.scrollTop + document.documentElement.scrollTop - Math.floor(canoffset.top) + 1;
