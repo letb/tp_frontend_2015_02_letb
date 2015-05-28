@@ -19,19 +19,13 @@
       <div class="game__players-info"></div>
       <div class="game__drawing-area">
         <div class="drawing-area__canvas"></div>
-        <fest:if test="params.leader">
-          <div class="drawing-area__pen-color"></div>
-          <div class="drawing-area__pen-size">
-            <button class="drawing-area__clear"></button>
-          </div>
-        </fest:if>
+        <div class="drawing-area__pen-color"></div>
+        <div class="drawing-area__pen-size">
+          <button class="drawing-area__clear"></button>
+        </div>
       </div>
       <div class="game__chat-wrapper">
       </div>
     </div>
   </div>
-
-  <script>
-    $("canvas").trigger("resized");
-  </script>
 </fest:template>

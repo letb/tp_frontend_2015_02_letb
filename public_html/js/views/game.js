@@ -10,15 +10,15 @@ define([
 	'api/socket'
 ], function (app, Backbone, tmpl, tmplWait, tmplFinish, CanvasView, ColorPaletteView, ChatView, socket) {
 	var GameView = Backbone.View.extend({
-		id: 'game-view',
+		className: 'game-view',
 		template: tmpl,
 		state: 'wait',
 
 		initialize: function(){
-			this.canvasView = new CanvasView({id: 'canvas-view'});
-			this.colorpaletteView = new ColorPaletteView({id: 'color-palette-view'});
-			this.chatView = new ChatView({ id: 'chat-view' });
-			
+			this.canvasView = new CanvasView({className: 'canvas-view'});
+			this.colorpaletteView = new ColorPaletteView({className: 'color-palette-view'});
+			this.chatView = new ChatView({ className: 'chat-view' });
+
 			this.canvasView.listenTo(this.colorpaletteView, 
 															'color:change', 
 															this.canvasView.changeColor, this);

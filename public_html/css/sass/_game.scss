@@ -1,11 +1,11 @@
 $total-height: 100%;
 
-#game-view, #canvas-view, #color-palette-view,
+.game-view, .canvas-view, .color-palette-view,
 .game {
   height: $total-height;
 }
 
-#canvas-view, #color-palette-view {
+.canvas-view, .color-palette-view {
   background-color: white;
   border: 1px solid black;
 }

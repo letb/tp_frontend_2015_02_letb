@@ -5,7 +5,7 @@ define([
   'models/session'
 ], function (app, Backbone, tmpl, Session) {
   var SigninView = Backbone.View.extend({
-    id: "signin-view",
+    className: "signin-view",
     template: tmpl,
 
     events: {

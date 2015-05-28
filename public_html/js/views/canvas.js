@@ -9,8 +9,8 @@ define([
     model: canvasModel = new CanvasModel(),
     
     initialize: function() {
-      this.$el.append('<canvas id="canvas"></canvas>');
-      this.canvas = this.$('#canvas')[0];
+      this.$el.append('<canvas class="canvas"></canvas>');
+      this.canvas = this.$('.canvas')[0];
       this.context = this.canvas.getContext('2d');
       this.paint = false;
       this.color = "#f11b1b";
@@ -22,11 +22,11 @@ define([
     },
 
     events: {
-      'mousedown #canvas': 'mouseDown',
-      'mousemove #canvas': 'mouseMove',
-      'mouseup #canvas': 'mouseUp',
-      'mouseleave #canvas': 'mouseLeave',
-      'resized #canvas': 'resize'
+      'mousedown .canvas': 'mouseDown',
+      'mousemove .canvas': 'mouseMove',
+      'mouseup .canvas': 'mouseUp',
+      'mouseleave .canvas': 'mouseLeave',
+      'resized .canvas': 'resize'
     },
 
     render: function() {
@@ -147,7 +147,7 @@ define([
     },
 
     relMouseCoords: function(event) {
-      var canoffset = $('#canvas').offset();
+      var canoffset = $('.canvas').offset();
       canvasx = event.clientX + document.body.scrollLeft + document.documentElement.scrollLeft - Math.floor(canoffset.left);
       canvasy = event.clientY + document.body.scrollTop + document.documentElement.scrollTop - Math.floor(canoffset.top) + 1;
       return {x: canvasx, y: canvasy};

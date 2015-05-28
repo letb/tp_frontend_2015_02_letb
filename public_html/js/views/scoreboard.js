@@ -5,7 +5,7 @@ define([
 ], function (Backbone, tmpl, scoreboard) {
 	var ScoreboardView = Backbone.View.extend({
 		collection: scoreboard,
-		id: "scoreboard-view",
+		className: "scoreboard-view",
 
 		initialize: function() {
 			this.listenTo(this.collection, 'reset', this.update);
