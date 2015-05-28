@@ -40,8 +40,11 @@ define([
 			controller.changeView(mainView);
 		},
 
-		redirectRoot: function() {
-			this.navigate('/', {trigger: true});
+		redirect: function(url) {
+			this.navigate(url, {trigger: true});
+			if (!Backbone.history.fragment) {
+				Backbone.history.loadUrl(url);
+			}
 		}
 	});
 

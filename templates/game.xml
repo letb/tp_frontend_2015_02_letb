@@ -1,23 +1,31 @@
-<fest:template xmlns:fest="http://fest.mail.ru" context_name="json">
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="params">
+  <fest:include src="components/game_header.xml"/>
+  <div class="game">
 
-<div class="total-area">
-  <div class="word-panel">
-      <h2> Guess this word </h2>
-  </div>
-  <div class="working-area">
-    <div class="players-info"></div>
-    <div class="canvas-area">
-      <div class="canvas-panel"></div>
-      <div class="colors-panel"></div>
-      <div class="size-panel">
-        <button class="clear-button"></button>
+    <fest:get name="game__header">
+      <fest:params>
+        { condition: params.leader }
+      </fest:params>
+      <fest:param name="content_true">
+        Draw<fest:space/><fest:value> params.user.get('keyword') </fest:value>.
+        Guesser:<fest:space/><fest:value> params.user.get('enemy') </fest:value>.
+      </fest:param>
+      <fest:param name="content_false">
+        <fest:value> params.user.get('enemy') </fest:value><fest:space/>draws.
+      </fest:param>
+    </fest:get>
+
+    <div class="game__working-area">
+      <div class="game__players-info"></div>
+      <div class="game__drawing-area">
+        <div class="drawing-area__canvas"></div>
+        <div class="drawing-area__pen-color"></div>
+        <div class="drawing-area__pen-size">
+          <button class="drawing-area__clear"></button>
+        </div>
+      </div>
+      <div class="game__chat-wrapper">
       </div>
     </div>
-    <div class="chat-area"></div>  
   </div>
-</div>
-
-  <script>
-    $("canvas").trigger("resized");
-  </script>
 </fest:template>

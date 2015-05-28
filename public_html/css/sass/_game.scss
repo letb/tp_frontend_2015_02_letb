@@ -1,0 +1,79 @@
+$total-height: 100%;
+
+.game-view, .canvas-view, .color-palette-view,
+.game {
+  height: $total-height;
+}
+
+.canvas-view, .color-palette-view {
+  background-color: white;
+  border: 1px solid black;
+}
+
+.game__header-wrapper {
+  height: 10%;
+  position: relative;
+  text-align: center;
+  background-color: #E0EBEB;
+}
+
+.game__header-content {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.game__working-area {
+  height: 90%;
+}
+
+.game__players-info {
+  width: 15%;
+  background-color: #75A3A3;
+}
+
+.game__drawing-area {
+  width: 60%;
+  background-color: #A3C2C2;
+}
+
+.game__chat-wrapper {
+  width: 25%;
+  background-color: #75A3A3;
+}
+
+.game__players-info,
+.game__drawing-area,
+.game__chat-wrapper {
+  box-sizing: border-box;
+  float: left;
+  height: $total-height;
+  padding: 1%;
+}
+
+.drawing-area__canvas {
+  box-sizing: border-box;
+  height: 80%;
+  padding: 3px;
+}
+
+.drawing-area__pen-color,
+.drawing-area__pen-size {
+  background-color: #E0EBEB;
+  float: left;
+  width: 50%;
+  height: 20%;
+  padding: 3px;
+}
+
+.drawing-area__clear {
+  background-image: url("../images/eraser-icon.png");
+  background-color: #E0EBEB;
+  height: 32px;
+  width: 32px;
+  margin-top: 32px;
+  border-color: #E0EBEB;
+  border-width: 1px;
+}

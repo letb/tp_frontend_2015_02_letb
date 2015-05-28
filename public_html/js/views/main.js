@@ -4,7 +4,7 @@ define([
 	'tmpl/main'
 ], function (app, Backbone, tmpl){
 	var MainView = Backbone.View.extend({
-		id: "main-view",
+		className: "main-view",
 		template: tmpl,
 
 		events: {

@@ -1,32 +1,72 @@
 define([
+	'app',
 	'backbone',
 	'tmpl/game',
-	'models/colorpalette',
+	'tmpl/waiting',
+	'tmpl/finish',
 	'views/canvas',
 	'views/colorpalette',
-], function (Backbone, tmpl, ColorPaletteModel, CanvasView, ColorPaletteView) {
+	'views/chat',
+	'api/socket'
+], function (app, Backbone, tmpl, tmplWait, tmplFinish, CanvasView, ColorPaletteView, ChatView, socket) {
 	var GameView = Backbone.View.extend({
-		id: 'game-view',
+		className: 'game-view',
 		template: tmpl,
+		state: 'wait',
 
 		initialize: function(){
-			this.canvasView = new CanvasView({id: 'canvas-view'});
-			this.colorpaletteView = new ColorPaletteView({id: 'color-palette-view'});
+			this.canvasView = new CanvasView({className: 'canvas-view'});
+			this.colorpaletteView = new ColorPaletteView({className: 'color-palette-view'});
+			this.chatView = new ChatView({ className: 'chat-view' });
+
+			this.canvasView.listenTo(this.colorpaletteView, 
+															'color:change', 
+															this.canvasView.changeColor, this);
 		},
 
 		events: {
-			'click .clear-button' : 'clear'
+			'click .drawing-area__clear' : 'clear'
 		},
 
 		render: function() {
-			this.$el.html(this.template());
-			this.$('.canvas-panel').prepend(this.canvasView.$el);
-			this.$('.colors-panel').prepend(this.colorpaletteView.$el);
+			this.listenTo(app.wsEventBus, 'ws:open', this.waitGame);
+			this.listenTo(app.wsEventBus, 'ws:start', this.startGame);
+			this.listenTo(app.wsEventBus, 'ws:finish', this.finishGame);
+
+			switch (this.state) {
+				case 'wait':
+					this.trigger('preloader:on');
+					this.$el.html(tmplWait());
+					break;
+				case 'play':
+					this.trigger('preloader:off');
+					this.insert();
+					break;
+				case 'finish':
+					this.$el.html(tmplFinish({
+							win: app.session.user.get('win')
+						})
+					);
+					this.waitGame();
+					break;
+			}
+
+			return this;
+		},
+
+		insert: function() {
+			this.$el.html(this.template({
+					leader: app.session.user.get('leader'),
+					user: app.session.user
+				})
+			);
+			$('.drawing-area__canvas').prepend(this.canvasView.$el);
+			$('.drawing-area__pen-color').prepend(this.colorpaletteView.$el);
+			$('.game__chat-wrapper').prepend(this.chatView.render().$el);
 
 			this.canvasView.render();
 			this.colorpaletteView.render();
-
-			return this;
+			// this.chatView.render();
 		},
 
 		clear: function(e) {
@@ -34,11 +74,34 @@ define([
 		},
 
 		show: function() {
+			if (socket.closed) {
+				this.createGame();
+			};
 			this.$el.show();
 		},
 
 		hide: function() {
+			this.waitGame();
 			this.$el.hide();
+		},
+
+		createGame: function() {
+			socket.connect();
+		},
+
+		waitGame: function() {
+			this.state = 'wait';
+		},
+
+		startGame: function() {
+			this.state = 'play';
+			this.render();
+		},
+
+		finishGame: function() {
+			this.state = 'finish';
+			this.render();
+			socket.close();
 		}
 	});
 

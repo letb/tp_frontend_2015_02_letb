@@ -13,7 +13,7 @@ define([
             .fail(this.error);
         },
         success: function(resp) {
-          if (resp.status.match(request.okStatus)) {
+          if (resp.isOK()) {
             model.clear();
             model.user.set(resp.body);
           }
@@ -28,9 +28,24 @@ define([
             .fail(this.error);
         },
         success: function(resp) {
-          if (resp.status.match(request.okStatus)) {
+          if (resp.isOK()) {
             app.resetSession();
-            model.trigger('signout:ok');
+            model.trigger('signout:ok', '/');
+          }
+        },
+        error: function() {}
+      },
+
+      'read': {
+        send: function() {
+          request.send('GET', 'current')
+            .done(this.success)
+            .fail(this.error);
+        },
+        success: function(resp) {
+          if (resp.isOK()) {
+            model.clear();
+            model.user.set(resp.body);
           }
         },
         error: function() {}

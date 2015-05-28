@@ -45,3 +45,7 @@ data/serverSettings.xml
 
 .DS_Store
 
+# Files compiled by Grunt
+public_html/css/*.css
+public_html/js/tmpl/
+public_html/js/*.min.js

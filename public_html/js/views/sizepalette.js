@@ -7,7 +7,7 @@ define([
     model: sizePalette = new SizePaletteModel(),
 
     initialize: function() {
-      this.$el.append('<ul id="size-palette"></ul>');
+      this.$el.append('<ul class="size-palette"></ul>');
     },
 
     render: function() {

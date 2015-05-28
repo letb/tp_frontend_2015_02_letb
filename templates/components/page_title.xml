@@ -1,0 +1,9 @@
+<fest:template xmlns:fest="http://fest.mail.ru">
+  <fest:set name="title">
+    <div class="page-title page-title--center">
+      <h2>
+        <fest:value>params.text</fest:value>
+      </h2>
+    </div>
+  </fest:set>
+</fest:template>

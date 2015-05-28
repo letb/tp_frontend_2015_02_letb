@@ -1,23 +1,26 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="scoreboard">
-  <div class="text-center">
-    <h2> Scoreboard </h2>
-  </div>
-  <row>
-    <div class="col-md-4 col-md-offset-4">
-      <ol class="list-group">
-        <fest:each iterate="scoreboard" index="i" value="user">
-          <li class="list-group-item">
+  <fest:include src="components/button.xml"/>
+  <fest:include src="components/page_title.xml"/>
+
+  <fest:get name="title"> { text: 'Scoreboard' } </fest:get>
+  <div class="scoreboard scoreboard--center">
+    <ol class="scoreboard__list">
+      <fest:each iterate="scoreboard" index="i" value="user">
+        <li class="scoreboard__item">
+          <span class="scoreboard__name">
             <fest:value> user.login </fest:value>
-            <span class="badge">
-              <fest:value> user.score </fest:value>
-            </span>
-          </li>
-        </fest:each>
-      </ol>
-    </div>
-  </row>
-  <div class="clearfix"></div>
-  <div class="text-center">
-    <a href="/" class="btn btn-default navigate"> Back </a>
+          </span>
+          <span class="scoreboard__score">
+            <fest:value> user.score </fest:value>
+          </span>
+        </li>
+      </fest:each>
+    </ol>
+
+    <div class="clearfix"></div>
+    <fest:get name="button">
+      { href: '/', position: 'center', text: 'Back',
+        classes: 'btn btn--gray js-nav' }
+    </fest:get>
   </div>
 </fest:template>

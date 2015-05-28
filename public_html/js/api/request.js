@@ -1,10 +1,12 @@
-define(function(){
+define([
+  'api/response'
+], function(Response){
   var Request = function(baseUrl) {
     this.baseUrl = baseUrl || '';
-    this.okStatus = /^(200|201)$/;
 
     this.send = function(method, url, data) {
       var def = $.Deferred();
+      var self = this;
 
       function sanitized(url) {
         return url ? url : ''
@@ -12,11 +14,13 @@ define(function(){
 
       $.ajax({
         type: method,
-        url: this.baseUrl + sanitized(url),
+        url: self.baseUrl + sanitized(url),
         data: data,
         dataType: 'json'
-      }).done(function(resp) {
-        if (resp.status.match(this.okStatus)) {
+      }).done(function(data) {
+        var resp = new Response(data);
+
+        if (resp.isOK()) {
           def.resolve(resp);
         } else {
           def.reject(resp);

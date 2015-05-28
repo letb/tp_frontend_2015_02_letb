@@ -1,59 +1,70 @@
 define([
+  'app',
   'backbone',
   'tmpl/game',
   'models/points',
-  'models/colorpalette'
-], function (Backbone, tmpl, CanvasModel, ColorPalette) {
+  'api/socket'
+], function (app, Backbone, tmpl, CanvasModel, socket) {
   var CanvasView = Backbone.View.extend({
     model: canvasModel = new CanvasModel(),
-    colorPalette: colorPalette, // global variable??
-
+    
     initialize: function() {
-      this.$el.append('<canvas id="canvas"></canvas>');
-      this.canvas = this.$('#canvas')[0];
+      this.$el.append('<canvas class="canvas"></canvas>');
+      this.canvas = this.$('.canvas')[0];
       this.context = this.canvas.getContext('2d');
       this.paint = false;
-      this.color = this.colorPalette.getCurrent();
+      this.color = "#f11b1b";
 
       HTMLCanvasElement.prototype.relMouseCoords = this.relMouseCoords;
 
-      // bind to the namespaced (for easier unbinding) event
       $(window).on("resize", _.bind(this.resize, this));
-      $(document).ready(this.loadCanvas());
-      this.colorPalette.on('change:current', this.changeColor, this);
+      this.once('render', this.resize, this);
     },
 
     events: {
-      'mousedown #canvas': 'mouseDown',
-      'mousemove #canvas': 'mouseMove',
-      'mouseup #canvas': 'mouseUp',
-      'mouseleave #canvas': 'mouseLeave',
-      'resized #canvas': 'resize'
+      'mousedown .canvas': 'mouseDown',
+      'mousemove .canvas': 'mouseMove',
+      'mouseup .canvas': 'mouseUp',
+      'mouseleave .canvas': 'mouseLeave',
+      'resized .canvas': 'resize'
     },
 
     render: function() {
       this.redraw(this.canvas, this.context);
-      this.delegateEvents();
+      if (app.session.user.isLeader()) {
+        this.delegateEvents();
+      } else {
+        this.undelegateEvents();
+        this.listenTo(app.wsEventBus, 'ws:canvas', this.wsRedraw);
+        this.listenTo(app.wsEventBus, 'ws:canvas:clear', this.wsClear);
+      }
+      this.trigger('render');
       return this;
     },
 
-    resize: function() {
+    changeSize: function() {
       this.canvas.width = this.canvas.parentElement.offsetWidth;
       this.canvas.height = this.canvas.parentElement.offsetHeight;
+    },
+
+    resize: function() {
+      this.changeSize();
       this.render();
     },
 
     mouseDown: function(e) {
       var coord = this.relMouseCoords(e);
       this.paint = true;
-      canvasModel.addPoint(coord.x, coord.y, false, this.color);
+      var point = { x: coord.x, y: coord.y, drag: false, color: this.color }
+      canvasModel.addPoint(point);
       this.redraw(this.canvas, this.context);
     },
 
     mouseMove: function(e) {
       var coord = this.relMouseCoords(e);
       if (this.paint) {
-        canvasModel.addPoint(coord.x, coord.y, true, this.color);
+        var point = { x: coord.x, y: coord.y, drag: true, color: this.color }
+        canvasModel.addPoint(point);
         this.redraw(this.canvas, this.context);
       }
     },
@@ -72,7 +83,8 @@ define([
     },
 
     changeColor: function(e) {
-      this.color = e.changed['current'];
+      var color = $(e.target).css("background-color");
+      this.color = this.rgb2hex(color);
     },
 
     clear: function(e) {
@@ -84,6 +96,17 @@ define([
     loadCanvas: function() {
       var data = JSON.parse(localStorage.getItem("canvas"));
       canvasModel = new CanvasModel(data);
+    },
+
+    wsClear: function() {
+      localStorage.removeItem("canvas");
+      canvasModel.clear(true);
+      this.redraw(this.canvas, this.context);
+    },
+
+    wsRedraw: function(point) {
+      canvasModel.addPoint(point, true);
+      this.redraw(this.canvas, this.context);
     },
 
     redraw: function(canvas, context) {
@@ -124,10 +147,19 @@ define([
     },
 
     relMouseCoords: function(event) {
-      var canoffset = $('#canvas').offset();
+      var canoffset = $('.canvas').offset();
       canvasx = event.clientX + document.body.scrollLeft + document.documentElement.scrollLeft - Math.floor(canoffset.left);
       canvasy = event.clientY + document.body.scrollTop + document.documentElement.scrollTop - Math.floor(canoffset.top) + 1;
       return {x: canvasx, y: canvasy};
+    },
+
+    rgb2hex: function(rgb) {
+      var hexDigits = ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"];
+      rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+      function hex(x) {
+        return isNaN(x) ? "00" : hexDigits[(x - x % 16) / 16] + hexDigits[x % 16];
+      }
+      return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
     }
   });
 

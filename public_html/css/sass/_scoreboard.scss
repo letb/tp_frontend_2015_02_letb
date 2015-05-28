@@ -1,0 +1,16 @@
+.scoreboard--center {
+  @extend .col-md-4;
+  @extend .col-md-offset-4;
+}
+
+.scoreboard__list {
+  @extend .list-group;
+}
+
+.scoreboard__item {
+  @extend .list-group-item;
+}
+
+.scoreboard__score {
+  @extend .badge;
+}
