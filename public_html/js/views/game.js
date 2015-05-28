@@ -25,7 +25,7 @@ define([
 		},
 
 		events: {
-			'click .drawing-area__clear' : 'clear'
+			'click .picker__color--eraser' : 'clear'
 		},
 
 		render: function() {
@@ -60,13 +60,13 @@ define([
 					user: app.session.user
 				})
 			);
-			$('.drawing-area__canvas').prepend(this.canvasView.$el);
-			$('.drawing-area__pen-color').prepend(this.colorpaletteView.$el);
-			$('.game__chat-wrapper').prepend(this.chatView.$el);
+			$('.game__drawing-area').prepend(this.canvasView.$el);
+			$('.game__pen-color').prepend(this.colorpaletteView.$el);
+			$('.game__chat-wrapper').prepend(this.chatView.render().$el);
 
 			this.canvasView.render();
 			this.colorpaletteView.render();
-			this.chatView.render();
+			// this.chatView.render();
 		},
 
 		clear: function(e) {

@@ -38,13 +38,13 @@ define([
       socket.send(msg);
     },
 
-    show: function() {
-      this.$el.show();
-    },
+    // show: function() {
+    //   this.$el.show();
+    // },
 
-    hide: function() {
-      this.$el.hide();
-    }
+    // hide: function() {
+    //   this.$el.hide();
+    // }
   });
 
   return ChatView;

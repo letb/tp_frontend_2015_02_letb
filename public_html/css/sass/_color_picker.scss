@@ -1,5 +1,6 @@
 .picker{
   border: 1px solid lightgrey;
+  margin-top: 10px;
   padding-top: 3px;
   float: left;
   position: relative;
@@ -7,15 +8,16 @@
   width: 100%;
   height: 100%;
   overflow-y: hidden;
+  background-color: #ffffff;
 }
 
 .picker__color {
-    width: 27px;
-    height: 27px;
+    width: 32px;
+    height: 32px;
     border-radius: 3px;
     float: left;
     display: block;
-    margin: 5px;  
+    margin: 6px;  
     -webkit-transition: all 100ms ease-in;
 }
 
@@ -27,6 +29,11 @@
   -webkit-transform: scale(1.3);
 }
 
+.picker__color--first {
+  margin-top: 3px;
+  margin-bottom: 3px;
+
+}
 .picker__color--chosen {
   border-color: red;
 }
@@ -77,6 +84,8 @@
 
 .picker__color--white {
   background: #ffffff;
+  border: 1px solid lightgrey;
+  box-sizing: border-box;
 }
 
 .picker__color--green_dark {
@@ -89,4 +98,9 @@
 .picker__color--last {
   border: 1px solid lightgrey;
   box-sizing: border-box;
+}
+
+.picker__color--eraser {
+  background-image: url("../images/eraser-icon.png");
+  background-color: #e0ebeb;
 }

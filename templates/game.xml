@@ -16,16 +16,9 @@
     </fest:get>
 
     <div class="game__working-area">
-      <div class="game__players-info"></div>
-      <div class="game__drawing-area">
-        <div class="drawing-area__canvas"></div>
-        <div class="drawing-area__pen-color"></div>
-        <div class="drawing-area__pen-size">
-          <button class="drawing-area__clear"></button>
-        </div>
-      </div>
-      <div class="game__chat-wrapper">
-      </div>
+      <div class="game__pen-color"></div>
+      <div class="game__drawing-area"></div>
+      <div class="game__chat-wrapper"></div>
     </div>
   </div>
 </fest:template>

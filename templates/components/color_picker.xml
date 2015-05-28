@@ -1,16 +1,15 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="params">
 <div class="picker">
-   <a href="#" class="picker__color picker__color--blue"></a>
+   <a href="#" class="picker__color picker__color--blue picker__color--first"></a>
    <a href="#" class="picker__color picker__color--red"></a>
    <a href="#" class="picker__color picker__color--yellow"></a>
    <a href="#" class="picker__color picker__color--green"></a>
    <a href="#" class="picker__color picker__color--orange"></a>
    <a href="#" class="picker__color picker__color--pink"></a>
    <a href="#" class="picker__color picker__color--purple"></a>
-   <a href="#" class="picker__color picker__color--brown"></a>
-   <a href="#" class="picker__color picker__color--cyan"></a> 
    <a href="#" class="picker__color picker__color--black"></a>
    <a href="#" class="picker__color picker__color--grey"></a>
-   <a href="#" class="picker__color picker__color--white picker__color--last"></a> 
+   <a href="#" class="picker__color picker__color--white "></a> 
+   <a href="#" class="picker__color picker__color--eraser picker__color--last"></a>    
 </div>
 </fest:template>
