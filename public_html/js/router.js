@@ -5,16 +5,18 @@ define([
 	'views/main',
 	'views/scoreboard',
 	'views/game',
+	'views/joystick',
 	'views/signup',
 	'views/signin'
-], function (app, Backbone, controller, mainView, scoreboardView, gameView, signupView, signinView) {
+], function (app, Backbone, controller, mainView, scoreboardView, gameView, joystickView, signupView, signinView) {
 
-	controller.load(mainView, scoreboardView, gameView, signupView, signinView);
+	controller.load(mainView, scoreboardView, gameView, joystickView, signupView, signinView);
 
 	var Router = Backbone.Router.extend({
 		routes: {
 			'scoreboard': 'scoreboardAction',
 			'game': 'gameAction',
+			'joystick': 'joystickAction',
 			'signup': 'signupAction',
 			'signin': 'signinAction',
 			'*default': 'defaultActions'
@@ -22,6 +24,10 @@ define([
 
 		scoreboardAction: function() {
 			controller.changeView(scoreboardView);
+		},
+
+		joystickAction: function() {
+			controller.changeView(joystickView);
 		},
 
 		gameAction: function() {

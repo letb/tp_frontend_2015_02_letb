@@ -12,7 +12,8 @@ define([
 
       socket.onopen = function(data) {
         this.closed = false;
-        app.wsEventBus.trigger('ws:' + data.type, '/game');
+        var eventName = 'ws:' + data.type + location.pathname.replace('/', ':');
+        app.wsEventBus.trigger(eventName, location.pathname);
       };
 
       socket.onclose = function(event) {

@@ -11,7 +11,7 @@ require([
       app.session = new Session({signedIn: false});
       app.router.listenTo(app.session, 'signin:ok', app.router.redirect);
       app.router.listenTo(app.session, 'signout:ok', app.router.redirect);
-      app.router.listenTo(app.wsEventBus, 'ws:open', app.router.redirect);
+      app.router.listenTo(app.wsEventBus, 'ws:open:game', app.router.redirect);
     };
 
     app.resetSession();
