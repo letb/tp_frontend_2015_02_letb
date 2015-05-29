@@ -7,7 +7,7 @@
         { condition: params.leader }
       </fest:params>
       <fest:param name="content_true">
-        Draw<fest:space/><fest:value> params.user.get('keyword') </fest:value>.
+        You are drawing<fest:space/><fest:value> params.user.get('keyword') </fest:value>.
         Guesser:<fest:space/><fest:value> params.user.get('enemy') </fest:value>.
       </fest:param>
       <fest:param name="content_false">

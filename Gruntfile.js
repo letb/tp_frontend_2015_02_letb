@@ -41,7 +41,7 @@ module.exports = function (grunt) {
           expand: true,
           cwd: 'public_html/css/sass',
           src: 'base.scss',
-          dest: 'public_html/css',
+          dest: 'public_html/build',
           ext: '.css'
         }]
       },
@@ -51,7 +51,7 @@ module.exports = function (grunt) {
           expand: true,
           cwd: 'public_html/css/sass',
           src: 'base.scss',
-          dest: 'public_html/css',
+          dest: 'public_html/build',
           ext: '.css'
         }],
       }
@@ -70,11 +70,12 @@ module.exports = function (grunt) {
       // live reload
       server: {
         files: [                    // Watch statics
-                'public_html/js/**/*.js',
-                'public_html/css/*.css',
+                'public_html/**/*.js',
+                'public_html/**/*.css',
                 'public_html/images/*.png',
                 'public_html/images/*.jpg'
         ],
+        tasks: ['manifest'],
         options: {
           interrupt: true,  // Terminate the previous process and spawn a new one upon later changes.
           livereload: true  // Works on port 35729 by default
@@ -83,13 +84,13 @@ module.exports = function (grunt) {
       },
       sass: {
         files: ['public_html/css/sass/*.scss'],
-        tasks: ['sass:dev'],
+        tasks: ['sass:dev', 'clean'],
         options: {atBegin: true},
       }
     },
     // Run grunt tasks concurrently
     concurrent: {
-      target: ['watch', 'shell', 'clean'],
+      target: ['watch', 'shell'],
       options: {
           logConcurrentOutput: true // Process log output
       }
@@ -119,7 +120,7 @@ module.exports = function (grunt) {
     uglify: {
       build: {
         files: {
-          'public_html/js/build.min.js': ['public_html/js/build/build.js']
+          'public_html/build/app.min.js': ['public_html/js/build/build.js']
         }
       }
     },
@@ -137,8 +138,25 @@ module.exports = function (grunt) {
       }
     },
     // Clean all the mess
-    clean:
-      ['public_html/js/build', '.sass-cache', 'out']
+    clean: ['.sass-cache', 'out'],
+    manifest: {
+      generate: {
+        options: {
+          basePath: 'public_html',
+          cache: ['images/pencils.png', 'fonts/sketch_block.ttf'],
+          network: ['*'],
+          preferOnline: true,
+          timestamp: true,
+          hash: true,
+          master: ['index.html']
+        },
+        src: [
+          'index.html',
+          'build/*.css'
+        ],
+        dest: 'public_html/manifest.appcache'
+      }
+    }
   });
 
   grunt.loadNpmTasks('grunt-contrib-watch');
@@ -151,6 +169,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-processhtml');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-manifest');
 
   grunt.registerTask(
     'build:dist', [
@@ -159,7 +178,8 @@ module.exports = function (grunt) {
       'requirejs:build',
       'concat:build',
       'uglify:build',
-      'processhtml:dist'
+      'processhtml:dist',
+      'manifest'
     ]
   );
   grunt.registerTask('production', ['build:dist', 'clean', 'shell:server']);
