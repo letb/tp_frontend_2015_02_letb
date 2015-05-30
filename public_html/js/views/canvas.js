@@ -5,6 +5,7 @@ define([
   'models/points',
   'api/socket'
 ], function (app, Backbone, tmpl, CanvasModel, socket) {
+
   var CanvasView = Backbone.View.extend({
     model: canvasModel = new CanvasModel(),
 
@@ -14,6 +15,11 @@ define([
       this.context = this.canvas.getContext('2d');
       this.paint = false;
       this.color = "#f11b1b";
+      this.xSpeed = 0;
+      this.ySpeed = 0;
+      this.xCur = this.canvas.width / 2;
+      this.yCur = this.canvas.height / 2;
+      this.counter = 0;
 
       HTMLCanvasElement.prototype.relMouseCoords = this.relMouseCoords;
 
@@ -34,7 +40,66 @@ define([
       'resized .canvas': 'resize'
     },
 
+    backToCenter: function(e) {
+      this.xCur = this.canvas.width / 2;
+      this.yCur = this.canvas.height / 2;
+      var point = { x: this.xCur,
+                    y: this.yCur,
+                    drag: false,
+                    color: this.color };
+      canvasModel.addPoint(point);
+      this.xSpeed = 0;
+      this.ySpeed = 0;
+    },
+
+    motion: function(e) {
+      if (Math.abs(e.acceleration.x) < 0.01 || Math.abs(e.acceleration.z) < 0.01) {
+        this.xSpeed = 0;
+        this.ySpeed = 0;
+      }
+
+      this.xSpeed = this.xSpeed + e.acceleration.x * e.interval * 200;
+      this.ySpeed = this.ySpeed + e.acceleration.z * e.interval * 200;
+      this.xCur = this.xCur + this.xSpeed * e.interval;
+      this.yCur = this.yCur + this.ySpeed * e.interval;
+
+      if( this.xCur < 0 ){
+        this.xCur = 0;
+        this.xSpeed = 0;
+      }
+      if( this.xCur > this.canvas.width ){
+        this.xCur = this.canvas.width;
+        this.xSpeed = 0;
+      }
+      if( this.yCur < 0 ){
+        this.yCur = 0;
+        this.ySpeed = 0;
+      }
+      if( this.yCur > this.canvas.height ){
+        this.yCur = this.canvas.height;
+        this.ySpeed = 0;
+      }
+
+      if (this.counter%5 === 0) {
+        var point = { x: this.xCur,
+                      y: this.yCur,
+                      drag: true,
+                      color: '#'+Math.floor(Math.random()*16777215).toString(16) // random color
+                    };
+        canvasModel.addPoint(point); // send ws message here
+      } else {
+        this.counter += 1;
+      }
+    },
+
     render: function() {
+      if(window.DeviceMotionEvent) {
+        window.addEventListener('devicemotion', this.motion.bind(this));
+        window.addEventListener('touchstart', this.backToCenter);
+      } else {
+        console.log( 'Your device does not support devicemotion' );
+      }
+
       this.redraw(this.canvas, this.context);
       // if (app.session.user.isLeader()) {
         this.delegateEvents();
@@ -50,6 +115,8 @@ define([
     changeSize: function() {
       this.canvas.width = this.canvas.parentElement.offsetWidth;
       this.canvas.height = this.canvas.parentElement.offsetHeight;
+      this.xCur = this.canvas.width / 2;
+      this.yCur = this.canvas.height / 2;
     },
 
     resize: function() {
