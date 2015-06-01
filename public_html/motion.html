@@ -51,7 +51,9 @@ resize();
 
 var xSpeed = 0;
 var ySpeed = 0;
+var paint = false;
 var move = function(evt){
+  if (!paint) return;
   var deltaTime = evt.interval;
 	if (Math.abs(evt.acceleration.x) < 0.01 && Math.abs(evt.acceleration.z) < 0.01) {
 	  xSpeed = 0;
@@ -93,9 +95,18 @@ var centr = function(e) {
   ySpeed = 0;
 };
 
+var start = function() {
+  paint = true;
+};
+
+var stop = function() {
+  paint = false;
+};
+
 if (window.DeviceMotionEvent) {
     window.addEventListener('devicemotion', move);
-    window.addEventListener('touchstart', centr);
+    window.addEventListener('touchstart', start);
+    window.addEventListener('touchend', stop);
 } else {
   alert( 'Your device does not support devicemotion' );
 }
