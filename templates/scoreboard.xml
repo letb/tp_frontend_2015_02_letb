@@ -3,24 +3,26 @@
   <fest:include src="components/page_title.xml"/>
 
   <fest:get name="title"> { text: 'Scoreboard' } </fest:get>
-  <div class="scoreboard scoreboard--center">
-    <ol class="scoreboard__list">
-      <fest:each iterate="scoreboard" index="i" value="user">
-        <li class="scoreboard__item">
-          <span class="scoreboard__name">
-            <fest:value> user.login </fest:value>
-          </span>
-          <span class="scoreboard__score">
-            <fest:value> user.score </fest:value>
-          </span>
-        </li>
-      </fest:each>
-    </ol>
+  <div class="row">
+    <div class="scoreboard scoreboard--center">
+      <ul class="scoreboard__list">
+        <fest:each iterate="scoreboard" index="i" value="user">
+          <li class="scoreboard__item">
+            <span class="scoreboard__name">
+              <fest:value> user.login </fest:value>
+            </span>
+            <span class="scoreboard__score">
+              <fest:value> user.score </fest:value>
+            </span>
+          </li>
+        </fest:each>
+      </ul>
 
-    <div class="clearfix"></div>
-    <fest:get name="button">
-      { href: '/', position: 'center', text: 'Back',
-        classes: 'btn btn--gray js-nav' }
-    </fest:get>
+      <div class="clearfix"></div>
+      <fest:get name="button">
+        { href: '/', position: 'center', text: 'Back',
+          classes: 'btn btn--gray js-nav' }
+      </fest:get>
+    </div>
   </div>
 </fest:template>

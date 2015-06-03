@@ -3,12 +3,11 @@
 }
 
 .btn-wrapper--left {
-  @extend .col-md-2;
-  @extend .col-md-offset-4;
+  @extend .col, .s2;
 }
 
 .btn-wrapper--right {
-  @extend .col-md-2;
+  @extend .col, .s2, .offset-s4;
 }
 
 .btn-wrapper--center {
@@ -16,13 +15,13 @@
 }
 
 .btn {
-  @extend .btn;
+  @extend .waves-effect, .waves-light, .btn-large;
 }
 
 .btn--gray {
-  @extend .btn-default;
+  @extend .grey;
 }
 
 .btn--green {
-  @extend .btn-success;
+  @extend .green;
 }

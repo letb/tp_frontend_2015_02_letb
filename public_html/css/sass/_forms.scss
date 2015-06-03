@@ -1,12 +1,19 @@
+.sign-form {
+  @extend .row;
+}
+
 .sign-form__row {
-  @extend .form-group;
+  @extend .row;
 }
 
 .sign-form__wrapper {
-  @extend .col-md-4;
-  @extend .col-md-offset-4;
+  @extend .col, .s4, .offset-s4;
 }
 
 .sign-form__input {
-  @extend .form-control;
+  @extend .input-field;
+}
+
+.sign-form__btns {
+  @extend .row;
 }

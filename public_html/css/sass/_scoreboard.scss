@@ -1,14 +1,13 @@
 .scoreboard--center {
-  @extend .col-md-4;
-  @extend .col-md-offset-4;
+  @extend .col, .s4, .offset-s4;
 }
 
 .scoreboard__list {
-  @extend .list-group;
+  @extend .collection;
 }
 
 .scoreboard__item {
-  @extend .list-group-item;
+  @extend .collection-item;
 }
 
 .scoreboard__score {
