@@ -25,12 +25,6 @@
                 classes: 'btn btn--green pull-right' }
             </fest:get>
           </div>
-          <div class="btn-wrapper btn-wrapper--right">
-            <fest:get name="button">
-              { href: '/', position: 'right', text: 'Back',
-                classes: 'btn btn--gray pull-left js-nav' }
-            </fest:get>
-          </div>
         </div>
 			</form>
 		</div>

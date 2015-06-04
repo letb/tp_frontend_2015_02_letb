@@ -1,5 +1,5 @@
 .sign-form {
-  @extend .row;
+  @extend .container;
 }
 
 .sign-form__row {
@@ -7,7 +7,7 @@
 }
 
 .sign-form__wrapper {
-  @extend .col, .s4, .offset-s4;
+  @extend .col, .s12, .m8, .center;
 }
 
 .sign-form__input {
@@ -15,5 +15,5 @@
 }
 
 .sign-form__btns {
-  @extend .row;
+  @extend .container;
 }

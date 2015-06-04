@@ -23,7 +23,8 @@ define([
 
     load: function() {
       _.each(arguments, function(view){
-        $('.page').append(view.el);
+        console.log(view);
+        $('.content-placer').prepend(view.el);
         this.listenTo(view, 'preloader:on', this.preloaderOn);
         this.listenTo(view, 'preloader:off', this.preloaderOff);
         view.hide();

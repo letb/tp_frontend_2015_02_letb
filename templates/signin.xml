@@ -19,12 +19,8 @@
               { type: 'submit', position: 'left', text: 'Sign In',
                 classes: 'btn btn--green pull-right' }
             </fest:get>
-            <fest:get name="button">
-              { href: '/', position: 'right', text: 'Back',
-                classes: 'btn btn--gray pull-left js-nav' }
-            </fest:get>
         </div>
       </form>
     </div>
-  </div>
+  </div>       
 </fest:template>

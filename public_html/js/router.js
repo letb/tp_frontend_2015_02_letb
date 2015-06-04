@@ -3,14 +3,17 @@ define([
 	'backbone',
 	'views/controller',
 	'views/main',
+	'views/menu',
 	'views/scoreboard',
 	'views/game',
 	'views/joystick',
 	'views/signup',
 	'views/signin'
-], function (app, Backbone, controller, mainView, scoreboardView, gameView, joystickView, signupView, signinView) {
+], function (app, Backbone, controller, mainView, menuView, scoreboardView, gameView, joystickView, signupView, signinView) {
 
 	controller.load(mainView, scoreboardView, gameView, joystickView, signupView, signinView);
+
+  $('.page').prepend(menuView.el);
 
 	var Router = Backbone.Router.extend({
 		routes: {
@@ -43,6 +46,7 @@ define([
 		},
 
 		defaultActions: function() {
+      menuView.render().show();
 			controller.changeView(mainView);
 		},
 
