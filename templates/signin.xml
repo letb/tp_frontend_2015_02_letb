@@ -1,5 +1,4 @@
 <fest:template xmlns:fest="http://fest.mail.ru">
-  <fest:include src="components/button.xml"/>
   <fest:include src="components/page_title.xml"/>
 
   <fest:get name="title"> { text: 'Sign In' } </fest:get>
@@ -14,12 +13,8 @@
           <input type="password" name="password" class="sign-form__input" placeholder="Password" required="true" />
         </div>
 
-        <div class="sign-form__btns">
-            <fest:get name="button">
-              { type: 'submit', position: 'left', text: 'Sign In',
-                classes: 'btn btn--green pull-right' }
-            </fest:get>
-        </div>
+        <button type="submit" class="btn--submit">Sign in</button>
+
       </form>
     </div>
   </div>       

@@ -1,12 +1,6 @@
 <fest:template xmlns:fest="http://fest.mail.ru">
-  <fest:include src="components/game_header.xml"/>
 
-  <div class="game">
-    <fest:get name="game__header">
-      { condition: 'true', content_true: 'Waiting for another player...' }
-    </fest:get>
-
-    <div class="game__working-area">
-    </div>
+  <div class="container">
+    <h3>Wait for players</h3>
   </div>
 </fest:template>

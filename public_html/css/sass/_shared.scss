@@ -25,3 +25,7 @@
 .btn--green {
   @extend .green;
 }
+
+.btn--submit {
+  @extend .btn, .waves-effect, .waves-teal;
+}

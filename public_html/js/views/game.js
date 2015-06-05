@@ -36,13 +36,16 @@ define([
 			switch (this.state) {
 				case 'wait':
 					this.trigger('preloader:on');
+					this.trigger('game:wait');
 					this.$el.html(tmplWait());
 					break;
 				case 'play':
 					this.trigger('preloader:off');
+					this.trigger('game:start');
 					this.insert();
 					break;
 				case 'finish':
+					this.trigger('game:finished');
 					this.$el.html(tmplFinish({
 							win: app.session.user.get('win')
 						})

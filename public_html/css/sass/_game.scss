@@ -1,13 +1,5 @@
-$total-height: 100%;
-$total-width: 950px;
-
-$menuColor: rgba(46, 204, 113, 0.8);
-$menuDark: darken($menuColor, 10%);
-$menuLight: lighten($menuColor, 30%);
-
 .game-view, .canvas-view, .color-palette-view,
 .game {
-  height: $total-height;
 }
 
 .canvas-view, .color-palette-view {
@@ -16,50 +8,27 @@ $menuLight: lighten($menuColor, 30%);
 }
 
 .game__header-wrapper {
-  height: 10%;
-  position: relative;
-  text-align: center;
-  background-color: $menuLight;
-  border-radius: 6px;
 }
 
 .game__header-content {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
 }
 
 .game__working-area {
-  height: 90%;
 }
 
 .game__pen-color {
-  width: 50px;
 }
 
 .game__drawing-area {
-  width: 700px;
-  /*background-color: #A3C2C2;*/
 }
 
 .game__chat-wrapper {
-  width: 200px;
-  /*background-color: #75A3A3;*/
 }
 
 .game__players-info,
 .game__drawing-area,
 .game__chat-wrapper {
-  box-sizing: border-box;
-  float: left;
-  height: $total-height;
-  padding: 1%;
 }
 
 .drawing-area__canvas {
-  box-sizing: border-box;
-  height: 100%;
-  padding: 3px;
 }

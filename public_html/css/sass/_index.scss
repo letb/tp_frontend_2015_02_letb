@@ -10,11 +10,20 @@ main {
 
 .preloader {
   position: absolute;
-  top: 30%;
+  top: 50%;
   left: 50%;
   z-index: 100;
 }
 
 .page-footer {
-  
+}
+
+.menu-view, .main-view, .game-view, .signup-view,
+.signin-view, .scoreboard-view{
+    animation: fadein 1s;
+}
+
+@keyframes fadein {
+    from {opacity:0;}
+    to {opacity:1;}
 }

@@ -35,6 +35,7 @@ define([
 
 		gameAction: function() {
 			controller.changeView(gameView);
+      menuView.render().hide();
 		},
 
 		signupAction: function() {
