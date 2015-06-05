@@ -151,7 +151,7 @@ module.exports = function (grunt) {
           master: ['index.html']
         },
         src: [
-          'index.html',
+          // 'index.html',
           'build/*.css'
         ],
         dest: 'public_html/manifest.appcache'
@@ -174,7 +174,7 @@ module.exports = function (grunt) {
   grunt.registerTask(
     'build:dist', [
       'fest',
-      'sass:dist',
+      // 'sass:dist',
       'requirejs:build',
       'concat:build',
       'uglify:build',

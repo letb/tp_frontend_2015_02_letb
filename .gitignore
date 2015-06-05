@@ -46,7 +46,6 @@ data/serverSettings.xml
 .DS_Store
 
 # Files compiled by Grunt
-public_html/build/
 public_html/js/tmpl/
 public_html/index.html
 public_html/*.appcache
