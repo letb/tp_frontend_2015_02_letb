@@ -14,6 +14,7 @@ define([
       this.context = this.canvas.getContext('2d');
       this.paint = false;
       this.color = "#f11b1b";
+      this.counter = 0;
 
       HTMLCanvasElement.prototype.relMouseCoords = this.relMouseCoords;
 
@@ -59,6 +60,7 @@ define([
 
     mouseDown: function(e) {
       e.preventDefault();
+      this.counter = 0;
       var coord = this.relMouseCoords(e);
       this.paint = true;
       var point = { x: coord.x, y: coord.y, drag: false, color: this.color }
@@ -70,8 +72,13 @@ define([
       e.preventDefault();
       var coord = this.relMouseCoords(e);
       if (this.paint) {
+        this.counter += 1;
         var point = { x: coord.x, y: coord.y, drag: true, color: this.color }
-        canvasModel.addPoint(point);
+        if (this.counter % 5 === 0) {
+          canvasModel.addPoint(point);
+        } else {
+          canvasModel.addPoint(point, true);
+        }
         this.redraw(this.canvas, this.context);
       }
     },
@@ -79,6 +86,7 @@ define([
     mouseUp: function(e) {
       e.preventDefault();
       if (this.paint) {
+        this.counter = 0;
         localStorage.setItem("canvas", JSON.stringify(canvasModel));
         this.paint = false;
       }
@@ -87,6 +95,7 @@ define([
     mouseLeave: function(e) {
       e.preventDefault();
       if (this.paint) {
+        this.counter = 0;
         this.paint = false;
       }
     },
