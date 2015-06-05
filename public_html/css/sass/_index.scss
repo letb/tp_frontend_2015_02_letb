@@ -2,6 +2,9 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  z-index: 20;
+  overflow: hidden;
+  /*position: relative;*/
 }
 
 main {
@@ -9,7 +12,7 @@ main {
 }
 
 .page {
-  @extend .container;
+  /*@extend .container;*/
   position: relative;
 }
 
@@ -29,6 +32,9 @@ main {
 }
 
 .page-footer {
+  /*box-sizing: border-box;*/
+  margin-top: 0;
+  padding-top: 0;
 }
 
 .menu-view, .main-view, .game-view, .signup-view,

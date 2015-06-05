@@ -5,7 +5,7 @@
   border-radius: 6px;
   overflow-y: hidden;
   background-color: #ffffff;
-  min-width: 500px;
+  @extend .z-depth-2;
 }
 
 .picker__color {
