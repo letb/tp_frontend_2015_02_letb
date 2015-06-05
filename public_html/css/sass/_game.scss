@@ -1,34 +1,46 @@
-.game-view, .canvas-view, .color-palette-view,
+.game-waiting__container {
+  @extend .card-panel, .col, .s12, .m4,  .teal.lighten-5;
+}
+
+.game-waiting__message,
+.game__header {
+  font-weight: 300;
+};
+
 .game {
+  width: 100%;
+  min-width: 1000px;
+  height: 460px;
 }
 
-.canvas-view, .color-palette-view {
-  background-color: white;
-  border: 1px solid black;
-}
-
-.game__header-wrapper {
-}
-
-.game__header-content {
-}
-
-.game__working-area {
-}
-
-.game__pen-color {
+.game__players {
+  float: left;
+  width: 200px;
+  height: 400px;
 }
 
 .game__drawing-area {
+  float: left;
+  width: 600px;
+  height: 400px;
 }
 
 .game__chat-wrapper {
+  float: left;
+  width: 200px;
+  height: 100%;
 }
 
-.game__players-info,
-.game__drawing-area,
-.game__chat-wrapper {
+.canvas-view {
+  height: 400px;
+  width: 600px;
 }
 
-.drawing-area__canvas {
+.chat-view {
+  height: 100%;
+}
+
+.canvas {
+  border: 1px solid lightgrey;
+  border-radius: 6px;
 }

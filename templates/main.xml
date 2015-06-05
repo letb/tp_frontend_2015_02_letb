@@ -1,14 +1,14 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="scoreboard">
-  <div class="card">
-  <div class="card-image">
-    <img src="images/sample-1.jpg"></img>
-    <span class="card-title">Draw. Guess.</span>
-  </div>
-         
-  <div class="card-content">
-    <p>I am a very simple card. I am good at containing small bits of information.
-    I am convenient because I require little markup to use effectively.</p>
-  </div>
+  <div class="card medium">
+    <div class="card-image">
+      <img src="images/sample-1.jpg"></img>
+      <span class="card-title">Draw. Guess.</span>
+    </div>
+           
+    <div class="card-content">
+      <p>I am a very simple card. I am good at containing small bits of information.
+      I am convenient because I require little markup to use effectively.</p>
+    </div>
 </div>
 
 </fest:template>

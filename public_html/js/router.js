@@ -13,7 +13,7 @@ define([
 
 	controller.load(mainView, scoreboardView, gameView, joystickView, signupView, signinView);
 
-  $('.page').prepend(menuView.el);
+  $('.page__menu').prepend(menuView.el);
 
 	var Router = Backbone.Router.extend({
 		routes: {

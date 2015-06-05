@@ -1,21 +1,40 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="params">
-  <fest:include src="components/game_header.xml"/>
-<!-- 
-    <fest:get name="game__header">
-      <fest:params>
-        { condition: params.leader }
-      </fest:params>
-      <fest:param name="content_true">
-        You are drawing<fest:space/><fest:value> params.user.get('keyword') </fest:value>.
-      </fest:param>
-    </fest:get>
- -->
-  <div class="game">
-    <div class="game__header"></div>
-    <div class="game__working-area">
-      <div class="game__pen-color"></div>
-      <div class="game__drawing-area"></div>
-      <div class="game__chat-wrapper"></div>
+
+<div class="row valign-wrapper">
+  <div class="container">
+    <div class="menu section">
+      <div class="row center">
+          <a class="menu__item word col m6">
+            <div class="icon-block">
+              <h2 class="center brown-text"><i class="mdi-image-flash-on"></i></h2>
+              <h5 class="center">Word is very long</h5>
+            </div>
+          </a>
+          <a class="menu__item time col m6">
+            <div class="icon-block">
+              <h2 class="center brown-text"><i class="mdi-image-flash-on"></i></h2>
+              <h5 class="center">60:00</h5>
+            </div>
+          </a>
+      </div>
     </div>
   </div>
+</div>
+<div class="game">
+  <div class="game__players">
+    <ul>
+      <li>player1 : score</li>
+      <li>player3 : score</li>
+      <li>player3 : score</li>
+      <li>player2 : score</li>
+      <li>player3 : score</li>
+      <li>player3 : score</li>
+    </ul>
+  </div>
+  <div class="game__drawing-area">
+    <div class="game__pen-color"></div>
+  </div>
+  <div class="game__chat-wrapper"></div>
+</div>
+
 </fest:template>

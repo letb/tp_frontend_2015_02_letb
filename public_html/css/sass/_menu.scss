@@ -1,14 +1,9 @@
-
-.menu {
-  margin: 30px; 
-}
-
 .menu__header {
   @extend .center;
 }
 
 .menu__message {
-  @extend .center;
+  @extend .center, .container;
 }
 
 .menu__item {

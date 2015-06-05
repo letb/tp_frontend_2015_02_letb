@@ -1,6 +1,8 @@
 <fest:template xmlns:fest="http://fest.mail.ru">
 
-  <div class="container">
-    <h3>Wait for players</h3>
+  <div class="container center">
+    <div class="game-waiting__container">
+      <h2 class="game-waiting__message"> Waiting for players</h2>
+    </div>
   </div>
 </fest:template>

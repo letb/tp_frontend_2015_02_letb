@@ -17,7 +17,7 @@ define([
 
       HTMLCanvasElement.prototype.relMouseCoords = this.relMouseCoords;
 
-      $(window).on("resize", _.bind(this.resize, this));
+      // $(window).on("resize", _.bind(this.resize, this));
       this.once('render', this.resize, this);
     },
 
@@ -50,6 +50,9 @@ define([
     changeSize: function() {
       this.canvas.width = this.canvas.parentElement.offsetWidth;
       this.canvas.height = this.canvas.parentElement.offsetHeight;
+      // this.canvas.width = window.innerWidth;
+    // this.canvas.height = window.innerHeight;
+ 
     },
 
     resize: function() {

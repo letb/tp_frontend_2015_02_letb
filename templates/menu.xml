@@ -1,12 +1,11 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="params">
 
-<div class="container valign-wrapper">
-  <br></br>
-  <div class="menu__message">
+<div class="row valign-wrapper">
   <fest:if test="params.signedIn">
-    <h5 class="header col s12 light"> Hello, &nbsp <span> <fest:value> params.user.get('name') </fest:value> </span>! </h5>
-  </fest:if>
+  <div class="menu__message col s12 m4">
+    <h5 class="header light"> Hello, &nbsp <span> <fest:value> params.user.get('name') </fest:value> </span>! </h5>
   </div>
+  </fest:if>
 
   <div class="container">
       <div class="menu section center">
@@ -24,7 +23,7 @@
             <a href="scoreboard" class="menu__item js-nav">
               <div class="icon-block">
                 <h2 class="center brown-text"><i class="mdi-social-group"></i></h2>
-                <h5 class="center">Scoreboard</h5>
+                <h5 class="center">Score</h5>
               </div>
             </a>
 
@@ -53,7 +52,7 @@
             <a href="scoreboard" class="menu__item js-nav">
               <div class="icon-block">
                 <h2 class="center brown-text"><i class="mdi-action-settings"></i></h2>
-                <h5 class="center">Scoreboard</h5>
+                <h5 class="center">Score</h5>
               </div>
             </a>
           </fest:otherwise>
