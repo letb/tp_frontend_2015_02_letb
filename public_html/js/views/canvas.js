@@ -107,8 +107,11 @@ define([
     },
 
     changeColor: function(e) {
-      var color = $(e.target).css("background-color");
-      this.color = this.rgb2hex(color);
+      if ($(e.target).hasClass("picker__color--eraser")) {
+      } else {
+        var color = $(e.target).css("background-color");
+        this.color = this.rgb2hex(color);
+      }
     },
 
     clear: function(e) {
