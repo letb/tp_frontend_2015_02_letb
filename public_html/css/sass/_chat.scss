@@ -48,6 +48,9 @@
     padding: 2% 2%;
     overflow-wrap: break-word;
     overflow-y: auto;
-    @extend .hide-on-small-only;
   }
+}
+
+.chat__history {
+  @extend .hide-on-med-and-down;
 }
