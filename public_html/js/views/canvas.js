@@ -170,13 +170,13 @@ define([
       Backbone.View.prototype.remove.call(this);
     },
 
-    isTouchEvent: function(event) {
-      return event instanceof TouchEvent;
+    isNotMouseEvent: function(event) {
+      return !(event instanceof MouseEvent);
     },
 
     relMouseCoords: function(event) {
       event = event.originalEvent;
-      if (this.isTouchEvent(event))
+      if (this.isNotMouseEvent(event))
         event = event.touches[0];
 
       var canoffset = $('.canvas').offset();
