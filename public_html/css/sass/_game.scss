@@ -62,16 +62,8 @@
   padding-left: 2px;
 }
 
-@media (min-width: 960px) {
-  .timer__container {
-    position: absolute;
-    left: 48%;
-  }
-}
-
-@media (max-width: 960px) {
-  .timer__container {
-    position: absolute;
-    top: 0;
-  }
+.game__timer {
+  position: absolute;
+  top: 0;
+  left: 48%;
 }
