@@ -9,7 +9,7 @@ module.exports = function (grunt) {
       },
       // Start server
       server: {
-          command: 'java -cp server.v0.2.jar main.Main'
+          command: 'java -cp server.v1.0.jar main.Main'
       }
     },
      // Compile Fest templates
