@@ -50,3 +50,15 @@ main {
     from {opacity:0;}
     to {opacity:1;}
 }
+
+.sign-form__input {
+  text-align: center;
+}
+
+.header__word {
+  @extend .brand-logo, .center;
+}
+
+.word {
+  text-decoration: overline;
+}

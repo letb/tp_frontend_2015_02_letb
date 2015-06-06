@@ -64,6 +64,14 @@ define([
 					user: app.session.user
 				})
 			);
+			if (app.session.user.get('leader')) {
+				$('.draw-word').text('draw ');
+				$('.word').text(app.session.user.get('keyword'));
+			}
+			else {
+				$('.draw-word').text(app.session.user.get('enemy') + ' draws');
+				$('.word').text('');
+			}
 			$('.game__drawing-area').prepend(this.canvasView.$el);
 			$('.game__pen-color').prepend(this.colorpaletteView.$el);
 			$('.game__chat-wrapper').prepend(this.chatView.render().$el);
