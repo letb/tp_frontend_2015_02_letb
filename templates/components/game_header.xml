@@ -1,14 +1,14 @@
 <fest:template xmlns:fest="http://fest.mail.ru">
   <fest:set name="game__header">
-    <div class="game__header-wrapper">
+    <div class="game-waiting__container">
       <fest:choose>
         <fest:when test="params.condition">
-          <h2 class="game__header-content">
+          <h2 class="game-waiting__message">
             <fest:value>params.content_true</fest:value>
           </h2>
         </fest:when>
         <fest:otherwise>
-          <h2 class="game__header-content">
+          <h2 class="game-waiting__message">
             <fest:value>params.content_false</fest:value>
           </h2>
         </fest:otherwise>
