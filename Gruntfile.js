@@ -143,7 +143,7 @@ module.exports = function (grunt) {
       generate: {
         options: {
           basePath: 'public_html',
-          cache: ['images/pencils.png', 'fonts/sketch_block.ttf'],
+          cache: ['images/sample-1.png'],
           network: ['*'],
           preferOnline: true,
           timestamp: true,
@@ -174,7 +174,7 @@ module.exports = function (grunt) {
   grunt.registerTask(
     'build:dist', [
       'fest',
-      'sass:dist',
+      // 'sass:dist',
       'requirejs:build',
       'concat:build',
       'uglify:build',
