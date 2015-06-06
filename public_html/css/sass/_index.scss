@@ -3,6 +3,9 @@ body {
   min-height: 100vh;
   flex-direction: column;
   z-index: 20;
+}
+
+.hide-scroll {
   position: relative;
   overflow: hidden;
 }

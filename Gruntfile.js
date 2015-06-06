@@ -9,7 +9,7 @@ module.exports = function (grunt) {
       },
       // Start server
       server: {
-          command: 'java -cp server.v0.2.jar main.Main'
+          command: 'java -cp server.v1.0.jar main.Main'
       }
     },
      // Compile Fest templates
@@ -174,7 +174,7 @@ module.exports = function (grunt) {
   grunt.registerTask(
     'build:dist', [
       'fest',
-      'sass:dist',
+      // 'sass:dist',
       'requirejs:build',
       'concat:build',
       'uglify:build',

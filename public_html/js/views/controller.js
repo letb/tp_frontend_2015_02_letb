@@ -13,10 +13,6 @@ define([
         Backbone.history.navigate(href, true);
       });
 
-      $(window).on('orientationchange', function(){
-        this.changeView(this.currentView)
-      });
-
       $(document).ajaxStart(function() {
         self.preloaderOn();
       });

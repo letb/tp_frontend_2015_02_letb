@@ -40,13 +40,11 @@ public_html/js/lib
 *.css.map
 
 # config files for server
-data/dbSettings.xml
-data/serverSettings.xml
+data/*.xml
 
 .DS_Store
 
 # Files compiled by Grunt
-public_html/build/
 public_html/js/tmpl/
 public_html/index.html
 public_html/*.appcache

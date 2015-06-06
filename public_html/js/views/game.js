@@ -75,7 +75,7 @@ define([
 			$('.game__drawing-area').prepend(this.canvasView.$el);
 			$('.game__pen-color').prepend(this.colorpaletteView.$el);
 			$('.game__chat-wrapper').prepend(this.chatView.render().$el);
-			$('.game__chat-wrapper').prepend(this.timerView.render().$el);
+			$('.game__timer').prepend(this.timerView.render().$el);
 			this.canvasView.render();
 			this.colorpaletteView.render();
 			// this.chatView.render();
@@ -113,11 +113,13 @@ define([
 		},
 
 		startGame: function() {
+			$('body').addClass('hide-scroll')
 			this.state = 'play';
 			this.render();
 		},
 
 		finishGame: function() {
+			$('body').removeClass('hide-scroll')
 			this.state = 'finish';
 			this.render();
 			socket.close();
