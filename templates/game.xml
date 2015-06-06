@@ -1,25 +1,7 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="params">
 
-<!-- <div class="row valign-wrapper">
-  <div class="container">
-    <div class="menu section">
-      <div class="row center">
-          <a class="menu__item word col m6">
-            <div class="icon-block">
-              <h2 class="center brown-text"><i class="mdi-image-flash-on"></i></h2>
-              <h5 class="center">Word is very long</h5>
-            </div>
-          </a>
-          <a class="menu__item time col m6">
-            <div class="icon-block">
-              <h2 class="center brown-text"><i class="mdi-image-flash-on"></i></h2>
-              <h5 class="center">60:00</h5>
-            </div>
-          </a>
-      </div>
-    </div>
-  </div>
-</div> -->
+  <h6 class="timer__container mdi-action-alarm"><span class="timer">60:00</span></h6> 
+
 
 <!-- <div class="game"> -->
 <!--   <div class="game__players">
