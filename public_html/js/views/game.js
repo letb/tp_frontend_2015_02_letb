@@ -62,11 +62,9 @@ define([
 					user: app.session.user
 				})
 			);
-			// $('.page').prepend(this.canvasView.$el);
 			$('.game__drawing-area').prepend(this.canvasView.$el);
 			$('.game__pen-color').prepend(this.colorpaletteView.$el);
 			$('.game__chat-wrapper').prepend(this.chatView.render().$el);
-			// $('.page__content').addClass("total-height");
 
 			this.canvasView.render();
 			this.colorpaletteView.render();

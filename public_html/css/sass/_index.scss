@@ -3,8 +3,12 @@ body {
   min-height: 100vh;
   flex-direction: column;
   z-index: 20;
-  overflow: hidden;
-  /*position: relative;*/
+}
+
+@media (min-width: 700px) {
+  body {
+    overflow: hidden;
+  }
 }
 
 main {
@@ -12,7 +16,6 @@ main {
 }
 
 .page {
-  /*@extend .container;*/
   position: relative;
 }
 
@@ -32,7 +35,6 @@ main {
 }
 
 .page-footer {
-  /*box-sizing: border-box;*/
   margin-top: 0;
   padding-top: 0;
 }

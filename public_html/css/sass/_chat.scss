@@ -33,16 +33,14 @@
   margin: 0;
 }
 
-.message-form__input {
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  padding: 8px;
-  outline: none;
-  width: 100%;
+@media (min-width: 700px) {
 }
 
+
 .chat__history {
-  height: 92%;
+  height: 80%;
   padding: 2% 2%;
   overflow-wrap: break-word;
+  overflow-y: auto; 
+  @extend .hide-on-small-only;
 }
