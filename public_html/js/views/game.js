@@ -7,8 +7,9 @@ define([
 	'views/canvas',
 	'views/colorpalette',
 	'views/chat',
+	'views/timer',
 	'api/socket'
-], function (app, Backbone, tmpl, tmplWait, tmplFinish, CanvasView, ColorPaletteView, ChatView, socket) {
+], function (app, Backbone, tmpl, tmplWait, tmplFinish, CanvasView, ColorPaletteView, ChatView, TimerView, socket) {
 	var GameView = Backbone.View.extend({
 		className: 'game-view',
 		template: tmpl,
@@ -18,6 +19,7 @@ define([
 			this.canvasView = new CanvasView({className: 'canvas-view'});
 			this.colorpaletteView = new ColorPaletteView({className: 'color-palette-view'});
 			this.chatView = new ChatView({ className: 'chat-view' });
+			this.timerView = new TimerView ({ className: 'timer-view' })
 
 			this.canvasView.listenTo(this.colorpaletteView,
 															'color:change',
@@ -36,13 +38,16 @@ define([
 			switch (this.state) {
 				case 'wait':
 					this.trigger('preloader:on');
+					this.trigger('game:wait');
 					this.$el.html(tmplWait());
 					break;
 				case 'play':
 					this.trigger('preloader:off');
+					this.trigger('game:start');
 					this.insert();
 					break;
 				case 'finish':
+					this.trigger('game:finished');
 					this.$el.html(tmplFinish({
 							win: app.session.user.get('win')
 						})
@@ -50,7 +55,6 @@ define([
 					this.waitGame();
 					break;
 			}
-
 			return this;
 		},
 
@@ -60,10 +64,18 @@ define([
 					user: app.session.user
 				})
 			);
+			if (app.session.user.get('leader')) {
+				$('.draw-word').text('draw ');
+				$('.word').text(app.session.user.get('keyword'));
+			}
+			else {
+				$('.draw-word').text(app.session.user.get('enemy') + ' draws');
+				$('.word').text('');
+			}
 			$('.game__drawing-area').prepend(this.canvasView.$el);
 			$('.game__pen-color').prepend(this.colorpaletteView.$el);
 			$('.game__chat-wrapper').prepend(this.chatView.render().$el);
-
+			$('.game__timer').prepend(this.timerView.render().$el);
 			this.canvasView.render();
 			this.colorpaletteView.render();
 			// this.chatView.render();
@@ -82,6 +94,7 @@ define([
 
 		hide: function() {
 			this.waitGame();
+			$('.page__content').removeClass("total-height");
 			this.$el.hide();
 		},
 
@@ -100,11 +113,13 @@ define([
 		},
 
 		startGame: function() {
+			$('body').addClass('hide-scroll')
 			this.state = 'play';
 			this.render();
 		},
 
 		finishGame: function() {
+			$('body').removeClass('hide-scroll')
 			this.state = 'finish';
 			this.render();
 			socket.close();

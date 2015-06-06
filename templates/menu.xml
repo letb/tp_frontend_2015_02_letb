@@ -1,0 +1,65 @@
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="params">
+
+<div class="row valign-wrapper">
+  <fest:if test="params.signedIn">
+  <div class="menu__message col s12 m4">
+    <h5 class="header light"> Hello, &nbsp <span> <fest:value> params.user.get('name') </fest:value> </span>! </h5>
+  </div>
+  </fest:if>
+
+  <div class="container">
+      <div class="menu section center">
+        <div class="row">
+
+        <fest:choose>
+          <fest:when test="params.signedIn">
+            <a href="game" class="menu__item js-nav">
+              <div class="icon-block">
+                <h2 class="center brown-text"><i class="mdi-image-flash-on"></i></h2>
+                <h5 class="center">Play</h5>
+              </div>
+            </a>
+
+            <a href="scoreboard" class="menu__item js-nav">
+              <div class="icon-block">
+                <h2 class="center brown-text"><i class="mdi-social-group"></i></h2>
+                <h5 class="center">Score</h5>
+              </div>
+            </a>
+
+            <a href="signout" class="menu__item js-nav signout">
+              <div class="icon-block">
+                <h2 class="center brown-text"><i class="mdi-action-settings"></i></h2>
+                <h5 class="center">Log out</h5>
+              </div>
+            </a>
+          </fest:when>
+          <fest:otherwise>
+            <a href="signin" class="menu__item js-nav">
+              <div class="icon-block">
+                <h2 class="center brown-text"><i class="mdi-image-flash-on"></i></h2>
+                <h5 class="center">Log in</h5>
+              </div>
+            </a>
+
+            <a href="signup" class="menu__item js-nav">
+              <div class="icon-block">
+                <h2 class="center brown-text"><i class="mdi-social-group"></i></h2>
+                <h5 class="center">Signup</h5>
+              </div>
+            </a>
+
+            <a href="scoreboard" class="menu__item js-nav">
+              <div class="icon-block">
+                <h2 class="center brown-text"><i class="mdi-action-settings"></i></h2>
+                <h5 class="center">Score</h5>
+              </div>
+            </a>
+          </fest:otherwise>
+        </fest:choose>
+        </div>
+      </div>
+    </div>
+</div>
+
+</fest:template>

@@ -4,9 +4,14 @@ require.config({
 	paths: {
 		jquery: "lib/jquery/dist/jquery",
 		underscore: "lib/underscore/underscore",
-		backbone: "lib/backbone/backbone"
+		backbone: "lib/backbone/backbone",
+    materialize : 'lib/materialize/dist/js/materialize.min'
 	},
 	shim: {
+    'materialize': {
+      deps: ['jquery'],
+      exports: 'Materialize'
+    },
 		'backbone': {
 	        // These script dependencies should be loaded before loading
         	// backbone.js

@@ -6,19 +6,29 @@ define([
     defaults: {
       x: [],
       y: [],
+      xc: [],
+      yc: [],
       drag: [],
       color: [],
       size: []
     },
 
-    addPoint: function(point, remote) {
+    addPoint: function(point) {
       this.get('x').push(point.x);
       this.get('y').push(point.y);
       this.get('drag').push(point.drag);
       this.get('color').push(point.color);
-      if (!remote) {
-        this.wsSendPoint(point);
-      };
+
+      point['xc'] = point.x / window.screen.width;
+      point['yc'] = point.y / window.screen.height;
+      this.wsSendPoint(point);
+    },
+
+    addRemotePoint: function(point) {
+      this.get('x').push(point.xc * window.screen.width);
+      this.get('y').push(point.yc * window.screen.height);
+      this.get('drag').push(point.drag);
+      this.get('color').push(point.color);
     },
 
     getX: function(i) {
@@ -57,12 +67,12 @@ define([
     },
 
     wsSendClear: function(clear) {
-      msg = { type: 'canvas:clear', body: clear };
+      var msg = { type: 'canvas:clear', body: clear };
       socket.send(msg);
     },
 
     wsSendPoint: function(point) {
-      msg = { type: 'canvas', body: point };
+      var msg = { type: 'canvas', body: point };
       socket.send(msg);
     }
   });

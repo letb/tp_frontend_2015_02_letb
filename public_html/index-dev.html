@@ -3,18 +3,37 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="build/base.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 	<title>Draw Something</title>
 </head>
 <body>
-  <div class="logo">
-    <a href='/' class="logo__button">draw something</a>
-  </div>
-  <div class="page"></div>
-  <div class="footer footer__button">thanks and love</div>
+  <nav>
+    <div class="logo nav-wrapper">
+      <a href='/' class="header__word"> 
+        <span class="draw-word"> draw something </span> 
+        <span class="word"></span></a>
+    </div>
+  </nav>
+
+  <main class="page">
+    <div class="page__menu"></div>
+    <div class="page__content"></div>
+  </main>
+
+<!--   <footer class="page-footer">
+    <div class="footer-copyright">
+      <div class="container">
+      © 2015 We are
+      <a class="grey-text text-lighten-4 right" href="#!">Profile links</a>
+      </div>
+    </div>
+  </footer> -->
 
   <!-- build:template
   <% if (environment === 'dev') { %>
   <script src="//localhost:35729/livereload.js"></script>
+   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js"></script>
   <script data-main="js/config" src="js/lib/requirejs/require.js"></script>
   <% } else { %>
   <script src="build/app.min.js"></script>

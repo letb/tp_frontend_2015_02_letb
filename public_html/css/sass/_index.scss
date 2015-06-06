@@ -1,85 +1,67 @@
-$menuColor: rgba(46, 204, 113, 0.8);
-$menuDark: darken($menuColor, 10%);
-$menuDarker: darken($menuDark, 10%);
-$menuLight: lighten($menuColor, 10%);
-
-@font-face {
-    font-family: 'sketch_block';
-    src: url('/fonts/sketch_block.ttf') format('truetype');
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  z-index: 20;
 }
 
-html, body {
-  height: 98%;
-  top: 3%;
+.hide-scroll {
   position: relative;
-  background-image: url(../images/pencils.png);
+  overflow: hidden;
 }
 
-.logo, .page, .footer {
-  text-align: center;
-  margin: 5px auto;
-  /*border: 1px solid black;*/
-
-  box-sizing: border-box;
-  left: 0;
-  right: 0;
-
-  width: 80%;
-  max-width: 950px;
-  min-width: 950px;
-}
-
-.logo {
-  font-size: 300%;
-  top: 10%;
-  font-family: 'sketch_block';
-
-  a {
-    padding: 0.5% 15% 0;
+@media (min-width: 700px) {
+  body {
+    overflow: hidden;
   }
+}
 
+main {
+  flex: 1 0 auto;
 }
 
 .page {
   position: relative;
-  height: 80%;
-  min-height: 500px;
-  max-height: 550px;
-  /*background-color: black;*/
-  /*background-image: url(pencil-brush-64.png);*/
 }
 
-.logo__button,
-.footer__button {
-  background-color: $menuColor;
-  box-shadow: 0px 5px 0px $menuDark;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: black;
-
-  &:visited {
-    color: black;
-  }
-
-  &:hover {
-    text-decoration: none;
-    color: black;
-    background-color: $menuLight;
-    box-shadow: 0px 5px 0px $menuDarker;
-  }
+.page__content {
+  @extend .center, .col, .m10;
 }
 
-.footer {
-  font-family: 'sketch_block';
-  font-size: 200%;
-  bottom: 10%;
-  left: 0;
-  right: 0;
+.logo {
+  overflow-y: hidden;
 }
 
 .preloader {
   position: absolute;
-  top: 30%;
+  top: 50%;
   left: 50%;
   z-index: 100;
+}
+
+.page-footer {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.menu-view, .main-view, .game-view, .signup-view,
+.signin-view, .scoreboard-view{
+    animation: fadein 1s;
+}
+
+@keyframes fadein {
+    from {opacity:0;}
+    to {opacity:1;}
+}
+
+.sign-form__input {
+  text-align: center;
+}
+
+.header__word {
+  @extend .brand-logo, .center;
+}
+
+.word {
+  text-decoration: overline;
 }

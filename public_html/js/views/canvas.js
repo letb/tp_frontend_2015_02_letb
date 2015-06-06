@@ -9,7 +9,12 @@ define([
     model: canvasModel = new CanvasModel(),
 
     initialize: function() {
-      this.$el.append('<canvas class="canvas"></canvas>');
+      var lol = $('footer').outerHeight();
+      var lolheight = $('nav').outerHeight();
+      var width = window.screen.width;
+      var height = window.screen.height - lol - lolheight;
+
+      this.$el.append('<canvas class="canvas" width=" ' + width +'" height="' + height + '"></canvas>');
       this.canvas = this.$('.canvas')[0];
       this.context = this.canvas.getContext('2d');
       this.paint = false;
@@ -17,8 +22,8 @@ define([
 
       HTMLCanvasElement.prototype.relMouseCoords = this.relMouseCoords;
 
-      $(window).on("resize", _.bind(this.resize, this));
-      this.once('render', this.resize, this);
+      // $(window).on("resize", _.bind(this.resize, this));
+      // this.once('render', this.resize, this);
     },
 
     events: {
@@ -29,9 +34,9 @@ define([
 
       'touchstart .canvas': 'mouseDown',
       'touchmove .canvas': 'mouseMove',
-      'touchend .canvas': 'mouseUp',
+      'touchend .canvas': 'mouseUp'
 
-      'resized .canvas': 'resize'
+      // 'resized .canvas': 'resize'
     },
 
     render: function() {
@@ -50,6 +55,8 @@ define([
     changeSize: function() {
       this.canvas.width = this.canvas.parentElement.offsetWidth;
       this.canvas.height = this.canvas.parentElement.offsetHeight;
+      // this.canvas.width = window.innerWidth;
+    // this.canvas.height = window.innerHeight;
     },
 
     resize: function() {
@@ -85,8 +92,16 @@ define([
     },
 
     mouseLeave: function(e) {
+      // console.log(e);
       e.preventDefault();
-      if (this.paint) {
+      var toChat = false;
+      try {
+        var toEl = e.toElement;
+        toChat = (toEL !== $('.chat__history')[0]);
+      } catch (e) {}
+      // console.log(toEl);
+
+      if (this.paint && toChat) {
         this.paint = false;
       }
     },
@@ -114,7 +129,7 @@ define([
     },
 
     wsRedraw: function(point) {
-      canvasModel.addPoint(point, true);
+      canvasModel.addRemotePoint(point);
       this.redraw(this.canvas, this.context);
     },
 
@@ -155,13 +170,13 @@ define([
       Backbone.View.prototype.remove.call(this);
     },
 
-    isTouchEvent: function(event) {
-      return event instanceof TouchEvent;
+    isNotMouseEvent: function(event) {
+      return !(event instanceof MouseEvent);
     },
 
     relMouseCoords: function(event) {
       event = event.originalEvent;
-      if (this.isTouchEvent(event))
+      if (this.isNotMouseEvent(event))
         event = event.touches[0];
 
       var canoffset = $('.canvas').offset();

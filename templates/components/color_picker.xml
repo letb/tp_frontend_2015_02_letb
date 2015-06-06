@@ -8,8 +8,6 @@
    <a href="#" class="picker__color picker__color--pink"></a>
    <a href="#" class="picker__color picker__color--purple"></a>
    <a href="#" class="picker__color picker__color--black"></a>
-   <a href="#" class="picker__color picker__color--grey"></a>
-   <a href="#" class="picker__color picker__color--white "></a> 
    <a href="#" class="picker__color picker__color--eraser picker__color--last"></a>    
 </div>
 </fest:template>

@@ -1,21 +1,16 @@
 .chat-view {
-  bottom: 0;
+  @extend .z-depth-2;
   font-size: 12px;
-  position: relative;
-  width: 100%;
-  height: 100%;
 }
 
 .chat {
-  background: #fff;
+  background-color: rgba(255, 255, 255, 0.94);
   height: 100%;
 }
 
 .chat__divider {
   background: #e9e9e9;
   border: 0;
-  // -moz-box-sizing: content-box;
-  // box-sizing: content-box;
   height: 1px;
   min-height: 1px;
   margin: 0;
@@ -25,6 +20,8 @@
 
 .chat__message-form {
   padding: 2%;
+  position: relative;
+  bottom: 2px;
 }
 
 .message-form__input {
@@ -36,17 +33,24 @@
   margin: 0;
 }
 
-.message-form__input {
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  padding: 8px;
-  outline: none;
-  width: 100%;
+@media (max-width: 960px) {
+  .game__chat-wrapper {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    z-index: 20;
+  }
+}
+
+@media (min-width: 920px) {
+  .chat__history {
+    height: 80%;
+    padding: 2% 2%;
+    overflow-wrap: break-word;
+    overflow-y: auto;
+  }
 }
 
 .chat__history {
-  height: 92%;
-  padding: 2% 2%;
-  overflow-y: scroll;
-  overflow-wrap: break-word;
+  @extend .hide-on-med-and-down;
 }
