@@ -3,6 +3,8 @@ body {
   min-height: 100vh;
   flex-direction: column;
   z-index: 20;
+  position: relative;
+  overflow: hidden;
 }
 
 @media (min-width: 700px) {
@@ -24,7 +26,7 @@ main {
 }
 
 .logo {
-  overflow-y: hidden; 
+  overflow-y: hidden;
 }
 
 .preloader {

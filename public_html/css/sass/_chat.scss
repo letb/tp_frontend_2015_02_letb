@@ -33,14 +33,21 @@
   margin: 0;
 }
 
-@media (min-width: 700px) {
+@media (max-width: 960px) {
+  .game__chat-wrapper {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    z-index: 20;
+  }
 }
 
-
-.chat__history {
-  height: 80%;
-  padding: 2% 2%;
-  overflow-wrap: break-word;
-  overflow-y: auto; 
-  @extend .hide-on-small-only;
+@media (min-width: 960px) {
+  .chat__history {
+    height: 80%;
+    padding: 2% 2%;
+    overflow-wrap: break-word;
+    overflow-y: auto;
+    @extend .hide-on-small-only;
+  }
 }
