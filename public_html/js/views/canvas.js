@@ -57,7 +57,6 @@ define([
       this.canvas.height = this.canvas.parentElement.offsetHeight;
       // this.canvas.width = window.innerWidth;
     // this.canvas.height = window.innerHeight;
- 
     },
 
     resize: function() {
@@ -130,7 +129,7 @@ define([
     },
 
     wsRedraw: function(point) {
-      canvasModel.addPoint(point, true);
+      canvasModel.addRemotePoint(point);
       this.redraw(this.canvas, this.context);
     },
 
