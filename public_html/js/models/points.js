@@ -67,12 +67,12 @@ define([
     },
 
     wsSendClear: function(clear) {
-      msg = { type: 'canvas:clear', body: clear };
+      var msg = { type: 'canvas:clear', body: clear };
       socket.send(msg);
     },
 
     wsSendPoint: function(point) {
-      msg = { type: 'canvas', body: point };
+      var msg = { type: 'canvas', body: point };
       socket.send(msg);
     }
   });

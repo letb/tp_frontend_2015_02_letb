@@ -7,8 +7,9 @@ define([
 	'views/canvas',
 	'views/colorpalette',
 	'views/chat',
+	'views/timer',
 	'api/socket'
-], function (app, Backbone, tmpl, tmplWait, tmplFinish, CanvasView, ColorPaletteView, ChatView, socket) {
+], function (app, Backbone, tmpl, tmplWait, tmplFinish, CanvasView, ColorPaletteView, ChatView, TimerView, socket) {
 	var GameView = Backbone.View.extend({
 		className: 'game-view',
 		template: tmpl,
@@ -18,6 +19,7 @@ define([
 			this.canvasView = new CanvasView({className: 'canvas-view'});
 			this.colorpaletteView = new ColorPaletteView({className: 'color-palette-view'});
 			this.chatView = new ChatView({ className: 'chat-view' });
+			this.timerView = new TimerView ({ className: 'timer-view' })
 
 			this.canvasView.listenTo(this.colorpaletteView,
 															'color:change',
@@ -65,7 +67,7 @@ define([
 			$('.game__drawing-area').prepend(this.canvasView.$el);
 			$('.game__pen-color').prepend(this.colorpaletteView.$el);
 			$('.game__chat-wrapper').prepend(this.chatView.render().$el);
-
+			$('.game__chat-wrapper').prepend(this.timerView.render().$el);
 			this.canvasView.render();
 			this.colorpaletteView.render();
 			// this.chatView.render();
